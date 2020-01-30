@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblCategories extends Migration
+class TblRoles extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,10 @@ class TblCategories extends Migration
     public function up()
     {
         //
-        Schema::create('categories',function (Blueprint $table){
+        Schema::create('roles',function (Blueprint $table){
             $table->increments('id');
-            $table->string('name',60);
-            $table->integer('position')->unsigned();
-            $table->boolean('display');
+            $table->string('role',60);
+            $table->longText('permission');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class TblCategories extends Migration
     public function down()
     {
         //
-        Schema::drop('categories');
+        Schema::drop('roles');
     }
 }

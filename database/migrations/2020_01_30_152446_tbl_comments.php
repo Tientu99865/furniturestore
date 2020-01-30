@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblCategories extends Migration
+class TblComments extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,13 @@ class TblCategories extends Migration
     public function up()
     {
         //
-        Schema::create('categories',function (Blueprint $table){
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',60);
-            $table->integer('position')->unsigned();
-            $table->boolean('display');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('pro_id')->unsigned();
+            $table->foreign('pro_id')->references('id')->on('products');
+            $table->longText('content');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class TblCategories extends Migration
     public function down()
     {
         //
-        Schema::drop('categories');
+        Schema::drop('comments');
     }
 }

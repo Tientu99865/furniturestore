@@ -14,6 +14,19 @@ class TblProducts extends Migration
     public function up()
     {
         //
+        Schema::create('products',function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('cat_id')->unsigned();
+            $table->foreign('cat_id')->references('id')->on('categories');
+            $table->string('name',60);
+            $table->decimal('pro_price', 5, 2);
+            $table->decimal('selling_price', 5, 2);
+            $table->string('image',200);
+            $table->longText('introduce');
+            $table->integer('size')->unsigned();
+            $table->integer('view')->default(0);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +37,6 @@ class TblProducts extends Migration
     public function down()
     {
         //
+        Schema::drop('products');
     }
 }
