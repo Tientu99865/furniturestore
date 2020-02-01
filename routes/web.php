@@ -29,5 +29,13 @@ Route::group(['prefix'=>'admin'],function (){
 
     Route::group(['prefix'=>'menu'],function (){
        Route::get('them','MenuController@getThem');
+       Route::post('them','MenuController@postThem');
+
+       Route::get('danhsach','MenuController@getDanhSach');
+
+       Route::get('xoa/{id}','MenuController@getXoa');
+
+        Route::get('sua/{id}','MenuController@getSua');
+        Route::post('sua/{id}','MenuController@postSua');
     });
 });

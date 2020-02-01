@@ -7,10 +7,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/widgets/widgets.html">
-                <i class="mdi mdi-airplay menu-icon"></i>
-                <span class="menu-title">Widgets</span>
+            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+                <span class="menu-title">Quản lý menu</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="form-elements">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"><a class="nav-link" href="admin/menu/them">Thêm menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin/menu/danhsach">Danh sách menu</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -49,21 +56,6 @@
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/carousel.html">Carousel</a></li>
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/colcade.html">Colcade</a></li>
                     <li class="nav-item"> <a class="nav-link" href="pages/ui-features/loaders.html">Loaders</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-                <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                <span class="menu-title">Form elements</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/advanced_elements.html">Advanced Elements</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/validation.html">Validation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/wizard.html">Wizard</a></li>
                 </ul>
             </div>
         </li>

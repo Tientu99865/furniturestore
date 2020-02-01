@@ -16,10 +16,8 @@ class TblMenus extends Migration
         //
         Schema::create('menus',function (Blueprint $table){
             $table->increments('id');
-            $table->integer('cat_id')->unsigned();
-            $table->foreign('cat_id')->references('id')->on('categories');
             $table->string('name',60);
-            $table->string('url',100);
+            $table->string('url',100)->nullable();
             $table->integer('position')->unsigned();
             $table->boolean('display');
             $table->timestamps();

@@ -16,6 +16,8 @@ class TblCategories extends Migration
         //
         Schema::create('categories',function (Blueprint $table){
             $table->increments('id');
+            $table->integer('menu_id')->unsigned();
+            $table->foreign('menu_id')->references('id')->on('menus');
             $table->string('name',60);
             $table->integer('position')->unsigned();
             $table->boolean('display');
