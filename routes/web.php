@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin',function (){
+    return view('admin/layout/index');
+});
+
+//Route group admin
+
+Route::group(['prefix'=>'admin'],function (){
+
+   Route::get('trangchu',function (){
+       return view('admin/trangchu/index');
+   });
+
+    Route::group(['prefix'=>'menu'],function (){
+       Route::get('them','MenuController@getThem');
+    });
+});
