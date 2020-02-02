@@ -40,14 +40,28 @@ Route::group(['prefix'=>'admin'],function (){
     });
     //Menu
     Route::group(['prefix'=>'menu'],function (){
-       Route::get('them','MenuController@getThem');
-       Route::post('them','MenuController@postThem');
+        Route::get('them','MenuController@getThem');
+        Route::post('them','MenuController@postThem');
 
-       Route::get('danhsach','MenuController@getDanhSach');
+        Route::get('danhsach','MenuController@getDanhSach');
 
-       Route::get('xoa/{id}','MenuController@getXoa');
+        Route::get('xoa/{id}','MenuController@getXoa');
 
         Route::get('sua/{id}','MenuController@getSua');
         Route::post('sua/{id}','MenuController@postSua');
+    });
+
+    //Slide
+    //Menu
+    Route::group(['prefix'=>'slide'],function (){
+        Route::get('them','SlideController@getThem');
+        Route::post('them','SlideController@postThem');
+
+        Route::get('danhsach','SlideController@getDanhSach');
+
+        Route::get('xoa/{id}','SlideController@getXoa');
+
+        Route::get('sua/{id}','SlideController@getSua');
+        Route::post('sua/{id}','SlideController@postSua');
     });
 });

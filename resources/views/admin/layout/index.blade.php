@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="admin_asset/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="admin_asset/images/favicon.png" />
+
+    <script src="admin_asset/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
