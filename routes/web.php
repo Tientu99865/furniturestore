@@ -26,7 +26,19 @@ Route::group(['prefix'=>'admin'],function (){
    Route::get('trangchu',function (){
        return view('admin/trangchu/index');
    });
+    //Categories
+    Route::group(['prefix'=>'danhmuc'],function (){
+        Route::get('them','DanhMucController@getThem');
+        Route::post('them','DanhMucController@postThem');
 
+        Route::get('danhsach','DanhMucController@getDanhSach');
+
+        Route::get('xoa/{id}','DanhMucController@getXoa');
+
+        Route::get('sua/{id}','DanhMucController@getSua');
+        Route::post('sua/{id}','DanhMucController@postSua');
+    });
+    //Menu
     Route::group(['prefix'=>'menu'],function (){
        Route::get('them','MenuController@getThem');
        Route::post('them','MenuController@postThem');

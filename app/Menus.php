@@ -10,7 +10,7 @@ class Menus extends Model
     protected $table = "Menus";
 
     public function categories(){
-        return $this->hasMany('App\Categories','cat_id','id');
+        return $this->belongsTo('App\Categories','cat_id','id');
     }
 
 }
