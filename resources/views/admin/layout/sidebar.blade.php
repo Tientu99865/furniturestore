@@ -35,18 +35,13 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false" aria-controls="ui-advanced">
                 <i class="mdi mdi-bullseye-arrow menu-icon"></i>
-                <span class="menu-title">Advanced UI</span>
+                <span class="menu-title">Quản lý slide</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-advanced">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dragula.html">Dragula</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/clipboard.html">Clipboard</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/context-menu.html">Context menu</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/slider.html">Sliders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/carousel.html">Carousel</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/colcade.html">Colcade</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/loaders.html">Loaders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/slide/them">Thêm ảnh slide</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/slide/danhsach">Danh sách ảnh slide</a></li>
                 </ul>
             </div>
         </li>

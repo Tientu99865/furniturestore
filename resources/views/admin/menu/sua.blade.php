@@ -36,6 +36,32 @@
                                        name="name" class="form-control" id="exampleInputName1" placeholder="Tên danh mục" />
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputPassword4">Chọn menu cha <span style="color: red">*</span></label>
+                                <select name="parent_id" aria-controls="order-listing" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach($menu->all() as $m)
+                                        <option
+                                            @if($menu->parent_id == $m->id)
+                                            {{"selected"}}
+                                            @endif
+                                            value="{{$m->id}}">{{$m->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Menu thuộc danh mục <span style="color: red">*</span></label>
+                                <select name="cat_id" aria-controls="order-listing" class="form-control">
+                                    <option value="">--</option>
+                                    @foreach($categories as $cat)
+                                        <option
+                                            @if($menu->cat_id == $cat->id)
+                                                {{"selected"}}
+                                            @endif
+                                            value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputName1">Đường dẫn (URL) </label>
                                 <input type="text" value="{{$menu->url}}"
                                        name="url" class="form-control" id="exampleInputName1" placeholder="URL" />

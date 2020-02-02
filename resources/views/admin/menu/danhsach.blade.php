@@ -15,7 +15,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;font-size: 30px;">Danh sách các menu</h4>
-{{--                        <p>Có tất cả <b>{{count($menu->id)}}</b> danh mục</p><br>--}}
+
+                        <p>Có tất cả <b><?php $count = DB::table('menus')->count(); echo $count?></b> menu</p><br>
+
                         <div id="js-grid" class="jsgrid" style="position: relative; height: 500px; width: 100%;">
                             <div class="jsgrid-grid-header jsgrid-header-scrollbar">
                                 <table class="jsgrid-table">
@@ -25,6 +27,12 @@
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Tên menu
+                                        </th>
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                            Menu cha
+                                        </th>
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                            Menu thuộc danh mục
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
                                             Đường dẫn (URL)
@@ -49,6 +57,24 @@
                                         <tr class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><?php echo $stt;?></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$m->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                                @if(isset($m->parent_id))
+                                                    @foreach($menu as $m2)
+                                                        @if($m->parent_id == $m2->id)
+                                                            <p style="color: red">{{$m2->name}}</p>
+                                                        @endif
+                                                    @endforeach
+                                                @else
+                                                    --
+                                                @endif
+                                            </td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                                @if(isset($m->cat_id))
+                                                    {{$m->categories->name}}
+                                                @else
+                                                    --
+                                                @endif
+                                            </td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$m->url}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$m->position}}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">

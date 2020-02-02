@@ -15,7 +15,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;font-size: 30px;">Danh sách danh mục</h4>
-                        {{--                        <p>Có tất cả <b>{{count($menu->id)}}</b> danh mục</p><br>--}}
+
+                        <p>Có tất cả <b><?php $count = DB::table('categories')->count(); echo $count?></b> danh mục</p><br>
+                        
                         <div id="js-grid" class="jsgrid" style="position: relative; height: 500px; width: 100%;">
                             <div class="jsgrid-grid-header jsgrid-header-scrollbar">
                                 <table class="jsgrid-table">

@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menus;
+use App\Categories;
 class MenuController extends Controller
 {
     //
     public function getThem(){
-        return view('admin/menu/them');
+        $menu = Menus::all();
+        $categories = Categories::all();
+        return view('admin/menu/them',['menu'=>$menu,'categories'=>$categories]);
     }
 
     public function postThem(Request $request){
@@ -29,6 +32,18 @@ class MenuController extends Controller
         $menu->name = $request->name;
         $menu->position = $request->position;
         $menu->display = 1;
+        if ($request->has('parent_id')){
+            $menu->parent_id = $request->parent_id;
+        }else
+        {
+            $menu->parent_id = "";
+        }
+        if ($request->has('cat_id')){
+            $menu->cat_id = $request->cat_id;
+        }else
+        {
+            $menu->cat_id = "";
+        }
         if ($request->has('url')){
             $menu->url =  $request->url;
         }else{
@@ -52,9 +67,9 @@ class MenuController extends Controller
     }
 
     public function getSua($id){
-        $menu = Menus::find($id);
-
-        return view('admin/menu/sua',['menu'=>$menu]);
+        $menu = Menus::all()->find($id);
+        $categories = Categories::all();
+        return view('admin/menu/sua',['menu'=>$menu,'categories'=>$categories]);
     }
 
     public function postSua(Request $request,$id){
@@ -76,6 +91,18 @@ class MenuController extends Controller
         $menu->name = $request->name;
         $menu->position = $request->position;
         $menu->display = 1;
+        if ($request->has('parent_id')){
+            $menu->parent_id = $request->parent_id;
+        }else
+        {
+            $menu->parent_id = "";
+        }
+        if ($request->has('cat_id')){
+            $menu->cat_id = $request->cat_id;
+        }else
+        {
+            $menu->cat_id = "";
+        }
         if ($request->has('url')){
             $menu->url =  $request->url;
         }else{
