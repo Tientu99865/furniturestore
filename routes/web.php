@@ -19,13 +19,14 @@ Route::get('admin',function (){
     return view('admin/layout/index');
 });
 
+Route::get('admin/dangnhap','UserController@getDangNhapAdmin');
+Route::post('admin/dangnhap','UserController@postDangNhapAdmin');
+
 //Route group admin
 
 Route::group(['prefix'=>'admin'],function (){
-
-   Route::get('trangchu',function (){
-       return view('admin/trangchu/index');
-   });
+    //Trang chu
+    Route::get('trangchu','TrangChuController@getQuanLy');
     //Categories
     Route::group(['prefix'=>'danhmuc'],function (){
         Route::get('them','DanhMucController@getThem');
@@ -52,7 +53,6 @@ Route::group(['prefix'=>'admin'],function (){
     });
 
     //Slide
-    //Menu
     Route::group(['prefix'=>'slide'],function (){
         Route::get('them','SlideController@getThem');
         Route::post('them','SlideController@postThem');
@@ -64,4 +64,18 @@ Route::group(['prefix'=>'admin'],function (){
         Route::get('sua/{id}','SlideController@getSua');
         Route::post('sua/{id}','SlideController@postSua');
     });
+
+    //Product
+    Route::group(['prefix'=>'sanpham'],function (){
+        Route::get('them','SanPhamController@getThem');
+        Route::post('them','SanPhamController@postThem');
+
+        Route::get('danhsach','SanPhamController@getDanhSach');
+
+        Route::get('xoa/{id}','SanPhamController@getXoa');
+
+        Route::get('sua/{id}','SanPhamController@getSua');
+        Route::post('sua/{id}','SanPhamController@postSua');
+    });
+
 });

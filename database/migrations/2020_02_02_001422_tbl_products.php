@@ -19,11 +19,10 @@ class TblProducts extends Migration
             $table->integer('cat_id')->unsigned();
             $table->foreign('cat_id')->references('id')->on('categories');
             $table->string('name',60);
-            $table->decimal('pro_price', 5, 2);
-            $table->decimal('selling_price', 5, 2);
+            $table->decimal('pro_price', 15, 2)->unsigned();
+            $table->decimal('selling_price', 15, 2)->unsigned();
             $table->string('image',200);
             $table->longText('introduce');
-            $table->integer('size')->unsigned();
             $table->integer('view')->default(0);
             $table->timestamps();
         });

@@ -32,6 +32,6 @@ class TblSlides extends Migration
     public function down()
     {
         //
-        Schema::drop('slide');
+        Schema::drop('slides');
     }
 }

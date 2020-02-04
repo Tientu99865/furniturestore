@@ -16,15 +16,13 @@ class SlideController extends Controller
         $this->validate($request,
             [
                 'name'=>'required|min:2|max:100',
-//                'image'=>'required|mimes:jpeg,png,jpg,gif,svg|max:5000'
+                'image'=>'required'
             ],
             [
                 'name.required'=>'Bạn chưa nhập tên ảnh slide',
                 'name.min'=>'Tên ảnh phải có độ dài từ 2 đến 100 ký tự',
                 'name.max'=>'Tên ảnh phải có độ dài từ 2 đến 100 ký tự',
-//                'image.required'=>'Bạn chưa chọn ảnh slide',
-//                'image.mimes'=>'file ảnh phải có định dạng : jpeg,png,jpg,gif,svg.',
-//                'image.max'=>'Ảnh slide phải có kích thướng nhỏ hơn 5000kb.',
+                'image.required'=>'Bạn chưa chọn ảnh slide',
             ]);
         $slide = new Slides();
         $slide->name = $request->name;
@@ -41,10 +39,6 @@ class SlideController extends Controller
             }
             $file->move('upload/slide',$Hinh);
             $slide->image = $Hinh;
-        }
-        else
-        {
-            $slide->image = "";
         }
         if ($request->has('mota')){
             $slide->content = $request->mota;
