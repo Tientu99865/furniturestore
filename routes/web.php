@@ -22,6 +22,9 @@ Route::get('admin',function (){
 Route::get('admin/dangnhap','UserController@getDangNhapAdmin');
 Route::post('admin/dangnhap','UserController@postDangNhapAdmin');
 
+Route::get('admin/dangky','UserController@getDangKyAdmin');
+Route::post('admin/dangky','UserController@postDangKyAdmin');
+
 //Route group admin
 
 Route::group(['prefix'=>'admin'],function (){
