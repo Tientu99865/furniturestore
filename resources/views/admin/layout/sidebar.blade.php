@@ -64,11 +64,19 @@
                 <span class="menu-title">Quản lý giao dịch</span>
             </a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/popups.html">
+            <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
                 <i class="mdi mdi-comment-account-outline menu-icon"></i>
                 <span class="menu-title">Quản lý tài khoản</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="icons">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="admin/users/danhsachadmin">Danh sách Admin</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/users/danhsachnguoidung">Danh sách người dùng</a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pages/ui-features/notifications.html">

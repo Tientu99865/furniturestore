@@ -55,7 +55,7 @@ class MenuController extends Controller
     }
 
     public function getDanhSach(){
-        $menu = Menus::all();
+        $menu = Menus::paginate(10);
         return view('admin/menu/danhsach',['menu'=>$menu]);
     }
 

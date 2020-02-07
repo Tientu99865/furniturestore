@@ -38,7 +38,7 @@ class DanhMucController extends Controller
     }
 
     public function getDanhsach(){
-        $categories = Categories::all();
+        $categories = Categories::paginate(10);
         return view('admin/danhmuc/danhsach',['categories'=>$categories]);
     }
 

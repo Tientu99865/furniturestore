@@ -18,16 +18,17 @@ Route::get('/', function () {
 Route::get('admin',function (){
     return view('admin/layout/index');
 });
-
+//Dang nhap
 Route::get('admin/dangnhap','UserController@getDangNhapAdmin');
 Route::post('admin/dangnhap','UserController@postDangNhapAdmin');
-
+//Dang Ky
 Route::get('admin/dangky','UserController@getDangKyAdmin');
 Route::post('admin/dangky','UserController@postDangKyAdmin');
-
+//Dang xuat
+Route::get('admin/dangxuat','UserController@getDangXuatAdmin');
 //Route group admin
 
-Route::group(['prefix'=>'admin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
     //Trang chu
     Route::get('trangchu','TrangChuController@getQuanLy');
     //Categories
@@ -80,5 +81,13 @@ Route::group(['prefix'=>'admin'],function (){
         Route::get('sua/{id}','SanPhamController@getSua');
         Route::post('sua/{id}','SanPhamController@postSua');
     });
+
+    //User and admin
+    Route::group(['prefix'=>'users'],function (){
+        Route::get('danhsachadmin','QuanLyTaiKhoan@getDanhSachAdmin');
+
+        Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
+    });
+
 
 });

@@ -17,7 +17,7 @@
                         <h4 class="card-title" style="text-align: center;font-size: 30px;">Danh sách danh mục</h4>
 
                         <p>Có tất cả <b><?php $count = DB::table('categories')->count(); echo $count?></b> danh mục</p><br>
-                        
+
                         <div id="js-grid" class="jsgrid" style="position: relative; height: 500px; width: 100%;">
                             <div class="jsgrid-grid-header jsgrid-header-scrollbar">
                                 <table class="jsgrid-table">
@@ -68,11 +68,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="jsgrid-pager-container">
-                                <ul class="pagination" style="margin-top: 50px">
-                                    <li class="page-item active">
-                                        <a class="page-link" href="view_categories.php?page=1">1</a>
-                                    </li>
+                            <div class="jsgrid-pager-container" >
+                                <ul class="pagination" style="margin-top: 50px;">
+                                    {!! $categories->links() !!}
                                 </ul>
                             </div>
                         </div>

@@ -62,8 +62,15 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->role_id = 3;
         $user->save();
 
         return redirect('admin/dangky')->with('ThongBao','Bạn đã đăng ký thành công');
+    }
+
+    public function getDangXuatAdmin(){
+        Auth::logout();
+
+        return redirect('admin/dangnhap');
     }
 }

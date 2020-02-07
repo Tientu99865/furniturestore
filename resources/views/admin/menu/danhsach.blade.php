@@ -86,11 +86,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="jsgrid-pager-container">
-                                <ul class="pagination" style="margin-top: 50px">
-                                    <li class="page-item active">
-                                        <a class="page-link" href="view_categories.php?page=1">1</a>
-                                    </li>
+                            <div class="jsgrid-pager-container" >
+                                <ul class="pagination" style="margin-top: 50px;">
+                                    {!! $menu->links() !!}
                                 </ul>
                             </div>
                         </div>

@@ -58,7 +58,7 @@ class SlideController extends Controller
     }
 
     public function getDanhsach(){
-        $slide = Slides::all();
+        $slide = Slides::paginate(10);
         return view('admin/slide/danhsach',['slide'=>$slide]);
     }
 

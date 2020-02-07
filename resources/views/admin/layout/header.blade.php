@@ -11,15 +11,17 @@
                     <img src="admin_asset/images/faces/face5.jpg" alt="profile"/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="mdi mdi-settings text-primary"></i>
-                        Settings
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item">
-                        <i class="mdi mdi-logout text-primary"></i>
-                        Logout
-                    </a>
+                    @if(Auth::check())
+                        <a class="dropdown-item">
+                            <i class="mdi mdi-account text-primary"></i>
+                            {{Auth::user()->name}}
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="admin/dangxuat">
+                            <i class="mdi mdi-logout text-primary"></i>
+                            Đăng xuất
+                        </a>
+                    @endif
                 </div>
             </li>
         </ul>

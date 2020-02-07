@@ -73,7 +73,7 @@ class SanPhamController extends Controller
     }
 
     public function getDanhsach(){
-        $product = Products::all();
+        $product = Products::paginate(10);
         return view('admin/sanpham/danhsach',['product'=>$product]);
     }
 

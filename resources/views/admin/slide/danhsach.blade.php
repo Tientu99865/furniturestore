@@ -76,11 +76,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="jsgrid-pager-container">
-                            <ul class="pagination" style="margin-top: 50px">
-                                <li class="page-item active">
-                                    <a class="page-link" href="view_slides.php?page=1">1</a>
-                                </li>
+                        <div class="jsgrid-pager-container" >
+                            <ul class="pagination" style="margin-top: 50px;">
+                                {!! $slide->links() !!}
                             </ul>
                         </div>
                     </div>
