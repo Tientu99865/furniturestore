@@ -91,3 +91,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 
 
 });
+
+//Front end page
+Route::get('trangchu','PageController@trangchu');
