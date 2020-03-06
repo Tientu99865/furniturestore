@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Slides extends Model
 {
     //
+    protected $table = "Slides";
 }

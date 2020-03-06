@@ -21,9 +21,10 @@ class TblTransactions extends Migration
             $table->string('cusEmail',60);
             $table->integer('cusPhone')->unsigned();
             $table->longText('cusAddress');
-            $table->string('proName',60);
+            $table->integer('pro_id')->unsigned();
+            $table->foreign('pro_id')->references('id')->on('products');
             $table->integer('quantity')->unsigned();
-            $table->decimal('subtotal',5,2);
+            $table->decimal('subtotal',15,2);
             $table->timestamps();
         });
     }

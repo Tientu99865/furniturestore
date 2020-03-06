@@ -50,7 +50,7 @@ class DanhMucController extends Controller
     }
 
     public function getSua($id){
-        $categories = Categories::all()->find($id);;
+        $categories = Categories::all()->find($id);
 
         return view('admin/danhmuc/sua',['categories'=>$categories]);
     }
