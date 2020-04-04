@@ -22,7 +22,6 @@ class TblProducts extends Migration
             $table->decimal('pro_price', 15, 2)->unsigned();
             $table->decimal('selling_price', 15, 2)->unsigned();
             $table->string('image',200);
-            $table->longText('introduce');
             $table->integer('view')->default(0);
             $table->timestamps();
         });

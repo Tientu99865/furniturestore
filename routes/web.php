@@ -80,6 +80,21 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 
         Route::get('sua/{id}','SanPhamController@getSua');
         Route::post('sua/{id}','SanPhamController@postSua');
+
+        Route::get('chitiet/{id}','SanPhamController@getChiTiet');
+    });
+
+    //Noi san xuat
+    Route::group(['prefix'=>'noisanxuat'],function (){
+        Route::get('them','NoiSanXuatController@getThem');
+        Route::post('them','NoiSanXuatController@postThem');
+
+        Route::get('danhsach','NoiSanXuatController@getDanhSach');
+
+        Route::get('xoa/{id}','NoiSanXuatController@getXoa');
+
+        Route::get('sua/{id}','NoiSanXuatController@getSua');
+        Route::post('sua/{id}','NoiSanXuatController@postSua');
     });
 
     //User and admin

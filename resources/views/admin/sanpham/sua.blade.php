@@ -64,7 +64,7 @@
                                 <img src="upload/sanpham/{{$product->image}}" width="400px" alt=""><br><br>
                                 <input type="file" name="image" class="file-upload-default">
                                 <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="...">
+                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="{{$product->image}}">
                                     <span class="input-group-append">
                                             <button class="file-upload-browse btn btn-primary" type="button">Chọn ảnh</button>
                                         </span>
@@ -95,10 +95,30 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputName1">Số hàng nhập<span style="color: red">*</span></label>
+                                <input type="text" class="form-control"
+                                       value="{{$product->amount}}"
+                                       name="amount" id="exampleInputName1" placeholder="...">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Nơi sản xuất<span style="color: red">*</span></label>
+                                <select  name="manu_id" aria-controls="order-listing" class="form-control">
+                                    <option value="">-- Chọn nơi sản xuất --</option>
+                                    @foreach($manufacture as $manu)
+                                        <option
+                                            @if($product->manu_id == $manu->id)
+                                            {{"selected"}}
+                                            @endif
+                                            value="{{$manu->id}}">{{$manu->name}}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleTextarea1">Thông tin sản phẩm<span style="color: red">*</span></label>
 
-                                <textarea class="form-control" name="introduce" id="editor1" rows="4">
-                                    {{$product->introduce}}
+                                <textarea class="form-control" name="content" id="editor1" rows="4">
+                                    {{$product->content}}
                                     </textarea>
                                 <script>
 
@@ -106,7 +126,7 @@
 
                                 </script>
                             </div>
-                            <input type="submit" class="btn btn-primary mr-2" name="submit" value="Thêm sản phẩm">
+                            <input type="submit" class="btn btn-primary mr-2" name="submit" value="Sửa sản phẩm">
                         </form>
                     </div>
                 </div>

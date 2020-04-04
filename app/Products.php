@@ -16,4 +16,8 @@ class Products extends Model
     public function comments(){
         return $this->hasMany('App\Comments','pro_id','id');
     }
+
+    public function manufacture(){
+        return $this->belongsTo('App\Manufacture','manu_id','id');
+    }
 }

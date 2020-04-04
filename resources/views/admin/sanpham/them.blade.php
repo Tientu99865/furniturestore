@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword4">Sản phẩm thuộc danh mục<span style="color: red">*</span></label>
                                     <select  name="cat_id" aria-controls="order-listing" class="form-control">
-                                        <option value="">Các danh mục</option>
+                                        <option value="">-- Các danh mục --</option>
                                         @foreach($categories as $cat)
                                             <option value="{{$cat->id}}">{{$cat->name}}</option>
                                         @endforeach
@@ -90,9 +90,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputName1">Số hàng nhập<span style="color: red">*</span></label>
+                                    <input type="text" class="form-control"
+                                           value=""
+                                           name="amount" id="exampleInputName1" placeholder="...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword4">Nơi sản xuất<span style="color: red">*</span></label>
+                                    <select  name="manu_id" aria-controls="order-listing" class="form-control">
+                                        <option value="">-- Chọn nơi sản xuất --</option>
+                                        @foreach($manufacture as $manu)
+                                            <option value="{{$manu->id}}">{{$manu->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleTextarea1">Thông tin sản phẩm<span style="color: red">*</span></label>
 
-                                    <textarea class="form-control" name="introduce" id="editor1" rows="4">
+                                    <textarea class="form-control" name="content" id="editor1" rows="4">
 
                                     </textarea>
                                     <script>
