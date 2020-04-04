@@ -6,6 +6,12 @@
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle"  href="admin/lienhe/index"  aria-expanded="false">
+                    <i class="mdi mdi-email-outline mx-0"></i>
+{{--                    <span class="count"></span>--}}
+                </a>
+            </li>
             <li class="nav-item nav-profile dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                     <img src="admin_asset/images/faces/face5.jpg" alt="profile"/>

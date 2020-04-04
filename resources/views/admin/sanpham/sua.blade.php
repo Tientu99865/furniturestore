@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label for="exampleTextarea1">Thông tin sản phẩm<span style="color: red">*</span></label>
 
-                                <textarea class="form-control" name="content" id="editor1" rows="4">
+                                <textarea class="form-control" name="pro_content" id="editor1" rows="4">
                                     {{$product->content}}
                                     </textarea>
                                 <script>

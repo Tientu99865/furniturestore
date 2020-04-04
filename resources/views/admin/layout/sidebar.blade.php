@@ -98,6 +98,19 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
+                <i class="mdi mdi-map-marker-outline menu-icon"></i>
+                <span class="menu-title">Quản lý mã giảm giá</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="maps">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="admin/magiamgia/them">Thêm mã giảm giá</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/magiamgia/danhsach">Danh sách mã giảm giá</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="mdi mdi-file-document-box-outline menu-icon"></i>
                 <span class="menu-title">Quản lý nơi sản xuất</span>

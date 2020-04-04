@@ -23,7 +23,7 @@ class SanPhamController extends Controller
                 'name'=>'required|min:2|max:100|unique:products,name',
                 'pro_price'=>'required',
                 'selling_price'=>'required',
-                'content'=>'required',
+                'pro_content'=>'required',
                 'image'=>'required',
                 'amount'=>'required|integer',
                 'manu_id'=>'required'
@@ -36,7 +36,7 @@ class SanPhamController extends Controller
                 'name.unique'=>'Tên sản phẩm này đã tồn tại',
                 'pro_price.required'=>'Bạn chưa nhập giá sản phẩm',
                 'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
-                'content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
+                'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
                 'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
                 'amount.required'=>'Bạn chưa nhập số hàng nhập',
                 'amount.integer'=>'Số hàng nhập phải số nguyên dương',
@@ -75,7 +75,7 @@ class SanPhamController extends Controller
         }
         $product->amount = $request->amount;
         $product->manu_id = $request->manu_id;
-        $product->content = $request->content;
+        $product->content = $request->pro_content;
         $product->save();
 
         return redirect('admin/sanpham/them')->with('ThongBao','Bạn đã thêm thành công');
@@ -108,7 +108,7 @@ class SanPhamController extends Controller
                 'name'=>'required|min:2|max:100',
                 'pro_price'=>'required',
                 'selling_price'=>'required',
-                'content'=>'required',
+                'pro_content'=>'required',
                 'amount'=>'required|integer',
                 'manu_id'=>'required'
             ],
@@ -119,7 +119,7 @@ class SanPhamController extends Controller
                 'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
                 'pro_price.required'=>'Bạn chưa nhập giá sản phẩm',
                 'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
-                'content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
+                'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
                 'amount.required'=>'Bạn chưa nhập số hàng nhập',
                 'amount.integer'=>'Số hàng nhập phải số nguyên dương',
                 'manu_id.required'=>'Bạn chưa chọn nơi sản xuất cho sản phẩm',
@@ -158,7 +158,7 @@ class SanPhamController extends Controller
         }
         $product->amount = $request->amount;
         $product->manu_id = $request->manu_id;
-        $product->content = $request->content;
+        $product->content = $request->pro_content;
         $product->save();
 
         return redirect('admin/sanpham/chitiet/'.$id)->with('ThongBao','Bạn đã sửa thành công');

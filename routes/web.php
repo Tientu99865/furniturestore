@@ -104,6 +104,24 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
         Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
     });
 
+    //Contact
+    Route::group(['prefix'=>'lienhe'],function (){
+        Route::get('index','LienHeController@getLienHe');
+
+    });
+
+    //Discount
+    Route::group(['prefix'=>'magiamgia'],function (){
+        Route::get('them','MaGiamGiaController@getThem');
+        Route::post('them','MaGiamGiaController@postThem');
+
+        Route::get('danhsach','MaGiamGiaController@getDanhSach');
+
+        Route::get('xoa/{id}','MaGiamGiaController@getXoa');
+
+        Route::get('sua/{id}','MaGiamGiaController@getSua');
+        Route::post('sua/{id}','MaGiamGiaController@postSua');
+    });
 
 });
 
