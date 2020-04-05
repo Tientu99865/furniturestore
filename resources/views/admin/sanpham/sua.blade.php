@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Chọn ảnh cho sản phẩm<span style="color: red">*</span></label><br>
+                                <label>Chọn ảnh tiêu đề cho sản phẩm<span style="color: red">*</span></label><br>
                                 <img src="upload/sanpham/tieude/{{$product->image}}" width="400px" alt=""><br><br>
                                 <input type="file" name="image" class="file-upload-default">
                                 <div class="input-group col-xs-12">
@@ -68,6 +68,19 @@
                                     <span class="input-group-append">
                                             <button class="file-upload-browse btn btn-primary" type="button">Chọn ảnh</button>
                                         </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Chọn ảnh chi tiết cho sản phẩm<span style="color: red">*</span></label>
+                                <input type="file" multiple="" name="images[]"  class="form-control">
+                                <div class="owl-carousel owl-theme full-width">
+                                    @if(isset($gallery[0]->product_imgs))
+                                        @foreach(explode(',',$gallery[0]->product_imgs) as $img)
+                                            <div class="item">
+                                                <img src="upload/sanpham/chitiet/{{$img}}" alt="image" />
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
@@ -140,5 +153,6 @@
     <script src="admin_asset/js/iCheck.js"></script>
     <script src="admin_asset/js/typeahead.js"></script>
     <script src="admin_asset/js/select2.js"></script>
+    <script src="admin_asset/js/owl-carousel.js"></script>
     <!-- End custom js for this page-->
 @endsection

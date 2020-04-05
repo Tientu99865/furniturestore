@@ -20,4 +20,8 @@ class Products extends Model
     public function manufacture(){
         return $this->belongsTo('App\Manufacture','manu_id','id');
     }
+
+    public function gallery(){
+        return $this->belongsTo('App\Gallery','id_product','id');
+    }
 }

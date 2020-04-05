@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Gallery;
 use App\Manufacture;
 use DemeterChain\C;
+use Faker\Provider\File;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Categories;
@@ -25,6 +27,7 @@ class SanPhamController extends Controller
                 'selling_price'=>'required',
                 'pro_content'=>'required',
                 'image'=>'required',
+                'images'=>'required',
                 'amount'=>'required|integer',
                 'manu_id'=>'required'
             ],
@@ -38,6 +41,7 @@ class SanPhamController extends Controller
                 'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
                 'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
+                'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
                 'amount.required'=>'Bạn chưa nhập số hàng nhập',
                 'amount.integer'=>'Số hàng nhập phải số nguyên dương',
                 'manu_id.required'=>'Bạn chưa chọn nơi sản xuất cho sản phẩm',
@@ -45,6 +49,8 @@ class SanPhamController extends Controller
         $product = new Products();
         $product->name = $request->name;
         $product->cat_id = $request->cat_id;
+
+        //Anh tieu de
         if ($request->has('image')){
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
@@ -59,6 +65,8 @@ class SanPhamController extends Controller
             $file->move('upload/sanpham/tieude',$Hinh);
             $product->image = $Hinh;
         }
+
+        //Gia san pham
         if ($request->has('pro_price') && $request->has('selling_price'))
         {
             $pro_price = $request->pro_price;
@@ -78,6 +86,26 @@ class SanPhamController extends Controller
         $product->content = $request->pro_content;
         $product->save();
 
+        //Anh chi tiet
+        $product_id = $product->id;
+        $pro_imgs = new Gallery();
+        if ($request->has('images')){
+            $imgs_array = array();
+            foreach ($request->images as $item){
+                if (isset($item)){
+                    $duoi = $item->getClientOriginalExtension();
+                    if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
+                        return redirect('admin/sanpham/them')->with('Loi','Bạn chỉ được chọn file ảnh có đuôi jpg,png,jpeg,gif');
+                    }
+                    $imgs_array[] = $item->getClientOriginalName();
+                    $item->move('upload/sanpham/chitiet/',$item->getClientOriginalName());
+                }
+            }
+            $pro_imgs->product_imgs = implode(',',$imgs_array);
+            $pro_imgs->id_product = $product_id;
+            $pro_imgs->save();
+        }
+
         return redirect('admin/sanpham/them')->with('ThongBao','Bạn đã thêm thành công');
     }
 
@@ -88,6 +116,7 @@ class SanPhamController extends Controller
 
     public function getXoa($id){
         $product = Products::find($id);
+        $gallery = Gallery::where('id_product',$id)->delete();
         $product->delete();
 
         return redirect('admin/sanpham/danhsach')->with('ThongBao','Bạn đã xóa thành công');
@@ -96,9 +125,10 @@ class SanPhamController extends Controller
     public function getSua($id){
         $categories = Categories::all();
         $manufacture = Manufacture::all();
+        $gallery = Gallery::where('id_product',$id)->get();
         $product = Products::find($id);
 
-        return view('admin/sanpham/sua',['categories'=>$categories,'product'=>$product,'manufacture'=>$manufacture]);
+        return view('admin/sanpham/sua',['categories'=>$categories,'product'=>$product,'manufacture'=>$manufacture,'gallery'=>$gallery]);
     }
 
     public function postSua(Request $request,$id){
@@ -139,7 +169,7 @@ class SanPhamController extends Controller
                 $Hinh = time()."_".$name;
             }
             $file->move('upload/sanpham/tieude',$Hinh);
-            unlink('upload/sanpham/tieude/'.$product->image);
+            unlink('upload/sanpham/tieude/'.$product->image);//ham xoa file
             $product->image = $Hinh;
         }
         if ($request->has('pro_price') && $request->has('selling_price'))
@@ -161,14 +191,42 @@ class SanPhamController extends Controller
         $product->content = $request->pro_content;
         $product->save();
 
+        //Anh chi tiet
+        $pro_imgs = Gallery::where('id_product',$id)->get();
+        if ($request->has('images')) {
+            $imgs_array = array();
+            //vong foreach xoa anh
+            foreach (explode(',',$pro_imgs[0]->product_imgs) as $img){
+                if (file_exists('upload/sanpham/chitiet/'.$img)){
+                    unlink('upload/sanpham/chitiet/'.$img);//ham xoa file
+                }
+            }
+            //vong foreach thay the anh
+            foreach ($request->images as $item) {
+                if (isset($item)) {
+                    $duoi = $item->getClientOriginalExtension();
+                    if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif') {
+                        return redirect('admin/sanpham/them')->with('Loi', 'Bạn chỉ được chọn file ảnh có đuôi jpg,png,jpeg,gif');
+                    }
+                    $imgs_array[] = $item->getClientOriginalName();
+                    $item->move('upload/sanpham/chitiet/', $item->getClientOriginalName());
+                }
+            }
+            $pro_imgs[0]->product_imgs = implode(',', $imgs_array);
+            $pro_imgs[0]->update([
+                'id_product'=>$id,
+                'product_imgs'=>$pro_imgs[0]->product_imgs
+            ]);
+        }
         return redirect('admin/sanpham/chitiet/'.$id)->with('ThongBao','Bạn đã sửa thành công');
     }
 
     public function getChiTiet($id){
         $categories = Categories::all();
         $manufacture = Manufacture::all();
+        $gallery = Gallery::where('id_product',$id)->get();
         $product = Products::find($id);
 
-        return view('admin/sanpham/chitiet',['categories'=>$categories,'product'=>$product,'manufacture'=>$manufacture]);
+        return view('admin/sanpham/chitiet',['categories'=>$categories,'product'=>$product,'manufacture'=>$manufacture,'gallery'=>$gallery]);
     }
 }

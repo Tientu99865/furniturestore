@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Chọn ảnh cho sản phẩm<span style="color: red">*</span></label>
+                                    <label>Chọn ảnh tiêu đề cho sản phẩm<span style="color: red">*</span></label>
                                     <input type="file" name="image" class="file-upload-default">
                                     <div class="input-group col-xs-12">
                                         <input type="text" class="form-control file-upload-info" disabled="" placeholder="...">
@@ -65,6 +65,12 @@
                                         </span>
                                     </div>
                                 </div>
+{{--                                //Multiple Image--}}
+                                <div class="form-group">
+                                    <label>Chọn ảnh chi tiết cho sản phẩm<span style="color: red">*</span></label>
+                                    <input type="file" multiple="" name="images[]"  class="form-control">
+                                </div>
+{{--                                End multiple Image--}}
                                 <div class="form-group">
                                     <label>Giá sản phẩm<span style="color: red">*</span></label>
                                     <div class="input-group">
@@ -131,5 +137,6 @@
     <script src="admin_asset/js/iCheck.js"></script>
     <script src="admin_asset/js/typeahead.js"></script>
     <script src="admin_asset/js/select2.js"></script>
+    <script src="admin_asset/js/jquery-file-upload.js"></script>
     <!-- End custom js for this page-->
 @endsection

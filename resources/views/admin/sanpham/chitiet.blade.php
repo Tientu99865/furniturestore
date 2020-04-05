@@ -71,15 +71,14 @@
                         <div class="tab-content">
                             <div class="tab-pane fade" id="home-1" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="media">
-                                    <img class="mr-3 w-25 rounded" src="upload/sanpham/tieude/{{$product->image}}" alt="sample image">
-                                    <div class="media-body">
-                                        <h4 class="mt-0">Why choose us?</h4>
-                                        <p>
-                                            Far curiosity incommode now led smallness allowance. Favour bed assure son things yet. She consisted
-                                            consulted elsewhere happiness disposing household any old the. Widow downs you new shade drift hopes
-                                            small. So otherwise commanded sweetness we improving. Instantly by daughters resembled unwilling principle
-                                            so middleton.
-                                        </p>
+                                    <div class="owl-carousel owl-theme full-width">
+                                        @if(isset($gallery[0]->product_imgs))
+                                            @foreach(explode(',',$gallery[0]->product_imgs) as $img)
+                                                <div class="item">
+                                                    <img src="upload/sanpham/chitiet/{{$img}}" alt="image" />
+                                                </div>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -119,4 +118,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script src="admin_asset/js/owl-carousel.js"></script>
 @endsection
