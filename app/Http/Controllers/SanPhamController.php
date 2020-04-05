@@ -53,10 +53,10 @@ class SanPhamController extends Controller
             }
             $name = $file->getClientOriginalName(); // ham lay ten hinh ra
             $Hinh = time()."_".$name;
-            while (file_exists('upload/sanpham/'.$Hinh)){
+            while (file_exists('upload/sanpham/tieude/'.$Hinh)){
                 $Hinh = time()."_".$name;
             }
-            $file->move('upload/sanpham',$Hinh);
+            $file->move('upload/sanpham/tieude',$Hinh);
             $product->image = $Hinh;
         }
         if ($request->has('pro_price') && $request->has('selling_price'))
@@ -135,11 +135,11 @@ class SanPhamController extends Controller
             }
             $name = $file->getClientOriginalName(); // ham lay ten hinh ra
             $Hinh = time()."_".$name;
-            while (file_exists('upload/sanpham/'.$Hinh)){
+            while (file_exists('upload/sanpham/tieude/'.$Hinh)){
                 $Hinh = time()."_".$name;
             }
-            $file->move('upload/sanpham',$Hinh);
-            unlink('upload/sanpham/'.$product->image);
+            $file->move('upload/sanpham/tieude',$Hinh);
+            unlink('upload/sanpham/tieude/'.$product->image);
             $product->image = $Hinh;
         }
         if ($request->has('pro_price') && $request->has('selling_price'))

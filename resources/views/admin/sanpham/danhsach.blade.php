@@ -56,7 +56,7 @@
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 30px;">{{$stt}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 120px;">{{$pro->categories->name}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$pro->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;"><a href="upload/sanpham/{{$pro->image}}"><img src="upload/sanpham/{{$pro->image}}" style="    width: 50px;height: 50px;border-radius: 0%;" alt=""></a></td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;"><a href="upload/sanpham/tieude/{{$pro->image}}"><img src="upload/sanpham/tieude/{{$pro->image}}" style="    width: 50px;height: 50px;border-radius: 0%;" alt=""></a></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
                                                 @if($pro->amount == 0)
                                                     <label class="badge badge-danger">Hết hàng</label>

@@ -71,7 +71,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade" id="home-1" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="media">
-                                    <img class="mr-3 w-25 rounded" src="upload/sanpham/{{$product->image}}" alt="sample image">
+                                    <img class="mr-3 w-25 rounded" src="upload/sanpham/tieude/{{$product->image}}" alt="sample image">
                                     <div class="media-body">
                                         <h4 class="mt-0">Why choose us?</h4>
                                         <p>
@@ -85,7 +85,7 @@
                             </div>
                             <div class="tab-pane fade active show" id="profile-1" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="media">
-                                    <img class="mr-3 w-25 rounded" src="upload/sanpham/{{$product->image}}" alt="sample image">
+                                    <img class="mr-3 w-25 rounded" src="upload/sanpham/tieude/{{$product->image}}" alt="sample image">
                                     <div class="media-body" style="margin-left: 30px">
                                         <p class="card-description">
                                             Tên sản phẩm : <b>{{$product->name}}</b>

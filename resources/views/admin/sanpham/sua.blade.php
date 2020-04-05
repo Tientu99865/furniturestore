@@ -61,7 +61,7 @@
 
                             <div class="form-group">
                                 <label>Chọn ảnh cho sản phẩm<span style="color: red">*</span></label><br>
-                                <img src="upload/sanpham/{{$product->image}}" width="400px" alt=""><br><br>
+                                <img src="upload/sanpham/tieude/{{$product->image}}" width="400px" alt=""><br><br>
                                 <input type="file" name="image" class="file-upload-default">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled="" placeholder="{{$product->image}}">
