@@ -25,7 +25,8 @@ class UserController extends Controller
                 'password.min'=>'Mật khẩu không thể nhỏ hơn 6 ký tự',
                 'password.max'=>'Mật khẩu không thể lớn hơn 32 ký tự'
             ]);
-        if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+        $data = $request->only('email','password');
+        if (Auth::attempt($data)){
             return redirect('admin/trangchu');
         }
         else

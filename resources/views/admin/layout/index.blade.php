@@ -22,6 +22,11 @@
     <link rel="shortcut icon" href="admin_asset/images/favicon.png" />
 
     <script src="admin_asset/ckeditor/ckeditor.js"></script>
+    {{--    select2--}}
+    <link href="admin_asset/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="admin_asset/dist/js/select2.min.js"></script>
+    {{--    jquery--}}
+    <script src="jquery/jquery-3.5.1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

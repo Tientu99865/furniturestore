@@ -93,13 +93,40 @@
                                             Sản phẩm thuộc danh mục : <b>{{$product->categories->name}}</b>
                                         </p>
                                         <p class="card-description">
-                                            Giá nhập : <b>{{number_format($product->pro_price, 0, ',', '.')}}</b><b> VNĐ</b>
+                                            <?php
+                                                if (isset($import_invoice)){
+                                                    $count = count($import_invoice);
+                                                    if ($count > 0){
+                                                        $import_price = $import_invoice[$count-1]->import_price;
+                                                    }else{
+                                                        $import_price = $product->import_price;
+                                                    }
+                                                }else{
+                                                    $import_price = $product->import_price;
+                                                }
+                                            ?>
+                                            Giá nhập của sản phẩm : <b>{{number_format($import_price, 0, ',', '.')}}</b><b> VNĐ</b>
                                         </p>
                                         <p class="card-description">
                                             Giá bán : <b>{{number_format($product->selling_price, 0, ',', '.')}}</b><b> VNĐ</b>
                                         </p>
                                         <p class="card-description">
-                                            Số lượng hàng : <b>{{$product->amount}}</b>
+                                            Giá khuyến mại : <b>{{number_format($product->promoted_price, 0, ',', '.')}}</b><b> VNĐ</b>
+                                        </p>
+                                        <p class="card-description">
+                                            <?php
+                                            $count = count($import_invoice);
+                                            $total_quantity = 0;
+                                            if (isset($import_invoice)){
+                                                for ($i = 0;$i < $count ; $i++ ){
+                                                    $total_quantity += $import_invoice[$i]->quantity;
+                                                }
+                                            }
+                                            else{
+                                                $total_quantity = 0;
+                                            }
+                                            ?>
+                                            Số lượng hàng : <b>{{$total_quantity}}</b>
                                         </p>
                                         <p class="card-description">
                                             Nơi sản xuất : <b>{{$product->manufacture->name}}</b>

@@ -3,9 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2 class="title">our products</h2>
-                    <p class="title-detail">But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was
-                        born and I will give you a complete account.</p>
+                    <h2 class="title">Sản phẩm của chúng tôi</h2>
                     <div class="title-border mx-auto m-b-35"></div>
                 </div>
             </div>

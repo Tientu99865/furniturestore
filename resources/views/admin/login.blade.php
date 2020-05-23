@@ -54,7 +54,7 @@
                         @endif
 
                         <div class="brand-logo">
-                            <a href="admin/dangnhap"><img src="admin_asset/images/logo.svg" alt="logo" /></a>
+                            <a href="admin/dangnhap"><img src="admin_asset/images/logo/logo.png" alt="logo" /></a>
                         </div>
                         <h4>Đăng nhập quyền admin</h4>
                         <form class="pt-3" method="post" action="admin/dangnhap">

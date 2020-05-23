@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="admin/trangchu">
                 <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
                 <span class="menu-title">Trang chủ</span>
@@ -80,8 +80,8 @@
             </a>
             <div class="collapse" id="general-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Thêm chức vụ </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/profile.html"> Danh sách chức vụ </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/chucvu/them"> Thêm chức vụ </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/chucvu/danhsach"> Danh sách chức vụ </a></li>
                 </ul>
             </div>
         </li>
@@ -92,10 +92,17 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/apps/todo.html">
+            <a class="nav-link" data-toggle="collapse" href="#invoice-pages" aria-expanded="false" aria-controls="general-pages">
                 <i class="mdi mdi-playlist-check menu-icon"></i>
                 <span class="menu-title">Quản lý giao dịch</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="invoice-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="admin/giaodich/hoadonnhap/danhsach"> Hoá đơn nhập </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="admin/giaodich/hoadonban/danhsach"> Hoá đơn bán </a></li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">

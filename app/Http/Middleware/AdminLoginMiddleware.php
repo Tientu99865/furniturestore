@@ -17,10 +17,11 @@ class AdminLoginMiddleware
     {
         if (Auth::check()){
             $user = Auth::user();
-            if ($user->role_id == 1)
-                return $next($request);
-            else
-                return redirect('admin/dangnhap')->with('Loi','Bạn chưa có quyền để đăng nhập vào trang admin!');
+            return $next($request);
+//            if ($user->role_id == null)
+//                return $next($request);
+//            else
+//                return redirect('admin/dangnhap')->with('Loi','Bạn chưa có quyền để đăng nhập vào trang admin!');
         }else{
             return redirect('admin/dangnhap')->with('Loi','Vui lòng đăng nhập');
         }

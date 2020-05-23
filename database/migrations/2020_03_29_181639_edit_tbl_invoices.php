@@ -31,8 +31,6 @@ class EditTblInvoices extends Migration
     {
         Schema::table('invoices', function (Blueprint $table) {
             //
-            $table->dropColumn(['id_customers']);
-            $table->dropColumn(['id_invoice_details']);
         });
     }
 }

@@ -24,4 +24,8 @@ class Products extends Model
     public function gallery(){
         return $this->belongsTo('App\Gallery','id_product','id');
     }
+
+    public function import_invoice(){
+        return$this->hasMany('App\Import_invoices','pro_id','id');
+    }
 }

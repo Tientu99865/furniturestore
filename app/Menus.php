@@ -13,4 +13,12 @@ class Menus extends Model
         return $this->belongsTo('App\Categories','cat_id','id');
     }
 
+    public function menus(){
+        return $this->hasMany(Menus::class);
+    }
+
+    public function childrenMenus(){
+        return $this->hasMany(Menus::class)->with('menus');
+    }
+
 }

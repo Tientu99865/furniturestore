@@ -12,17 +12,19 @@ class roles extends Seeder
     public function run()
     {
         //
-        DB::table('roles')->insert([
-           'role'=>'admin',
-            'permission'=>'login'
-        ]);
-        DB::table('roles')->insert([
-            'role'=>'staff',
-            'permission'=>'login'
-        ]);
-        DB::table('roles')->insert([
-            'role'=>'user',
-            'permission'=>''
-        ]);
+//        DB::table('chucvu')->insert([
+//           [
+//               'role'=>'admin',
+//                'permissionSeeder'=>'login'
+//           ],
+//            [
+//                'role'=>'member',
+//                'permissionSeeder'=>'login'
+//            ],
+//            [
+//                'role'=>'user',
+//                'permissionSeeder'=>''
+//            ]
+//        ]);
     }
 }

@@ -16,11 +16,11 @@ class EditTblProducts extends Migration
         Schema::table('products', function (Blueprint $table) {
             //
             $table->longText('content');
-            $table->integer('amount')->unsigned()->nullable();
+            $table->integer('import_price')->unsigned();
             $table->integer('img_id')->unsigned()->nullable();
-            $table->foreign('img_id')->references('id')->on('gallery');
+            $table->foreign('img_id')->references('id')->on('gallery')->onDelete('cascade');
             $table->integer('manu_id')->unsigned()->nullable();
-            $table->foreign('manu_id')->references('id')->on('manufacture');
+            $table->foreign('manu_id')->references('id')->on('manufacture')->onDelete('cascade');
         });
     }
 
@@ -31,9 +31,8 @@ class EditTblProducts extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-            $table->dropColumn(['content', 'amount','img_id', 'manu_id']);
-        });
+        Schema::disableForeignKeyConstraints();
+        Schema::drop('products');
+        Schema::enableForeignKeyConstraints();
     }
 }

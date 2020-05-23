@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\User;
 
 Route::get('/', function () {
-    return view('welcome');
 });
 
 Route::get('admin',function (){
@@ -123,7 +125,32 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
         Route::post('sua/{id}','MaGiamGiaController@postSua');
     });
 
+    //Roles
+    Route::group(['prefix'=>'chucvu'],function (){
+        Route::get('them','ChucVuController@getThem');
+        Route::post('them','ChucVuController@postThem');
+
+        Route::get('danhsach','ChucVuController@getDanhsach');
+
+        Route::get('xoa/{id}','ChucVuController@getXoa');
+
+        Route::get('sua/{id}','ChucVuController@getSua');
+        Route::post('sua/{id}','ChucVuController@postSua');
+    });
+
+    //Invoice
+    Route::group(['prefix'=>'giaodich'],function (){
+        Route::group(['prefix'=>'hoadonnhap'],function(){
+           Route::get('danhsach','HoaDonNhapController@getDanhsach');
+
+            Route::get('them','HoaDonNhapController@getThem');
+            Route::post('them','HoaDonNhapController@postThem');
+
+            Route::get('xoa/{id}','HoaDonNhapController@getXoa');
+        });
+    });
+
 });
 
 //Front end page
-Route::get('trangchu','PageController@trangchu');
+Route::get('trangchu','PagesController@trangchu');

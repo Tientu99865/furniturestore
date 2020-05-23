@@ -33,6 +33,8 @@ class TblInvoiceDetails extends Migration
     public function down()
     {
         //
+        Schema::disableForeignKeyConstraints();
         Schema::drop('invoice_details');
+        Schema::enableForeignKeyConstraints();
     }
 }

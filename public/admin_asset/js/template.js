@@ -35,7 +35,8 @@
             }
         }
 
-        var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
+        var path = location.pathname.split("/").reverse();
+        var current = path[1] + "/" + path[0]
         $('.nav li a', sidebar).each(function() {
             var $this = $(this);
             addActiveClass($this);

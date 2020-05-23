@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Furniture Store</title>
     <base href="{{asset('')}}">
-    <link rel="icon" type="image/png" href="images/icon/favicon.ico">
+    <link rel="icon" type="image/png" href="images/icon/favicon.png">
     <!-- CSS -->
 
     <!-- Plugin -->
@@ -43,13 +43,6 @@
 <!-- Footer -->
 @include('layout/footer')
 <!-- End Footer -->
-<!-- back to top -->
-<div class="to-top">
-        <span class="bounce">
-            <img src="images/icon/to_top.png" alt="To top">
-        </span>
-</div>
-<!-- End back to top -->
 <!-- __________JS__________ -->
 
 <!-- Plugin -->

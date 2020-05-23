@@ -9,6 +9,6 @@
     <!-- End Grid Product -->
 
     <!-- Latest News -->
-    @include('layout/news')
+{{--    @include('layout/news')--}}
 
 @endsection

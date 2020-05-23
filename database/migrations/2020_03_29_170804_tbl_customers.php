@@ -33,6 +33,8 @@ class TblCustomers extends Migration
     public function down()
     {
         //
+        Schema::disableForeignKeyConstraints();
         Schema::drop('customers');
+        Schema::enableForeignKeyConstraints();
     }
 }

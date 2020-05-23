@@ -5,8 +5,8 @@
             <div class="header header-style-1">
                 <div class="header-main">
                     <div class="header__logo">
-                        <a href="index-1.html">
-                            <img src="images/icon/logo_01.png" alt="Lyrae">
+                        <a href="trangchu">
+                            <img src="images\Logo\logo.png" alt="Lyrae">
                         </a>
                     </div>
                     <nav class="header__navbar">
@@ -101,28 +101,38 @@
                                 <a href="contact.html">Contact</a>
                             </li>
                         </ul>
+{{--                        <ul>--}}
+{{--                            @foreach ($menus as $menu)--}}
+{{--                                <li>{{ $menu->name }}</li>--}}
+{{--                                <ul>--}}
+{{--                                    @foreach ($menu->childrenMenus as $childMenu)--}}
+{{--                                        @include('child_menu', ['child_menu' => $childMenu])--}}
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
                     </nav>
                     <div class="header__button">
                         <ul>
                             <li class="header-search">
                                 <div class="search-button">
-                                    <img src="images/icon/header-search.png" title="Tìm kiếm" alt="Search">
+                                    <img src="images\icon\header-search.png" alt="Search">
                                 </div>
-                                <div class="search-input">
+                                <div class="search-input" style="display: none;">
                                     <input type="text" placeholder="Start typing here...">
                                     <a href="#"></a>
                                 </div>
                             </li>
                             <li class="header-shop-cart">
                                 <div class="shop-cart-button">
-                                    <img src="images/icon/header-cart.png" title="Giỏ hàng" alt="Cart">
+                                    <img src="images\icon\header-cart.png" alt="Cart">
                                     <span class="amount">3</span>
                                 </div>
                                 <div class="shop-cart">
                                     <ul class="shop-cart__list">
                                         <li class="item">
                                             <div class="item-image">
-                                                <img src="images/product_01.png" alt="Item 1">
+                                                <img src="images\product_01.png" alt="Item 1">
                                             </div>
                                             <div class="item-detail">
                                                 <p class="name">Crackle Plates</p>
@@ -133,7 +143,7 @@
                                         </li>
                                         <li class="item">
                                             <div class="item-image">
-                                                <img src="images/product_02.png" alt="Item 1">
+                                                <img src="images\product_02.png" alt="Item 1">
                                             </div>
                                             <div class="item-detail">
                                                 <p class="name">Teako Teapot</p>
@@ -144,7 +154,7 @@
                                         </li>
                                         <li class="item">
                                             <div class="item-image">
-                                                <img src="images/product_03.png" alt="Item 1">
+                                                <img src="images\product_03.png" alt="Item 1">
                                             </div>
                                             <div class="item-detail">
                                                 <p class="name">Floor Lamp</p>
@@ -167,7 +177,7 @@
                             </li>
                             <li class="header-bar">
                                 <div class="bar-button" data-toggle="modal" data-target="#page-sidebar">
-                                    <a href="admin/dangnhap"><img src="images/icon/user-icon.png" title="Đăng nhập" alt="Bar"></a>
+                                    <img src="images\icon\header-bar.png" alt="Bar">
                                 </div>
                             </li>
                         </ul>

@@ -16,7 +16,7 @@ class TblManufacture extends Migration
         //
         Schema::create('manufacture',function (Blueprint $table){
            $table->increments('id');
-           $table->string('name',255);
+           $table->string('name',100);
         });
     }
 
@@ -27,7 +27,8 @@ class TblManufacture extends Migration
      */
     public function down()
     {
-        //
+        Schema::disableForeignKeyConstraints();
         Schema::drop('manufacture');
+        Schema::enableForeignKeyConstraints();
     }
 }

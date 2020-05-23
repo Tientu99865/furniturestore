@@ -6,27 +6,25 @@
                     <div class="footer-item">
                         <div class="footer-item-heading">
                             <div class="logo">
-                                <a href="#">
-                                    <img src="images/icon/logo_03.png" alt="Lyrae" title="Lyrae">
-                                </a>
+{{--                                <a href="#">--}}
+{{--                                    <img src="images/Logo/logo.png" alt="Lyrae" title="Lyrae">--}}
+{{--                                </a>--}}
                             </div>
                         </div>
                         <div class="footer-item-content">
-                            <p class="m-t-10">It is a long established fact that a reader will be distracted by the readable content of
-                                a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                normal.
+                            <p class="m-t-10">Cảm ơn khách hàng đã ghé thăm shop của chúng tôi!
                             </p>
                         </div>
                     </div>
                     <div class="footer-item">
                         <div class="footer-item-heading">
-                            <h3>Address</h3>
+                            <h3>Địa chỉ</h3>
                         </div>
                         <div class="footer-item-content">
                             <div class="footer-infopage">
-                                <p>No 40 Baria Sreet 133/2, NewYork</p>
-                                <p> Tel: (+300) 125-1365</p>
-                                <p> E-mail: markrussell@example.com</p>
+                                <p>Trường đại học Giao Thông Vận Tảoi</p>
+                                <p> SĐT : 0358828585</p>
+                                <p> E-mail: tientu99865@gmail.com</p>
                             </div>
                             <div class="footer-social m-t-6">
                                 <div class="social-item facebook">
@@ -82,44 +80,27 @@
                     </div>
                     <div class="footer-item">
                         <div class="footer-item-heading">
-                            <h3>FOLLOW US</h3>
+                            <h3>ƯU ĐÃI CỦA SHOP</h3>
                             <div class="footer-border"></div>
                         </div>
                         <div class="footer-item-content">
-                            <div class="footer-gallery m-b-36">
-                                <div class="gallery">
-                                    <div class="gallery-item">
-                                        <a href="images/lightbox_01.jpeg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_01.jpeg" alt="Image">
-                                        </a>
+                            <ul class="footer-latest-post">
+                                <li>
+                                    <div class="post-item">
+                                        <a href="#">Miễn phí giao hàng</a>
                                     </div>
-                                    <div class="gallery-item">
-                                        <a href="/images/lightbox_02.jpg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_02.jpeg" alt="Image">
-                                        </a>
+                                </li>
+                                <li>
+                                    <div class="post-item">
+                                        <a href="#">Hỗ trợ khách hàng 24/7</a>
                                     </div>
-                                    <div class="gallery-item">
-                                        <a href="images/lightbox_03.jpeg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_03.jpeg" alt="Image">
-                                        </a>
+                                </li>
+                                <li>
+                                    <div class="post-item">
+                                        <a href="#">Nhiều ưu đãi mỗi tháng</a>
                                     </div>
-                                    <div class="gallery-item">
-                                        <a href="images/lightbox_04.jpeg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_04.jpeg" alt="Image">
-                                        </a>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <a href="images/lightbox_05.jpeg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_05.jpeg" alt="Image">
-                                        </a>
-                                    </div>
-                                    <div class="gallery-item">
-                                        <a href="images/lightbox_06.jpg" data-rel="footerGallery:slideshow">
-                                            <img src="images/gallery_06.jpeg" alt="Image">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
