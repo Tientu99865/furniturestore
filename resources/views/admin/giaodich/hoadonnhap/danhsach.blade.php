@@ -25,16 +25,16 @@
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
                                             #
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 120px;">
                                             Tên người nhập
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 120px;">
                                             Tên sản phẩm
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
                                             Giá nhập
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
                                             Số lượng
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
@@ -59,10 +59,10 @@
                                         ?>
                                         <tr class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><?php echo $stt;?></td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->users->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$invoice->products->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{number_format($invoice->import_price, 0, ',', '.')}} VNĐ</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->quantity}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 120px;">{{$invoice->users->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 120px;">{{$invoice->products->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{number_format($invoice->import_price, 0, ',', '.')}} VNĐ</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">{{$invoice->quantity}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">
                                                 <?php
                                                     $total_price = $invoice->import_price*$invoice->quantity;

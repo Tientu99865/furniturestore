@@ -34,7 +34,7 @@
                                 <label for="exampleInputPassword4">Chọn danh mục cha <span style="color: red">*</span></label>
                                 <select name="parent_id" aria-controls="order-listing" class="form-control">
                                     <option value="">Chọn danh mục cha</option>
-                                    {{\App\Helpers\FurnitureStore\Category::cat_parent($categories)}}
+                                    {{FurnitureStoreCategory::cat_parent($categories)}}
                                 </select>
                             </div>
                             <div class="form-group">

@@ -147,6 +147,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
             Route::post('them','HoaDonNhapController@postThem');
 
             Route::get('xoa/{id}','HoaDonNhapController@getXoa');
+
+            Route::get('sua/{id}','HoaDonNhapController@getSua');
+            Route::post('sua/{id}','HoaDonNhapController@postSua');
         });
     });
 

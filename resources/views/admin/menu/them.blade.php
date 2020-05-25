@@ -39,14 +39,14 @@
                         <label for="exampleInputPassword4">Chọn menu cha <span style="color: red">*</span></label>
                         <select name="parent_id" aria-controls="order-listing" class="form-control">
                             <option value="">Chọn menu cha</option>
-                            {{\App\Helpers\FurnitureStore\Menu::menu_parent($menu)}}
+                            {{FurnitureStoreMenu::menu_parent($menu)}}
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Menu thuộc danh mục <span style="color: red">*</span></label>
                         <select name="cat_id" aria-controls="order-listing" class="form-control">
                             <option value="">Chọn danh mục</option>
-                            {{\App\Helpers\FurnitureStore\Category::cat_parent($categories)}}
+                            {{FurnitureStoreCategory::cat_parent($categories)}}
                         </select>
                     </div>
                     <div class="form-group">
