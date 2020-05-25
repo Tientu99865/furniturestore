@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        App\Providers\FurnitureStoreServiceProvider::class,
 
     ],
 
@@ -226,6 +227,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'FurnitureStoreMenu' => App\Helpers\FurnitureStore\Menu::class,
+        'FurnitureStoreCategory' => App\Helpers\FurnitureStore\Category::class,
 
     ],
 

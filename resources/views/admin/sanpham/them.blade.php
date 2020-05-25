@@ -42,9 +42,7 @@
                                     <label for="exampleInputPassword4">Sản phẩm thuộc danh mục<span style="color: red">*</span></label>
                                     <select  name="cat_id" aria-controls="order-listing" class="form-control">
                                         <option value="">-- Các danh mục --</option>
-                                        @foreach($categories as $cat)
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                        @endforeach
+                                        {{\App\Helpers\FurnitureStore\Category::cat_parent($categories)}}
 
                                     </select>
                                 </div>

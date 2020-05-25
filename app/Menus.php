@@ -21,34 +21,6 @@ class Menus extends Model
         return $this->hasMany(self::class,'id','parent_id');
     }
 
-    function menu_parent($data,$parent = 0,$str = "|---",$select=0){
-        foreach ($data as $val){
-            $id = $val["id"];
-            $name = $val["name"];
-            if ($val["parent_id"] == $parent){
-                if ($select != 0 && $id == $select){
-                    echo "<option value='$id' selected='selected'>$str $name</option>";
-                }else{
-                    echo "<option value='$id'>$str $name</option>";
-                }
-                $this->menu_parent($data,$id,$str."|---");
-            }
-        }
-    }
 
-    function cat_parent($data,$parent = 0,$str = "|---",$select=0){
-        foreach ($data as $val){
-            $id = $val["id"];
-            $name = $val["name"];
-            if ($val["parent_id"] == $parent){
-                if ($select != 0 && $id == $select){
-                    echo "<option value='$id' selected='selected'>$str $name</option>";
-                }else{
-                    echo "<option value='$id'>$str $name</option>";
-                }
-                $this->cat_parent($data,$id,$str."|---");
-            }
-        }
-    }
 
 }
