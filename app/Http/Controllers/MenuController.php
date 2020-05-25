@@ -9,9 +9,11 @@ class MenuController extends Controller
 {
     //
     public function getThem(){
+        $menu_parent = new Menus();
+        $cat_parent = new Menus();
         $menu = Menus::all();
         $categories = Categories::all();
-        return view('admin/menu/them',['menu'=>$menu,'categories'=>$categories]);
+        return view('admin/menu/them',['menu'=>$menu,'categories'=>$categories,'menu_parent'=>$menu_parent,'cat_parent'=>$cat_parent]);
     }
 
     public function postThem(Request $request){

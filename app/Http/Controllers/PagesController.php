@@ -19,7 +19,7 @@ class PagesController extends Controller
 //        $menus = Menus::all()->where('parent_id',null)
 //            ->with('childrenMenus')
 //            ->get();
-        $slides = Slides::all();
+        $slides = Slides::all()->sortByDesc('id')->take(2);
         return view('pages/trangchu',['slides'=>$slides]);
 //        ,compact('menus')
     }

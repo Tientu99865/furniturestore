@@ -38,19 +38,15 @@
                     <div class="form-group">
                         <label for="exampleInputPassword4">Chọn menu cha <span style="color: red">*</span></label>
                         <select name="parent_id" aria-controls="order-listing" class="form-control">
-                            <option value="">--</option>
-                            @foreach($menu as $m)
-                                <option value="{{$m->id}}">{{$m->name}}</option>
-                            @endforeach
+                            <option value="">Chọn menu cha</option>
+                            {{$menu_parent->menu_parent($menu)}}
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword4">Menu thuộc danh mục <span style="color: red">*</span></label>
                         <select name="cat_id" aria-controls="order-listing" class="form-control">
-                            <option value="">--</option>
-                            @foreach($categories as $cat)
-                                <option value="{{$cat->id}}">{{$cat->name}}</option>
-                            @endforeach
+                            <option value="">Chọn danh mục</option>
+                            {{$cat_parent->cat_parent($categories)}}
                         </select>
                     </div>
                     <div class="form-group">
