@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class ChucVuController extends Controller
 {
     //
     public function getThem(){
-        return view('admin/chucvu/them');
+        $permission = Permission::all();
+        return view('admin/chucvu/them',['permission'=>$permission]);
     }
 
     public function postThem(Request $request){

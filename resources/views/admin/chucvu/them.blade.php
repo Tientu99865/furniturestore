@@ -51,8 +51,7 @@
                         <div class="form-group">
                             <label for="exampleInputName1">Chọn quyền cho chức vụ<span style="color: red">*</span></label><br>
                             <select class="js-example-basic-multiple"  style="width: 100%;" name="states[]" multiple="multiple">
-                                <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
+                                {{FurnitureStorePermission::permission($permission)}}
                             </select>
 
                         </div>
@@ -69,7 +68,7 @@
     <script>
         $(document).ready(function() {
             $(".js-example-basic-multiple").select2({
-                placeholder: "Select a number",
+                placeholder: "--",
                 allowClear: true,
             });
         });

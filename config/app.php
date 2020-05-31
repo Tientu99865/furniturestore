@@ -229,6 +229,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'FurnitureStoreMenu' => App\Helpers\FurnitureStore\Menu::class,
         'FurnitureStoreCategory' => App\Helpers\FurnitureStore\Category::class,
+        'FurnitureStoreShowMenus' => App\Helpers\FurnitureStore\Showmenus::class,
+        'FurnitureStorePermission' => App\Helpers\FurnitureStore\Permission::class,
+
 
     ],
 

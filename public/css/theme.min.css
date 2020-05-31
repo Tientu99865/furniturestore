@@ -28897,8 +28897,8 @@ header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-me
   width: 194px !important;
   border-top: 5px solid #e4c7a2;
   position: absolute;
-  top: 112px;
-  left: -8px;
+    top: -30px;
+    left: 100%;
   width: 100%;
   padding: 25px 0 25px 30px;
   background-color: #fff;
@@ -28912,10 +28912,26 @@ header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-me
   -o-transition: all 0.25s linear 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   -moz-transition: all 0.25s linear 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
   transition: all 0.25s linear 0s, visibility 0s linear 0.3s, z-index 0s linear 0.01s;
+    display: none;
+}
+
+header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li:hover>.sub-menu{
+    display: block;
+}
+
+header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li > .sub-menu{
+    position: absolute;
+    top: 100%;
+    left: 0px;
+}
+
+header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li .sub-menu > li:hover .sub-menu{
+    display: block;
 }
 
 header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li .sub-menu > li {
   height: 40px;
+    position: relative;
 }
 
 header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li .sub-menu > li > a {

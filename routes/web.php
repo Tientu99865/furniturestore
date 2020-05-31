@@ -157,3 +157,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 
 //Front end page
 Route::get('trangchu','PagesController@trangchu');
+
+Route::group(['prefix'=>'tai-khoan'],function (){
+
+    Route::get('index','AccountController@getIndex');
+
+    Route::group(['prefix'=>'dang-nhap'],function(){
+
+    });
+
+    Route::post('dang-ky','AccountController@getRegister');
+});

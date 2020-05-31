@@ -11,106 +11,10 @@
                     </div>
                     <nav class="header__navbar">
                         <ul class="navbar-menu">
-                            <li class="active">
-                                <a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="index-1.html">HomePage_v1</a>
-                                    </li>
-                                    <li>
-                                        <a href="index2.html">HomePage_v2</a>
-                                    </li>
-                                    <li>
-                                        <a href="index3.html">HomePage_v3</a>
-                                    </li>
-                                    <li>
-                                        <a href="index4.html">HomePage_v4</a>
-                                    </li>
-                                    <li>
-                                        <a href="index5.html">HomePage_v5</a>
-                                    </li>
-                                    <li>
-                                        <a href="index6.html">HomePage_v6</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="#">page</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="my-account.html">My Account</a>
-                                    </li>
-                                    <li>
-                                        <a href="forget-password.html">Forget Password</a>
-                                    </li>
-                                    <li>
-                                        <a href="coming-soon.html">Cooming Soon</a>
-                                    </li>
-                                    <li>
-                                        <a href="404.html">404 Error</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Shop</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="shop-list.html">Shop 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-list-nosidebar.html">Shop 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="product-detail.html">Product Detail 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="product-detail-nosidebar.html">Product Detail 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-cart.html">Shop Cart</a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.html">Wish List</a>
-                                    </li>
-                                    <li>
-                                        <a href="checkout.html">Check Out</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Blog</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="blog-grid-1.html">Blog Grid 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-grid-2.html">Blog Grid 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-list.html">Blog List</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-detail.html">Blog Single</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
+                            <li><a href="trangchu">Trang chủ</a></li>
+                            {{FurnitureStoreShowMenus::showmenus($menus)}}
+                            <li><a href="lienhe">Liên hệ</a></li>
                         </ul>
-{{--                        <ul>--}}
-{{--                            @foreach ($menus as $menu)--}}
-{{--                                <li>{{ $menu->name }}</li>--}}
-{{--                                <ul>--}}
-{{--                                    @foreach ($menu->childrenMenus as $childMenu)--}}
-{{--                                        @include('child_menu', ['child_menu' => $childMenu])--}}
-{{--                                    @endforeach--}}
-{{--                                </ul>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
                     </nav>
                     <div class="header__button">
                         <ul>
@@ -176,8 +80,8 @@
                                 </div>
                             </li>
                             <li class="header-bar">
-                                <div class="bar-button" data-toggle="modal" data-target="#page-sidebar">
-                                    <img src="images\icon\header-bar.png" alt="Bar">
+                                <div class="bar-button" data-toggle="modal" >
+                                    <a href="tai-khoan/index"><img src="images\icon\user-icon.png" alt="Bar"></a>
                                 </div>
                             </li>
                         </ul>

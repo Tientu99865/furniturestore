@@ -22,7 +22,7 @@
                         </div>
                         <div class="footer-item-content">
                             <div class="footer-infopage">
-                                <p>Trường đại học Giao Thông Vận Tảoi</p>
+                                <p>Trường đại học Giao Thông Vận Tải</p>
                                 <p> SĐT : 0358828585</p>
                                 <p> E-mail: tientu99865@gmail.com</p>
                             </div>
@@ -110,7 +110,7 @@
             <div class="container">
                 <div class="sub-footer-container">
                     <div class="copy-right">
-                        <p>Copyright © 2018 Lyrae. All rights reserved.</p>
+                        <p>Copyright © 2018.</p>
                     </div>
                     <div class="footer-cash">
                         <div class="cash-item">
