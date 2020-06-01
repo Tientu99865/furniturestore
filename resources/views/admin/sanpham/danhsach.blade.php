@@ -58,7 +58,14 @@
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$pro->name}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;"><a href="upload/sanpham/tieude/{{$pro->image}}"><img src="upload/sanpham/tieude/{{$pro->image}}" style="    width: 50px;height: 50px;border-radius: 0%;" alt=""></a></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
-                                                @if($pro->amount == 0)
+                                                <?php
+                                                    $n = DB::table('import_invoice')->where('pro_id',$pro->id)->count();;
+                                                    $quantity_total = 0;
+                                                ?>
+                                                @for($i = 0; $i < $n; $i++)
+                                                    <?php $quantity_total += $pro->import_invoice[$i]->quantity; ?>
+                                                @endfor
+                                                @if($quantity_total == 0)
                                                     <label class="badge badge-danger">Hết hàng</label>
                                                 @else
                                                     <label class="badge badge-success">Còn hàng</label>

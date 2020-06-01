@@ -26,6 +26,6 @@ class Products extends Model
     }
 
     public function import_invoice(){
-        return$this->hasMany('App\Import_invoices','pro_id','id');
+        return$this->hasMany('App\Import_invoice','pro_id','id');
     }
 }

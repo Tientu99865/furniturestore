@@ -28921,7 +28921,7 @@ header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-me
 
 header .header-wrapper-desktop .header .header-main .header__navbar ul.navbar-menu > li > .sub-menu{
     position: absolute;
-    top: 100%;
+    top: 100% !important;
     left: 0px;
 }
 
@@ -29074,10 +29074,6 @@ header .header-wrapper-desktop .header.header__fixed {
 
 header .header-wrapper-desktop .header.header__fixed .header-main .header__navbar ul.navbar-menu > li > a {
   line-height: 80px;
-}
-
-header .header-wrapper-desktop .header.header__fixed .header-main .header__navbar ul.navbar-menu > li .sub-menu {
-  top: 80px;
 }
 
 header .header-wrapper-desktop .header.header__fixed .header-main .header__button .header-shop-cart .shop-cart {

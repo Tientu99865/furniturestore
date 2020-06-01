@@ -231,7 +231,8 @@ return [
         'FurnitureStoreCategory' => App\Helpers\FurnitureStore\Category::class,
         'FurnitureStoreShowMenus' => App\Helpers\FurnitureStore\Showmenus::class,
         'FurnitureStorePermission' => App\Helpers\FurnitureStore\Permission::class,
-
+        'FurnitureStoreShowCategories' => App\Helpers\FurnitureStore\Show_categories::class,
+        'FurnitureStoreShowProducts' => App\Helpers\FurnitureStore\Show_products::class,
 
     ],
 
