@@ -17,7 +17,7 @@ class Show_products{
                     <div class='grid-product'>
                         <div class='image bg-lightblue'>
                             <a href='#'>
-                                <img src='upload/sanpham/tieude/$image' alt='Chair'>
+                                <img src='images/mark/mark_product.png' style='background-image: url(upload/sanpham/tieude/$image);background-size: cover' alt='Chair'>
                             </a>
                             <div class='addcart'>
                                 <a href='#'>Add to cart</a>
