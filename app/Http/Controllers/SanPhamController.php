@@ -133,33 +133,31 @@ class SanPhamController extends Controller
     }
 
     public function postSua(Request $request,$id){
+
         $this->validate($request,
             [
                 'cat_id'=>'required',
-                'name'=>'required|min:2|max:100|unique:products,name',
-                'import_price'=>'required|numeric',
+//                'name'=>'required|min:2|max:100|unique:products,name',
                 'promoted_price'=>'required|numeric',
                 'selling_price'=>'required|numeric',
                 'pro_content'=>'required',
-                'image'=>'required',
-                'images'=>'required',
+//                'image'=>'required',
+//                'images'=>'required',
                 'manu_id'=>'required'
             ],
             [
                 'cat_id.required'=>'Bạn chưa chọn danh mục cho sản phẩm',
-                'name.required'=>'Bạn chưa nhập tên sản phẩm',
-                'name.min'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
-                'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
-                'name.unique'=>'Tên sản phẩm này đã tồn tại',
-                'import_price.required'=>'Bạn chưa nhập giá nhập của sản phẩm',
-                'import_price.numeric'=>'Giá nhập của sản phẩm phải là số ! Vui lòng nhập lại.',
+//                'name.required'=>'Bạn chưa nhập tên sản phẩm',
+//                'name.min'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
+//                'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
+//                'name.unique'=>'Tên sản phẩm này đã tồn tại',
                 'promoted_price.required'=>'Bạn chưa nhập giá khuyến mại của sản phẩm',
                 'promoted_price.numeric'=>'Giá khuyến mại của sản phẩm phải là số ! Vui lòng nhập lại.',
                 'selling_price.numeric'=>'Giá bán của sản phẩm phải là số ! Vui lòng nhập lại.',
                 'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
-                'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
-                'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
+//                'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
+//                'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
                 'manu_id.required'=>'Bạn chưa chọn nơi sản xuất cho sản phẩm',
             ]);
         $product = Products::find($id);
@@ -193,6 +191,8 @@ class SanPhamController extends Controller
                 $product->import_price = $import_price;
             }
         }
+        $invoice = Import_invoice::all()->where('pro_id',$id)->last();
+        $product->import_price = $invoice->import_price;
         $product->manu_id = $request->manu_id;
         $product->content = $request->pro_content;
         $product->save();
