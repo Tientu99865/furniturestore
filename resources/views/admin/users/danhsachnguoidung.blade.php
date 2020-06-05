@@ -14,7 +14,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Danh sách tài khoản admin</h4>
+                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Danh sách tài khoản người dùng</h4>
 
                         <p>Có tất cả <b><?php $count = DB::table('customers')->count(); echo $count?></b> tài khoản người dùng</p><br>
 

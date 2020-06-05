@@ -63,9 +63,9 @@
                                 <label>Tài khoản</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend bg-transparent">
-                      <span class="input-group-text bg-transparent border-right-0">
-                        <i class="mdi mdi-email-outline text-primary"></i>
-                      </span>
+                                      <span class="input-group-text bg-transparent border-right-0">
+                                        <i class="mdi mdi-email-outline text-primary"></i>
+                                      </span>
                                     </div>
                                     <input type="email" name="email" class="form-control form-control-lg border-left-0" placeholder="Email" />
                                 </div>

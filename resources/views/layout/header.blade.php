@@ -3,6 +3,23 @@
         <!-- Desktop Menu -->
         <div class="header-wrapper-desktop d-none d-lg-block">
             <div class="header header-style-1">
+                @if(session('ThongBao'))
+                    <div class='card card-inverse-success' style='color:#28a745;' id='context-menu-access'>
+                        <div class='card-body'>
+                            <p class='card-text' style='text-align: center;'>
+                                {{session('ThongBao')}}
+                            </p>
+                        </div>
+                    </div>
+                @elseif(session('Loi'))
+                    <div class='card card-inverse-warning' style="color: red;" id='context-menu-access'>
+                        <div class='card-body'>
+                            <p class='card-text' style='text-align: center;'>
+                                {{session('Loi')}}
+                            </p>
+                        </div>
+                    </div>
+                @endif
                 <div class="header-main">
                     <div class="header__logo">
                         <a href="trangchu">
@@ -80,9 +97,23 @@
                                 </div>
                             </li>
                             <li class="header-bar">
-                                <div class="bar-button" data-toggle="modal" >
-                                    <a href="tai-khoan/index"><img src="images\icon\user-icon.png" alt="Bar"></a>
-                                </div>
+                                @if(Auth::check())
+                                    <div class="bar-button" data-toggle="modal" >
+                                        <img src="images\icon\user-icon.png" alt="Bar">
+                                    </div>
+                                    <div class="navbar-dropdown-cus">
+                                        <ul>
+                                            <li>{{Auth::user()->name}}</li>
+                                            <li><a href="#">Quản lý tài khoản</a></li>
+                                            <li><a href="#">Quản lý giỏ hàng</a></li>
+                                            <li><a href="tai-khoan/dang-xuat">Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                @else
+                                    <div class="bar-button" data-toggle="modal" >
+                                        <a href="tai-khoan/index"><img src="images\icon\user-icon.png" alt="Bar"></a>
+                                    </div>
+                                @endif
                             </li>
                         </ul>
                     </div>

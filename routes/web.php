@@ -104,6 +104,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
         Route::get('danhsachadmin','QuanLyTaiKhoan@getDanhSachAdmin');
 
         Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
+
+        Route::get('xoa/{id}','QuanLyTaiKhoan@getXoa');
     });
 
     //Contact
@@ -156,15 +158,17 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 });
 
 //Front end page
-Route::get('trangchu','PagesController@trangchu');
+Route::get('/','PagesController@trangchu');
 
 Route::group(['prefix'=>'tai-khoan'],function (){
 
     Route::get('index','AccountController@getIndex');
 
-    Route::group(['prefix'=>'dang-nhap'],function(){
+    Route::post('dang-nhap','AccountController@postLogin');
 
-    });
+    Route::post('dang-ky','AccountController@postRegister');
 
-    Route::post('dang-ky','AccountController@getRegister');
+    Route::get('dang-xuat','AccountController@getLogout');
+
+    Route::get('xac-nhan-tai-khoan','AccountController@verifyAccount')->name('customer.verify.account');
 });

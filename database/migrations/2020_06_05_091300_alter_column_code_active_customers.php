@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColToCustomers extends Migration
+class AlterColumnCodeActiveCustomers extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,8 @@ class AddColToCustomers extends Migration
     {
         Schema::table('customers', function (Blueprint $table) {
             //
-            $table->boolean('active')->default(0);
-            $table->string('confirmation_code')->nullable();
-            $table->rememberToken();
+            $table->string('code_active',255)->nullable();
+            $table->timestamp('time_active')->nullable();
         });
     }
 
@@ -28,6 +27,9 @@ class AddColToCustomers extends Migration
      */
     public function down()
     {
-        Schema::drop('customers');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->dropColumn(['time_active','code_active']);
+        });
     }
 }

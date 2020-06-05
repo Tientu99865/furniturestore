@@ -18,4 +18,11 @@ class QuanLyTaiKhoan extends Controller
         $customers =Customers::paginate();
         return view('admin/users/danhsachnguoidung',['customers'=>$customers]);
     }
+
+    public function getXoa($id){
+        $customers = Customers::find($id);
+        $customers->delete();
+
+        return redirect('admin/users/danhsachnguoidung')->with('ThongBao',"Bạn đã xoá thành công");
+    }
 }

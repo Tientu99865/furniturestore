@@ -29063,6 +29063,35 @@ header .header-wrapper-desktop .header .header-main .header__button ul li.header
 header .header-wrapper-desktop .header .header-main .header__button ul li.header-search .search-input a:hover {
   background: url(../images/icon/close-search-1.png) no-repeat center;
 }
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .bar-button{
+    height: 40px;
+}
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .navbar-dropdown-cus{
+    position: absolute;
+    width: 171px;
+    left: -153px;
+    top: 33px;
+    background: white;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    padding: 10px;
+    display: none;
+}
+
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar:hover > .navbar-dropdown-cus {
+    display: block;
+}
+
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .navbar-dropdown-cus ul li{
+    margin-bottom: 5px;
+}
+
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .navbar-dropdown-cus ul li a{
+    color: #999999;
+}
+
+header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .navbar-dropdown-cus ul li a:hover{
+    color: #e4c7a2;
+}
 
 header .header-wrapper-desktop .header.header__fixed {
   position: fixed !important;

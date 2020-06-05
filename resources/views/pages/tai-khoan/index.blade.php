@@ -5,37 +5,62 @@
             <div class="pageintro-bg">
                 <img src="images\bg-page_01.jpeg" alt="About Us">
             </div>
+            @if (session('warning'))
+                <span class="alert alert-warning help-block">
+                            <strong>{{ session('warning') }}</strong>
+                        </span>
+            @endif
             <div class="pageintro-body">
                 <h1 class="pageintro-title">Tài khoản của bạn</h1>
-                <nav class="pageintro-breadcumb">
-{{--                    <ul>--}}
-{{--                        <li>--}}
-{{--                            <a href="#">Home</a>--}}
-{{--                        </li>--}}
-{{--                        <li>--}}
-{{--                            <a href="#">My Account</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-                </nav>
             </div>
         </div>
     </section>
     <section>
         <div class="container py-70 py-tn-40">
+        @if(count($errors) > 0)
+            <div class='card card-inverse-warning' style='color:red;' id='context-menu-access'>
+                <div class='card-body'>
+                    @foreach($errors->all() as $err)
+                        <p class='card-text' style='text-align: center;'>
+                            {{$err}}
+                        </p>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+        @if(session('ThongBao'))
+            <div class='card card-inverse-success' style='color:#28a745;' id='context-menu-access'>
+                <div class='card-body'>
+                    <p class='card-text' style='text-align: center;'>
+                        {{session('ThongBao')}}
+                    </p>
+                </div>
+            </div>
+        @elseif(session('Loi'))
+            <div class='card card-inverse-warning' style="color: red;" id='context-menu-access'>
+                <div class='card-body'>
+                    <p class='card-text' style='text-align: center;'>
+                        {{session('Loi')}}
+                    </p>
+                </div>
+            </div>
+        @endif
             <div class="row">
                 <!-- Login -->
                 <div class="col-lg-6 ">
                     <div class="au-form-body p-r-lg-15 p-r-xl-15">
                         <h2 class="au-form-title form-title-border">Đăng nhập</h2>
                         <fieldset class="m-t-40">
-                            <form>
+                            <form action="tai-khoan/dang-nhap " method="POST">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group au-form require">
                                     <label>Địa chỉ Email</label>
-                                    <input type="email">
+                                    <input type="email" name="email" value="">
                                 </div>
                                 <div class="form-group au-form require">
                                     <label>Mật Khẩu</label>
-                                    <input type="password">
+                                    <input type="password" name="password" required>
                                 </div>
                                 <div class="form-group au-form">
                                     <button type="submit">Đăng nhập</button>
@@ -58,7 +83,7 @@
                     <div class="au-form-body p-r-lg-15 p-r-xl-15">
                         <h2 class="au-form-title  form-title-border">Đăng ký</h2>
                         <fieldset class="m-t-40">
-                            <form action="tai-khoan/dang-ky" method="post">
+                            <form action="tai-khoan/dang-ky" method="post" >
                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="form-group au-form require">
                                     <label>Họ & tên bạn</label>
@@ -70,19 +95,19 @@
                                 </div>
                                 <div class="form-group au-form require">
                                     <label>Địa chỉ</label>
-                                    <input type="address">
+                                    <input type="address" name="address">
                                 </div>
                                 <div class="form-group au-form require">
                                     <label>Địa chỉ Email</label>
-                                    <input type="email">
+                                    <input type="email" name="email">
                                 </div>
                                 <div class="form-group au-form require">
                                     <label>Mật khẩu</label>
-                                    <input type="password">
+                                    <input type="password" name="password">
                                 </div>
                                 <div class="form-group au-form require">
                                     <label>Nhập lại mật khẩu</label>
-                                    <input type="re_password">
+                                    <input type="password" name="re_password">
                                 </div>
                                 <div class="form-group au-form">
                                     <button type="submit">Đăng ký</button>
