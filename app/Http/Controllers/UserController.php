@@ -26,7 +26,7 @@ class UserController extends Controller
                 'password.max'=>'Mật khẩu không thể lớn hơn 32 ký tự'
             ]);
         $data = $request->only('email','password');
-        if (Auth::attempt($data)){
+        if (Auth::guard('users')->attempt($data)){
             return redirect('admin/trangchu');
         }
         else
@@ -70,7 +70,7 @@ class UserController extends Controller
     }
 
     public function getDangXuatAdmin(){
-        Auth::logout();
+        Auth::guard('users')->logout();
 
         return redirect('admin/dangnhap');
     }

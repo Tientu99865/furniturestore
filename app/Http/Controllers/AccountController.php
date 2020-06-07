@@ -67,7 +67,7 @@ class AccountController extends Controller
         }
 
 
-        return redirect('trangchu')->with('ThongBao','Bạn đã đăng ký thành công ,Vui lòng kiểm tra email để xác nhận tài khoản!');
+        return redirect('/')->with('ThongBao','Bạn đã đăng ký thành công ,Vui lòng kiểm tra email để xác nhận tài khoản!');
     }
 
     public function postLogin(Request $request){
@@ -84,19 +84,25 @@ class AccountController extends Controller
                 'password.max'=>'Mật khẩu không thể lớn hơn 32 ký tự'
             ]);
         $data = $request->only('email','password');
-        if (Auth::attempt($data)){
-            return redirect('trangchu')->with('ThongBao','Bạn đã đăng nhập thành công!');
+        if (Auth::guard('customers')->attempt($data)){
+            $customer = Auth::guard('customers')->user();
+            if ($customer['active'] == 1){
+                return redirect('/')->with('ThongBao','Bạn đã đăng nhập thành công!');
+            }else{
+                return redirect('/')->with('Loi','Bạn chưa xác nhận tài khoản ! Vui lòng kiểm tra email và xác nhận tài khoản ');
+            }
         }
         else
         {
-            return redirect('tai-khoan/index')->with('Loi','Đăng nhập không thành công');
+            return redirect('tai-khoan/index')->with('LoiDangNhap','Đăng nhập không thành công');
         }
     }
 
-    public function getLogout(){
-        Auth::logout();
 
-        return redirect('trangchu')->with('ThongBao','Bạn đã đăng xuất thành công');
+    public function getLogout(){
+        Auth::guard('customers')->logout();
+
+        return redirect('/')->with('ThongBao','Bạn đã đăng xuất thành công');
     }
 
     public function verifyAccount(Request $request){
@@ -109,12 +115,12 @@ class AccountController extends Controller
         ])->first();
 
         if (!$checkCustomer){
-            return redirect('trangchu')->with('loi','Xin lỗi ! Đường dẫn xác nhận tài khoản không tồn tại');
+            return redirect('/')->with('loi','Xin lỗi ! Đường dẫn xác nhận tài khoản không tồn tại');
         }
 
         $checkCustomer->active = 1;
         $checkCustomer->save();
 
-        return redirect('trangchu')->with('ThongBao','Xác nhận tài khoản thành công');
+        return redirect('/')->with('ThongBao','Xác nhận tài khoản thành công');
     }
 }

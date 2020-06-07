@@ -37,11 +37,11 @@
                     </p>
                 </div>
             </div>
-        @elseif(session('Loi'))
+        @elseif(session('LoiDangNhap'))
             <div class='card card-inverse-warning' style="color: red;" id='context-menu-access'>
                 <div class='card-body'>
                     <p class='card-text' style='text-align: center;'>
-                        {{session('Loi')}}
+                        {{session('LoiDangNhap')}}
                     </p>
                 </div>
             </div>

@@ -22,13 +22,13 @@
                 @endif
                 <div class="header-main">
                     <div class="header__logo">
-                        <a href="trangchu">
+                        <a href="/">
                             <img src="images\Logo\logo.png" alt="Lyrae">
                         </a>
                     </div>
                     <nav class="header__navbar">
                         <ul class="navbar-menu">
-                            <li><a href="trangchu">Trang chủ</a></li>
+                            <li><a href="/">Trang chủ</a></li>
                             {{FurnitureStoreShowMenus::showmenus($menus)}}
                             <li><a href="lienhe">Liên hệ</a></li>
                         </ul>
@@ -97,13 +97,13 @@
                                 </div>
                             </li>
                             <li class="header-bar">
-                                @if(Auth::check())
+                                @if(Auth::guard('customers')->check())
                                     <div class="bar-button" data-toggle="modal" >
                                         <img src="images\icon\user-icon.png" alt="Bar">
                                     </div>
                                     <div class="navbar-dropdown-cus">
                                         <ul>
-                                            <li>{{Auth::user()->name}}</li>
+                                            <li style="font-weight: bold">{{Auth::guard('customers')->user()->name}}</li>
                                             <li><a href="#">Quản lý tài khoản</a></li>
                                             <li><a href="#">Quản lý giỏ hàng</a></li>
                                             <li><a href="tai-khoan/dang-xuat">Đăng xuất</a></li>

@@ -29068,8 +29068,8 @@ header .header-wrapper-desktop .header .header-main .header__button ul li.header
 }
 header .header-wrapper-desktop .header .header-main .header__button ul li.header-bar .navbar-dropdown-cus{
     position: absolute;
-    width: 171px;
-    left: -153px;
+    width: 200px;
+    left: -182px;
     top: 33px;
     background: white;
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
