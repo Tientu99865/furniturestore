@@ -160,9 +160,11 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 //Front end page
 Route::get('/','PagesController@trangchu');
 
+Route::get('chi-tiet-san-pham/{id}','Frontend\ProductController@getProductDetail');
+
 Route::group(['prefix'=>'tai-khoan'],function (){
 
-    Route::get('index','AccountController@getIndex');
+    Route::get('index','AccountController@getIndex')->name('get.index.account');
 
     Route::post('dang-nhap','AccountController@postLogin');
 
@@ -171,4 +173,12 @@ Route::group(['prefix'=>'tai-khoan'],function (){
     Route::get('dang-xuat','AccountController@getLogout');
 
     Route::get('xac-nhan-tai-khoan','AccountController@verifyAccount')->name('customer.verify.account');
+
+    Route::get('quen-mat-khau','AccountController@getForgotPassword');
+
+    Route::post('quen-mat-khau','AccountController@sendCodeResetPassword');
+
+    Route::get('cai-lai-mat-khau','AccountController@resetPassword')->name('get.link.reset.password');
+
+    Route::post('cai-lai-mat-khau','AccountController@saveResetPassword');
 });

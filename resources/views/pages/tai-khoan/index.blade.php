@@ -64,13 +64,9 @@
                                 </div>
                                 <div class="form-group au-form">
                                     <button type="submit">Đăng nhập</button>
-{{--                                    <div class="form-checkbox m-l-18 m-t-tn-10 m-l-tn-0">--}}
-{{--                                        <input type="checkbox">--}}
-{{--                                        <label>Remember me</label>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="form-forgot w-100 m-t-10">--}}
-{{--                                        <a href="#">Lost your password?</a>--}}
-{{--                                    </div>--}}
+                                    <div class="form-forgot w-100 m-t-10">
+                                        <a href="tai-khoan/quen-mat-khau">Quên mật khẩu?</a>
+                                    </div>
                                 </div>
                             </form>
                         </fieldset>

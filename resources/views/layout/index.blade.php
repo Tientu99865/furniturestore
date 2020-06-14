@@ -9,7 +9,7 @@
     <base href="{{asset('')}}">
     <link rel="icon" type="image/png" href="images/icon/favicon.png">
     <!-- CSS -->
-
+    @yield('head')
     <!-- Plugin -->
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/owlcarousel/dist/css/owl.carousel.min.css">

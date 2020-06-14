@@ -32553,6 +32553,21 @@ button.disabled {
   border: none;
   padding-bottom: 80px;
 }
+/*customi css */
+.product-detail .shop-product .slide100-01 .main_pic{
+    margin-bottom: 20px;
+}
+.product-detail .shop-product .slide100-01 .list_images{
+    display: flex;
+    justify-content: center;
+
+}
+.product-detail .shop-product .slide100-01 .list_images img{
+    width: 100%;
+}
+.product-detail .shop-product .slide100-01 .list_images .list_images--image{
+    margin: 0px 5px;
+}
 
 .product-detail .shop-product .product-body {
   width: 47%;

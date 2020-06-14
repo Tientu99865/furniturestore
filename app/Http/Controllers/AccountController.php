@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customers;
+use App\Http\Requests\RequestResetPassword;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -115,12 +116,78 @@ class AccountController extends Controller
         ])->first();
 
         if (!$checkCustomer){
-            return redirect('/')->with('loi','Xin lỗi ! Đường dẫn xác nhận tài khoản không tồn tại');
+            return redirect('/')->with('Loi','Xin lỗi ! Đường dẫn xác nhận tài khoản không tồn tại');
         }
 
         $checkCustomer->active = 1;
         $checkCustomer->save();
 
         return redirect('/')->with('ThongBao','Xác nhận tài khoản thành công');
+    }
+
+    public function getForgotPassword(){
+        return view('pages/tai-khoan/quen-mat-khau');
+    }
+
+    public function sendCodeResetPassword(Request $request){
+        $email = $request->email;
+        $checkCustomer = Customers::where('email',$email)->first();
+
+        if (!$checkCustomer){
+            return redirect()->back()->with('Loi','Tài khoản không tồn tại');
+        }
+
+        $code = bcrypt(time().$email);
+
+        $checkCustomer->code = $code;
+        $checkCustomer->time_code = Carbon::now();
+        $checkCustomer->save();
+
+        $url = route('get.link.reset.password',['code'=>$checkCustomer->code,'email'=>$email]);
+        $data = [
+            'route' => $url
+        ];
+        Mail::send('email.reset_password',$data,function ($message) use ($email){
+            $message->to($email,'Lấy lại mật khẩu')->subject('Lấy lại mật khẩu');
+        });
+
+        return redirect()->back()->with('ThongBao','Link lấy lại mật khẩu đã gửi vào email của bạn! Vui lòng kiếm tra email.');
+    }
+
+    public function resetPassword(Request $request){
+        $code = $request->code;
+        $email = $request->email;
+
+        $checkCustomer = Customers::where([
+           'code' => $code,
+            'email' => $email
+        ])->first();
+
+        if (!$checkCustomer){
+            return redirect('/')->with('Loi','Xin lỗi ! Đường dẫn lấy lại mật khẩu không đúng , vui lòng thử lại .');
+        }
+
+        return view('pages/tai-khoan/cai-lai-mat-khau');
+    }
+
+    public function saveResetPassword(RequestResetPassword $requestResetPassword){
+        if ($requestResetPassword->password){
+            $code = $requestResetPassword->code;
+            $email = $requestResetPassword->email;
+
+            $checkCustomer = Customers::where([
+                'code' => $code,
+                'email' => $email
+            ])->first();
+
+            if (!$checkCustomer){
+                return redirect('/')->with('Loi','Xin lỗi ! Đường dẫn lấy lại mật khẩu không đúng , vui lòng thử lại .');
+            }
+
+            $checkCustomer->password = bcrypt($requestResetPassword->password);
+            $checkCustomer->save();
+
+            return redirect('/')->with('ThongBao','Mật khẩu đã được thay đổi thành công');
+        }
     }
 }
