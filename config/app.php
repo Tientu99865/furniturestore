@@ -233,6 +233,7 @@ return [
         'FurnitureStorePermission' => App\Helpers\FurnitureStore\Permission::class,
         'FurnitureStoreShowCategories' => App\Helpers\FurnitureStore\Show_categories::class,
         'FurnitureStoreShowProducts' => App\Helpers\FurnitureStore\Show_products::class,
+        'FurnitureStoreProductImages' => App\Helpers\FurnitureStore\Product_images::class,
 
     ],
 

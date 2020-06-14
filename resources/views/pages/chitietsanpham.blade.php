@@ -10,17 +10,14 @@
                 <img src="images\bg-page_03.jpeg" alt="About Us">
             </div>
             <div class="pageintro-body">
-                <h1 class="pageintro-title">Shop</h1>
-                <nav class="pageintro-breadcumb">
-                    <ul>
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Shop</a>
-                        </li>
-                    </ul>
-                </nav>
+                <h1 class="pageintro-title">{{$product->name}}</h1>
+{{--                <nav class="pageintro-breadcumb">--}}
+{{--                    <ul>--}}
+{{--                        <li>--}}
+{{--                            <a href="#">Home</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </nav>--}}
             </div>
         </div>
     </section>
@@ -33,102 +30,52 @@
                             <div class="row" style="width: 100%;">
                                 <div class="col-xl-6 slide100-01" id="slide100-01">
                                     <div class="main_pic">
-                                        <img src="images/mark/mark_main_pic.png" alt="" style="background-image: url(images/pro-detail-01.jpeg);background-size: cover;width: 100%">
-                                        <img src="images/mark/mark_main_pic.png" alt="" style="background-image: url(images/news_28.jpeg);background-size: cover;width: 100%">
-                                        <img src="images/mark/mark_main_pic.png" alt="" style="background-image: url(images/news_27.jpeg);background-size: cover;width: 100%">
-                                        <img src="images/mark/mark_main_pic.png" alt="" style="background-image: url(images/news_26.jpeg);background-size: cover;width: 100%">
-                                        <img src="images/mark/mark_main_pic.png" alt="" style="background-image: url(images/news_25.jpeg);background-size: cover;width: 100%">
+                                        {{FurnitureStoreProductImages::main_pic($images)}}
                                     </div>
                                     <div class="list_images">
-                                        <div class="list_images--image">
-                                            <img src="images/mark/mark_sub_pic.png"
-                                                 style="background-image: url(images/pro-detail-01.jpeg);background-size: cover;"
-                                                 alt="">
-                                        </div>
-                                        <div class="list_images--image">
-                                            <img src="images/mark/mark_sub_pic.png"
-                                                 style="background-image: url(images/news_28.jpeg);background-size: cover;"
-                                                 alt="">
-                                        </div>
-                                        <div class="list_images--image">
-                                            <img src="images/mark/mark_sub_pic.png"
-                                                 style="background-image: url(images/news_27.jpeg);background-size: cover;"
-                                                 alt="">
-                                        </div>
-                                        <div class="list_images--image">
-                                            <img src="images/mark/mark_sub_pic.png"
-                                                 style="background-image: url(images/news_26.jpeg);background-size: cover;"
-                                                 alt="">
-                                        </div>
-                                        <div class="list_images--image">
-                                            <img src="images/mark/mark_sub_pic.png"
-                                                 style="background-image: url(images/news_25.jpeg);background-size: cover;"
-                                                 alt="">
-                                        </div>
+                                        {{FurnitureStoreProductImages::sub_pic($images)}}
                                     </div>
                                 </div>
                                 <div class="col-xl-6 product-body">
-                                    <h3 class="name">Cloud Wall Clock</h3>
-                                    <p class="price">$35.00</p>
+                                    <h3 class="name">{{$product->name}}</h3>
+                                    <p class="price">
+                                        @if(count($import_invoice)>0)
+                                            {{number_format($import_invoice[0]->selling_price, 0, ',', '.')}}
+                                        @endif
+                                        <b> VNĐ</b></p>
                                     <p class="product-color">
                                         <span class="color beige"></span>
                                         <span class="color black"></span>
                                     </p>
-                                    <p class="description">It has survived not only five centuries, but also the leap into
-                                        electronic typesetting, remaining
-                                        essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                        sheets
-                                        containing including.</p>
                                     <div class="product-button">
                                         <div class="quantity">
                                         <span class="sub">
                                             <i class="fa fa-angle-down"></i>
                                         </span>
-                                            <input type="number" value="2">
+                                            <input type="number" value="1">
                                             <span class="add">
                                             <i class="fa fa-angle-up"></i>
                                         </span>
                                         </div>
-                                        <a href="#" class="add-to-cart">Add to cart</a>
-                                        <a href="#" class="add-to-wishlist"></a>
+                                        <a href="#" class="add-to-cart">Thêm vào giỏ hàng</a>
                                     </div>
                                     <div class="product-available">
-                                        <span>Available :</span>
-                                        <a href="#">In stock</a>
-                                    </div>
-                                    <div class="product-sku">
-                                        <span class="text-black">SKU: </span>
-                                        2305
+                                        <span>Kho hàng :</span>
+                                        <?php
+                                        if ($product['quantity'] == 0){
+                                            echo "<span style='color: red'>Hết Hàng</span>";
+                                        }else{
+                                            echo "<span style='color: #e4c7a2'>Còn Hàng</span>";
+                                        }
+                                        ?>
                                     </div>
                                     <div class="product-categories">
-                                        <span class="text-black">Categories:</span>
-                                        <a href="#">Furniture</a>
-                                        <a href="#">Decor</a>
+                                        <span class="text-black">Danh mục:</span>
+                                        <a href="#" style="color: #e4c7a2;">{{$product->categories->name}}</a>
                                     </div>
-                                    <div class="product-share">
-                                        <span class="text-black">Share: </span>
-                                        <ul class="social-media style-3">
-                                            <li>
-                                                <a href="#" class="facebook">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="twiiter">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="linkedin">
-                                                    <i class="fa fa-linkedin"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="google-plus">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                    <div class="product-categories">
+                                        <span class="text-black">Nơi sản xuất:</span>
+                                        <span style="color: #e4c7a2;">{{$product->manufacture->name}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -136,26 +83,18 @@
                         <div class="au-tabs">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a data-toggle="tab" href="#description-tab" class="active show">Description</a>
+                                    <a data-toggle="tab" href="#description-tab" class="active show">Mô tả chi tiết</a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#additional-tab">additional information </a>
+                                    <a data-toggle="tab" href="#additional-tab">Thông tin thêm </a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#review-tab">review (0)</a>
+                                    <a data-toggle="tab" href="#review-tab">Bình luận (0)</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div id="description-tab" class="tab-pane active">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque
-                                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                                        quasi
-                                        architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                                        voluptas
-                                        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                                        ratione
-                                        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia.</p>
+                                    {!! $product->content !!}
                                 </div>
                                 <div id="additional-tab" class="tab-pane">
                                     <table class="product-additionnal">

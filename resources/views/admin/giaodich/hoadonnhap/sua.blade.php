@@ -51,6 +51,16 @@
                                        name="import_price" class="form-control" id="exampleInputName1" placeholder="Giá nhập của sản phẩm" />
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputName1">Giá bán <span style="color: red">*</span></label>
+                                <input type="number" value="{{$invoice->selling_price}}"
+                                       name="selling_price" class="form-control" id="exampleInputName1" placeholder="Giá bán của sản phẩm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Giá khuyến mại <span style="color: red">*</span></label>
+                                <input type="number" value="{{$invoice->promoted_price}}"
+                                       name="promoted_price" class="form-control" id="exampleInputName1" placeholder="Giá khuyến mại của sản phẩm" />
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputName1">Số lượng <span style="color: red">*</span></label>
                                 <input type="text" value="{{$invoice->quantity}}"
                                        name="quantity" class="form-control" id="exampleInputName1" placeholder="Nhập số lượng nhập của sản phẩm" />

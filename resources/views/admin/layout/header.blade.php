@@ -17,10 +17,10 @@
                     <img src="admin_asset/images/person-icon.png" alt="profile"/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    @if(Auth::guard('users')->check())
+                    @if(Auth::guard('web')->check())
                         <a class="dropdown-item">
                             <i class="mdi mdi-account text-primary"></i>
-                            {{Auth::guard('users')->user()->name}}
+                            {{Auth::guard('web')->user()->name}}
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="admin/dangxuat">

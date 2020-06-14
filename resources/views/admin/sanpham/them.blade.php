@@ -70,42 +70,6 @@
                                 </div>
 {{--                                End multiple Image--}}
                                 <div class="form-group">
-                                    <label>Giá nhập của sản phẩm<span style="color: red">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-primary text-white">Giá</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="import_price" placeholder="..." aria-label="Amount (to the nearest dollar)">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Giá bán sản phẩm<span style="color: red">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-primary text-white">Giá</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="selling_price" placeholder="..." aria-label="Amount (to the nearest dollar)">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Giá khuyến mại sản phẩm<span style="color: red">*</span></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text bg-primary text-white">Giá</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="promoted_price" placeholder="..." aria-label="Amount (to the nearest dollar)">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="exampleInputPassword4">Nơi sản xuất<span style="color: red">*</span></label>
                                     <select  name="manu_id" aria-controls="order-listing" class="form-control">
                                         <option value="">-- Chọn nơi sản xuất --</option>

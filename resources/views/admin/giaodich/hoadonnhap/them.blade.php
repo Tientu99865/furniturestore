@@ -49,12 +49,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputName1">Giá nhập <span style="color: red">*</span></label>
-                                <input type="text" value=""
+                                <input type="number" value=""
                                        name="import_price" class="form-control" id="exampleInputName1" placeholder="Giá nhập của sản phẩm" />
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputName1">Giá bán <span style="color: red">*</span></label>
+                                <input type="number" value=""
+                                       name="selling_price" class="form-control" id="exampleInputName1" placeholder="Giá bán của sản phẩm" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Giá khuyến mại <span style="color: red">*</span></label>
+                                <input type="number" value=""
+                                       name="promoted_price" class="form-control" id="exampleInputName1" placeholder="Giá khuyến mại của sản phẩm" />
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputName1">Số lượng <span style="color: red">*</span></label>
-                                <input type="text" value=""
+                                <input type="number" value=""
                                        name="quantity" class="form-control" id="exampleInputName1" placeholder="Nhập số lượng nhập của sản phẩm" />
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm hoá đơn nhập</button>

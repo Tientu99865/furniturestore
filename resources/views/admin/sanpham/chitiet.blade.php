@@ -93,25 +93,13 @@
                                             Sản phẩm thuộc danh mục : <b>{{$product->categories->name}}</b>
                                         </p>
                                         <p class="card-description">
-                                            <?php
-                                                if (isset($import_invoice)){
-                                                    $count = count($import_invoice);
-                                                    if ($count > 0){
-                                                        $import_price = $import_invoice[$count-1]->import_price;
-                                                    }else{
-                                                        $import_price = $product->import_price;
-                                                    }
-                                                }else{
-                                                    $import_price = $product->import_price;
-                                                }
-                                            ?>
-                                            Giá nhập của sản phẩm : <b>{{number_format($import_price, 0, ',', '.')}}</b><b> VNĐ</b>
+                                            Giá nhập của sản phẩm : <b>{{number_format($import_invoice[0]->import_price, 0, ',', '.')}}</b><b> VNĐ</b>
                                         </p>
                                         <p class="card-description">
-                                            Giá bán : <b>{{number_format($product->selling_price, 0, ',', '.')}}</b><b> VNĐ</b>
+                                            Giá bán : <b>{{number_format($import_invoice[0]->selling_price, 0, ',', '.')}}</b><b> VNĐ</b>
                                         </p>
                                         <p class="card-description">
-                                            Giá khuyến mại : <b>{{number_format($product->promoted_price, 0, ',', '.')}}</b><b> VNĐ</b>
+                                            Giá khuyến mại : <b>{{number_format($import_invoice[0]->promoted_price, 0, ',', '.')}}</b><b> VNĐ</b>
                                         </p>
                                         <p class="card-description">
                                             <?php

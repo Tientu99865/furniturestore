@@ -32562,11 +32562,15 @@ button.disabled {
     justify-content: center;
 
 }
+.product-detail .shop-product .slide100-01 .list_images .slick-list .slick-track{
+    width: 100% !important;
+}
 .product-detail .shop-product .slide100-01 .list_images img{
     width: 100%;
 }
 .product-detail .shop-product .slide100-01 .list_images .list_images--image{
     margin: 0px 5px;
+    width: 70px !important;
 }
 
 .product-detail .shop-product .product-body {

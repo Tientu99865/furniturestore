@@ -24,9 +24,6 @@ class SanPhamController extends Controller
             [
                 'cat_id'=>'required',
                 'name'=>'required|min:2|max:100|unique:products,name',
-                'import_price'=>'required|numeric',
-                'promoted_price'=>'required|numeric',
-                'selling_price'=>'required|numeric',
                 'pro_content'=>'required',
                 'image'=>'required',
                 'images'=>'required',
@@ -38,12 +35,6 @@ class SanPhamController extends Controller
                 'name.min'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
                 'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
                 'name.unique'=>'Tên sản phẩm này đã tồn tại',
-                'import_price.required'=>'Bạn chưa nhập giá nhập của sản phẩm',
-                'import_price.numeric'=>'Giá nhập của sản phẩm phải là số ! Vui lòng nhập lại.',
-                'promoted_price.required'=>'Bạn chưa nhập giá khuyến mại của sản phẩm',
-                'promoted_price.numeric'=>'Giá khuyến mại của sản phẩm phải là số ! Vui lòng nhập lại.',
-                'selling_price.numeric'=>'Giá bán của sản phẩm phải là số ! Vui lòng nhập lại.',
-                'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
                 'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
                 'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
@@ -69,20 +60,7 @@ class SanPhamController extends Controller
             $product->image = $Hinh;
         }
 
-        //Gia san pham
-        if ($request->has('selling_price') || $request->has('promoted_price') || $request->has('import_price'))
-        {
-            $promoted_price = $request->promoted_price;
-            $selling_price = $request->selling_price;
-            $import_price = $request->import_price;
-            if ($promoted_price < 0 || $selling_price < 0 || $import_price < 0){
-                return redirect('admin/sanpham/them')->with('Loi','Giá nhập , giá bán sản phẩm và giá khuyến mại không thế nhỏ hơn 0');
-            }else{
-                $product->selling_price = $selling_price;
-                $product->promoted_price = $promoted_price;
-                $product->import_price = $import_price;
-            }
-        }
+
         $product->manu_id = $request->manu_id;
         $product->content = $request->pro_content;
         $product->save();
@@ -138,8 +116,6 @@ class SanPhamController extends Controller
             [
                 'cat_id'=>'required',
 //                'name'=>'required|min:2|max:100|unique:products,name',
-                'promoted_price'=>'required|numeric',
-                'selling_price'=>'required|numeric',
                 'pro_content'=>'required',
 //                'image'=>'required',
 //                'images'=>'required',
@@ -151,10 +127,6 @@ class SanPhamController extends Controller
 //                'name.min'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
 //                'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
 //                'name.unique'=>'Tên sản phẩm này đã tồn tại',
-                'promoted_price.required'=>'Bạn chưa nhập giá khuyến mại của sản phẩm',
-                'promoted_price.numeric'=>'Giá khuyến mại của sản phẩm phải là số ! Vui lòng nhập lại.',
-                'selling_price.numeric'=>'Giá bán của sản phẩm phải là số ! Vui lòng nhập lại.',
-                'selling_price.required'=>'Bạn chưa nhập giá bán sản phẩm',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
 //                'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
 //                'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
@@ -178,21 +150,7 @@ class SanPhamController extends Controller
             unlink('upload/sanpham/tieude/'.$product->image);//ham xoa file
             $product->image = $Hinh;
         }
-        if ($request->has('selling_price') || $request->has('promoted_price') || $request->has('import_price'))
-        {
-            $promoted_price = $request->promoted_price;
-            $selling_price = $request->selling_price;
-            $import_price = $request->import_price;
-            if ($promoted_price < 0 || $selling_price < 0 || $import_price < 0){
-                return redirect('admin/sanpham/them')->with('Loi','Giá nhập , giá bán sản phẩm và giá khuyến mại không thế nhỏ hơn 0');
-            }else{
-                $product->selling_price = $selling_price;
-                $product->promoted_price = $promoted_price;
-                $product->import_price = $import_price;
-            }
-        }
         $invoice = Import_invoice::all()->where('pro_id',$id)->last();
-        $product->import_price = $invoice->import_price;
         $product->manu_id = $request->manu_id;
         $product->content = $request->pro_content;
         $product->save();
@@ -228,7 +186,7 @@ class SanPhamController extends Controller
     }
 
     public function getChiTiet($id){
-        $import_invoice = Import_invoice::where('pro_id',$id)->get();
+        $import_invoice = Import_invoice::where('pro_id',$id)->latest()->get();
         $categories = Categories::all();
         $manufacture = Manufacture::all();
         $gallery = Gallery::where('id_product',$id)->get();

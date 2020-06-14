@@ -26,7 +26,7 @@ class UserController extends Controller
                 'password.max'=>'Mật khẩu không thể lớn hơn 32 ký tự'
             ]);
         $data = $request->only('email','password');
-        if (Auth::guard('users')->attempt($data)){
+        if (Auth::guard('web')->attempt($data)){
             return redirect('admin/trangchu');
         }
         else
@@ -63,7 +63,6 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->role_id = 3;
         $user->save();
 
         return redirect('admin/dangky')->with('ThongBao','Bạn đã đăng ký thành công');

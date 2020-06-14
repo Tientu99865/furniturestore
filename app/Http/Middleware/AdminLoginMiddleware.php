@@ -15,8 +15,8 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()){
-            $user = Auth::user();
+        if (Auth::guard('web')->check()){
+            $user = Auth::guard('web')->user();
             return $next($request);
 //            if ($user->role_id == null)
 //                return $next($request);

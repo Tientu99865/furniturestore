@@ -25,22 +25,28 @@
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
                                             #
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 120px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Tên người nhập
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 120px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Tên sản phẩm
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Giá nhập
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
-                                            Số lượng
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                            Giá bán
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                            Giá khuyến mại
+                                        </th>
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
+                                            SL
+                                        </th>
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Tổng tiền
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 150px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
                                             Ngày nhập
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;"><a href="admin/giaodich/hoadonnhap/them"><input class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button" type="button" title="Thêm hoá đơn nhập"></a></th>
@@ -59,17 +65,19 @@
                                         ?>
                                         <tr class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><?php echo $stt;?></td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 120px;">{{$invoice->users->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 120px;">{{$invoice->products->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{number_format($invoice->import_price, 0, ',', '.')}} VNĐ</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->users->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->products->name}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{number_format($invoice->import_price, 0, ',', '.')}} VNĐ</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{number_format($invoice->selling_price, 0, ',', '.')}} VNĐ</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{number_format($invoice->promoted_price, 0, ',', '.')}} VNĐ</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">{{$invoice->quantity}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
                                                 <?php
                                                     $total_price = $invoice->import_price*$invoice->quantity;
                                                 ?>
                                                 {{number_format($total_price, 0, ',', '.')}} VNĐ
                                             </td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$invoice->created_at}}</td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->created_at}}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
                                                 <a href="admin/giaodich/hoadonnhap/sua/{{$invoice->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Sửa"></a>
                                                 <a href="admin/giaodich/hoadonnhap/xoa/{{$invoice->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
