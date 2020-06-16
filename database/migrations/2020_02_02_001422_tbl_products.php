@@ -19,8 +19,8 @@ class TblProducts extends Migration
             $table->integer('cat_id')->unsigned();
             $table->foreign('cat_id')->references('id')->on('categories');
             $table->string('name',60);
-            $table->decimal('selling_price', 15, 2)->unsigned();
-            $table->decimal('promoted_price', 15, 2)->unsigned();
+            $table->decimal('selling_price', 15, 2)->unsigned()->nullable();
+            $table->decimal('promoted_price', 15, 2)->unsigned()->nullable();
             $table->string('image',200);
             $table->integer('view')->default(0);
             $table->timestamps();

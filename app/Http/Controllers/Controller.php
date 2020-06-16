@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Menus;
+use App\Categories;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,8 +15,8 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function __construct()
     {
-        $menus = Menus::all();
+        $categories = Categories::all();
 
-        view()->share('menus',$menus);
+        view()->share('categories',$categories);
     }
 }

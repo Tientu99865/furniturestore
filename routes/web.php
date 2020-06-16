@@ -45,19 +45,6 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
         Route::get('sua/{id}','DanhMucController@getSua');
         Route::post('sua/{id}','DanhMucController@postSua');
     });
-    //Menu
-    Route::group(['prefix'=>'menu'],function (){
-        Route::get('them','MenuController@getThem');
-        Route::post('them','MenuController@postThem');
-
-        Route::get('danhsach','MenuController@getDanhSach');
-
-        Route::get('xoa/{id}','MenuController@getXoa');
-
-        Route::get('sua/{id}','MenuController@getSua');
-        Route::post('sua/{id}','MenuController@postSua');
-    });
-
     //Slide
     Route::group(['prefix'=>'slide'],function (){
         Route::get('them','SlideController@getThem');
@@ -147,6 +134,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 
             Route::get('them','HoaDonNhapController@getThem');
             Route::post('them','HoaDonNhapController@postThem');
+
+            Route::get('themId/{id}','HoaDonNhapController@getThemId');
+            Route::post('themId/{id}','HoaDonNhapController@postThemId');
 
             Route::get('xoa/{id}','HoaDonNhapController@getXoa');
 

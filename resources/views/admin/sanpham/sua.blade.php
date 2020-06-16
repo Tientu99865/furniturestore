@@ -97,6 +97,29 @@
 
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName1">Cân nặng (Đơn vị: kg)<span style="color: red">*</span></label>
+                                <input type="text" class="form-control"
+                                       value="{{$product->weight}}"
+                                       name="weight" id="exampleInputName1" placeholder="...">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName1">Kích thước (Chiều dài x Chiều rộng x Chiều cao) (Đơn vị: cm) <span style="color: red">*</span></label>
+                                <div style="display: flex;justify-content: center">
+                                    <input type="text" class="form-control" style="width: 200px;"
+                                           value=""
+                                           name="length" id="exampleInputName1" placeholder="Chiều dài">
+                                    <input type="text" class="form-control" style="width: 200px;margin: 0 20px;"
+                                           value=""
+                                           name="width" id="exampleInputName1" placeholder="Chiều rộng">
+                                    <input type="text" class="form-control" style="width: 200px;"
+                                           value=""
+                                           name="height" id="exampleInputName1" placeholder="Chiều cao">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="exampleTextarea1">Thông tin sản phẩm<span style="color: red">*</span></label>
 

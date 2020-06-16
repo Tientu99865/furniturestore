@@ -25,6 +25,10 @@ class SanPhamController extends Controller
                 'cat_id'=>'required',
                 'name'=>'required|min:2|max:100|unique:products,name',
                 'pro_content'=>'required',
+                'weight'=>'required',
+                'length'=>'required',
+                'width'=>'required',
+                'height'=>'required',
                 'image'=>'required',
                 'images'=>'required',
                 'manu_id'=>'required'
@@ -35,6 +39,10 @@ class SanPhamController extends Controller
                 'name.min'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
                 'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
                 'name.unique'=>'Tên sản phẩm này đã tồn tại',
+                'weight.required'=>'Bạn chưa nhập cân nặng của sản phẩm',
+                'length.required'=>'Bạn chưa nhập chiều dài của sản phẩm',
+                'width.required'=>'Bạn chưa nhập chiều rộng của sản phẩm',
+                'height.required'=>'Bạn chưa nhập chiều cao của sản phẩm',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
                 'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
                 'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
@@ -48,7 +56,7 @@ class SanPhamController extends Controller
         if ($request->has('image')){
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
-            if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
+            if ($duoi != 'jpg' && $duoi != 'JPG' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
                 return redirect('admin/sanpham/them')->with('Loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg,gif');
             }
             $name = $file->getClientOriginalName(); // ham lay ten hinh ra
@@ -60,7 +68,8 @@ class SanPhamController extends Controller
             $product->image = $Hinh;
         }
 
-
+        $product->weight = $request->weight;
+        $product->dimensions = $request->length ." x " .$request->width ." x " .$request->height;
         $product->manu_id = $request->manu_id;
         $product->content = $request->pro_content;
         $product->save();
@@ -73,7 +82,7 @@ class SanPhamController extends Controller
             foreach ($request->images as $item){
                 if (isset($item)){
                     $duoi = $item->getClientOriginalExtension();
-                    if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
+                    if ($duoi != 'jpg' && $duoi != 'JPG' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
                         return redirect('admin/sanpham/them')->with('Loi','Bạn chỉ được chọn file ảnh có đuôi jpg,png,jpeg,gif');
                     }
                     $imgs_array[] = $item->getClientOriginalName();
@@ -85,7 +94,7 @@ class SanPhamController extends Controller
             $pro_imgs->save();
         }
 
-        return redirect('admin/sanpham/them')->with('ThongBao','Bạn đã thêm thành công');
+        return redirect('admin/giaodich/hoadonnhap/themId/'.$product_id)->with('ThongBao','Bạn đã thêm sản phẩm thành công! Vui lòng nhập hoá đơn nhập cho sản phẩm này.');
     }
 
     public function getDanhsach(){
@@ -117,6 +126,10 @@ class SanPhamController extends Controller
                 'cat_id'=>'required',
 //                'name'=>'required|min:2|max:100|unique:products,name',
                 'pro_content'=>'required',
+                'weight'=>'required',
+                'length'=>'required',
+                'width'=>'required',
+                'height'=>'required',
 //                'image'=>'required',
 //                'images'=>'required',
                 'manu_id'=>'required'
@@ -128,6 +141,10 @@ class SanPhamController extends Controller
 //                'name.max'=>'Tên sản phẩm phải có độ dài từ 2 đến 100 ký tự',
 //                'name.unique'=>'Tên sản phẩm này đã tồn tại',
                 'pro_content.required'=>'Bạn chưa nhập mô tả cho sản phẩm',
+                'weight.required'=>'Bạn chưa nhập cân nặng của sản phẩm',
+                'length.required'=>'Bạn chưa nhập chiều dài của sản phẩm',
+                'width.required'=>'Bạn chưa nhập chiều rộng của sản phẩm',
+                'height.required'=>'Bạn chưa nhập chiều cao của sản phẩm',
 //                'image.required'=>'Bạn chưa chọn ảnh tiêu đề sản phẩm',
 //                'images.required'=>'Bạn chưa chọn ảnh chi tiết cho sản phẩm',
                 'manu_id.required'=>'Bạn chưa chọn nơi sản xuất cho sản phẩm',
@@ -138,7 +155,7 @@ class SanPhamController extends Controller
         if ($request->has('image')){
             $file = $request->file('image');
             $duoi = $file->getClientOriginalExtension();
-            if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
+            if ($duoi != 'jpg' && $duoi != 'JPG' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif'){
                 return redirect('admin/sanpham/sua')->with('Loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg,gif');
             }
             $name = $file->getClientOriginalName(); // ham lay ten hinh ra
@@ -151,6 +168,8 @@ class SanPhamController extends Controller
             $product->image = $Hinh;
         }
         $invoice = Import_invoice::all()->where('pro_id',$id)->last();
+        $product->weight = $request->weight;
+        $product->dimensions = $request->length ." x " .$request->width ." x " .$request->height;
         $product->manu_id = $request->manu_id;
         $product->content = $request->pro_content;
         $product->save();
@@ -169,7 +188,7 @@ class SanPhamController extends Controller
             foreach ($request->images as $item) {
                 if (isset($item)) {
                     $duoi = $item->getClientOriginalExtension();
-                    if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif') {
+                    if ($duoi != 'jpg' && $duoi != 'JPG' &&  $duoi != 'png' && $duoi != 'jpeg' && $duoi != 'gif') {
                         return redirect('admin/sanpham/them')->with('Loi', 'Bạn chỉ được chọn file ảnh có đuôi jpg,png,jpeg,gif');
                     }
                     $imgs_array[] = $item->getClientOriginalName();

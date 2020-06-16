@@ -29,7 +29,7 @@
                     <nav class="header__navbar">
                         <ul class="navbar-menu">
                             <li><a href="/">Trang chủ</a></li>
-                            {{FurnitureStoreShowMenus::showmenus($menus)}}
+                            {{FurnitureStoreShowCategoriesMulti::showcategories($categories)}}
                             <li><a href="lienhe">Liên hệ</a></li>
                         </ul>
                     </nav>

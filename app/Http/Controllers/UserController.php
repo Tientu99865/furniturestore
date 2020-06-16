@@ -69,7 +69,7 @@ class UserController extends Controller
     }
 
     public function getDangXuatAdmin(){
-        Auth::guard('users')->logout();
+        Auth::guard('web')->logout();
 
         return redirect('admin/dangnhap');
     }

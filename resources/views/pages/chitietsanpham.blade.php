@@ -100,12 +100,12 @@
                                     <table class="product-additionnal">
                                         <tbody>
                                         <tr>
-                                            <th>Weight</th>
-                                            <td>3,1 kg</td>
+                                            <th>Cân nặng</th>
+                                            <td>{{$product->weight}} kg</td>
                                         </tr>
                                         <tr>
-                                            <th>Dimensions</th>
-                                            <td>60 x 60 x 60 cm</td>
+                                            <th>Kích thước (Chiều dài x Chiều rộng x Chiều cao)</th>
+                                            <td>{{$product->dimensions}} cm</td>
                                         </tr>
                                         </tbody>
                                     </table>

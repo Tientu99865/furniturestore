@@ -29,7 +29,7 @@ class Product_images
                 echo "
                 <div class='list_images--image'>
                     <img src='images/mark/mark_sub_pic.png'
-                         style='background-image: url(images/$array_imgs[$i]);background-size: cover;'
+                         style='background-image: url(upload/sanpham/chitiet/$array_imgs[$i]);background-size: cover;'
                          alt=''>
                 </div>
                 ";

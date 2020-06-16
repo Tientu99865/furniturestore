@@ -18,7 +18,7 @@ class TblGallery extends Migration
            $table->increments('id');
            $table->integer('id_product')->unsigned();
            $table->foreign('id_product')->references('id')->on('products');
-           $table->string('product_imgs',255);
+           $table->text('product_imgs');
         });
     }
 
