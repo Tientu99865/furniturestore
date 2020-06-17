@@ -150,6 +150,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
 //Front end page
 Route::get('/','PagesController@trangchu');
 
+Route::get('danhmuc/{id}','Frontend\CategoryController@view');
+
 Route::get('chi-tiet-san-pham/{id}','Frontend\ProductController@getProductDetail');
 
 Route::group(['prefix'=>'tai-khoan'],function (){
