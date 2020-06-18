@@ -21,7 +21,7 @@ class Show_products{
                                 <img src='images/mark/mark_product.png' style='background-image: url(upload/sanpham/tieude/$image);background-size: cover' alt='Chair'>
                             </a>
                             <div class='addcart'>
-                                <a href='#'>Add to cart</a>
+                                <a href='shopping/add/$id'>Thêm vào giỏ hàng</a>
                             </div>
                         </div>
                         <a href='chi-tiet-san-pham/$id' class='name'>$name</a>

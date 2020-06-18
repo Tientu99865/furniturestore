@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\FurnitureStoreServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
 
     ],
 
@@ -227,6 +228,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'FurnitureStoreMenu' => App\Helpers\FurnitureStore\Menu::class,
         'FurnitureStoreCategory' => App\Helpers\FurnitureStore\Category::class,
         'FurnitureStoreShowMenus' => App\Helpers\FurnitureStore\Showmenus::class,

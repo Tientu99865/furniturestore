@@ -15,6 +15,5 @@ class PagesController extends Controller
         $categories = Categories::all()->sortByDesc('id');
         $slides = Slides::all()->sortByDesc('id')->take(3);
         return view('pages/trangchu',['slides'=>$slides,'categories'=>$categories,'products'=>$products]);
-//        ,compact('menus')
     }
 }

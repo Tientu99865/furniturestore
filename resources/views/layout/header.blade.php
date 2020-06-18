@@ -47,43 +47,23 @@
                             <li class="header-shop-cart">
                                 <div class="shop-cart-button">
                                     <img src="images\icon\header-cart.png" alt="Cart">
-                                    <span class="amount">3</span>
+                                        <span class="amount">{{Cart::count()}}</span>
                                 </div>
                                 <div class="shop-cart">
                                     <ul class="shop-cart__list">
-                                        <li class="item">
-                                            <div class="item-image">
-                                                <img src="images\product_01.png" alt="Item 1">
-                                            </div>
-                                            <div class="item-detail">
-                                                <p class="name">Crackle Plates</p>
-                                                <p class="price">$22.00</p>
-                                                <p class="amount">x2</p>
-                                            </div>
-                                            <span class="remove"></span>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-image">
-                                                <img src="images\product_02.png" alt="Item 1">
-                                            </div>
-                                            <div class="item-detail">
-                                                <p class="name">Teako Teapot</p>
-                                                <p class="price">$21.00</p>
-                                                <p class="amount">x7</p>
-                                            </div>
-                                            <span class="remove"></span>
-                                        </li>
-                                        <li class="item">
-                                            <div class="item-image">
-                                                <img src="images\product_03.png" alt="Item 1">
-                                            </div>
-                                            <div class="item-detail">
-                                                <p class="name">Floor Lamp</p>
-                                                <p class="price">$36.00</p>
-                                                <p class="amount">x5</p>
-                                            </div>
-                                            <span class="remove"></span>
-                                        </li>
+                                        @foreach($productsCart as $productCart)
+                                            <li class="item">
+                                                <div class="item-image">
+                                                    <img src="upload/sanpham/tieude/{{$productCart->options->image}}" alt="{{$productCart->name}}">
+                                                </div>
+                                                <div class="item-detail">
+                                                    <p class="name">{{$productCart->name}}</p>
+                                                    <p class="price">{{number_format($productCart->price,0,',','.')}} VNĐ</p>
+                                                    <p class="amount">x{{$productCart->qty}}</p>
+                                                </div>
+                                                <span class="remove"></span>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                     <div class="checkout m-t-26">
                                         <p>Subtotal
@@ -92,13 +72,13 @@
                                         <p>Total
                                             <span class="total">$481.000</span>
                                         </p>
-                                        <a href="#">Checkout</a>
+                                        <a href="shopping/danh-sach">Giỏ hàng</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="header-bar">
                                 @if(Auth::guard('customers')->check())
-                                    <div class="bar-button" data-toggle="modal" >
+                                    <div class="bar-button" data-toggle="modal">
                                         <img src="images\icon\user-icon.png" alt="Bar">
                                     </div>
                                     <div class="navbar-dropdown-cus">
@@ -110,7 +90,7 @@
                                         </ul>
                                     </div>
                                 @else
-                                    <div class="bar-button" data-toggle="modal" >
+                                    <div class="bar-button" data-toggle="modal">
                                         <a href="tai-khoan/index"><img src="images\icon\user-icon.png" alt="Bar"></a>
                                     </div>
                                 @endif
