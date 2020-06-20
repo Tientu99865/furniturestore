@@ -7,7 +7,7 @@ class Permission{
 
     public static function permission($data){
        foreach ($data as $val){
-           echo "<option>$val->name</option>";
+           echo "<option value='$val->id'>$val->name</option>";
        }
     }
 }

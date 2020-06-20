@@ -51,26 +51,26 @@
                                 </div>
                                 <div class="shop-cart">
                                     <ul class="shop-cart__list">
+                                        <?php
+                                        $productsCart = \Cart::content();
+                                        ?>
                                         @foreach($productsCart as $productCart)
                                             <li class="item">
                                                 <div class="item-image">
-                                                    <img src="upload/sanpham/tieude/{{$productCart->options->image}}" alt="{{$productCart->name}}">
+                                                    <img src="images/mark/mark_product_cart.png" style="background-image: url(upload/sanpham/tieude/{{$productCart->options->image}});background-size: cover;" alt="{{$productCart->name}}">
                                                 </div>
                                                 <div class="item-detail">
                                                     <p class="name">{{$productCart->name}}</p>
                                                     <p class="price">{{number_format($productCart->price,0,',','.')}} VNĐ</p>
                                                     <p class="amount">x{{$productCart->qty}}</p>
                                                 </div>
-                                                <span class="remove"></span>
+                                                <a href="shopping/xoa/{{$productCart->rowId}}"><span class="remove"></span></a>
                                             </li>
                                         @endforeach
                                     </ul>
                                     <div class="checkout m-t-26">
-                                        <p>Subtotal
-                                            <span class="sub-total">$481.000</span>
-                                        </p>
-                                        <p>Total
-                                            <span class="total">$481.000</span>
+                                        <p>Tổng tiền
+                                            <span class="total">{{number_format(str_replace(',', '', \Cart::subtotal()))}} VNĐ</span>
                                         </p>
                                         <a href="shopping/danh-sach">Giỏ hàng</a>
                                     </div>

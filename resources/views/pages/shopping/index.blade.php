@@ -53,7 +53,7 @@
                                     {{number_format($product->qty * $product->price,0,',','.')}} VNĐ
                                 </td>
                                 <td>
-                                    <a href="">
+                                    <a href="shopping/xoa/{{$product->rowId}}">
                                         <img src="images\icon\close.png" alt="Close">
                                     </a>
                                 </td>

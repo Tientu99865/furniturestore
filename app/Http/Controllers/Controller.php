@@ -16,10 +16,8 @@ class Controller extends BaseController
     public function __construct()
     {
         $categories = Categories::all();
-        $productsCart = \Cart::content();
         view()->share([
-            'categories' => $categories,
-            'productsCart' => $productsCart,
+            'categories' => $categories
         ]);
     }
 }

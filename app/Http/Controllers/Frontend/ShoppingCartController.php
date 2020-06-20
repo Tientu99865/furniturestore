@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ShoppingCartController extends Controller
 {
+
     public function addProduct(Request $request,$id){
         $product = Products::select('name','selling_price','promoted_price','image')->find($id);
 
@@ -31,5 +32,10 @@ class ShoppingCartController extends Controller
     public function getListShoppingCart(){
         $products = \Cart::content();
         return view('pages.shopping.index',compact('products'));
+    }
+
+    public function getDeleteShoppingCart($id){
+       \Cart::remove($id);
+        return redirect()->back();
     }
 }

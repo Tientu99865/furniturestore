@@ -17,7 +17,7 @@ class ChucVuController extends Controller
     public function postThem(Request $request){
         $this->validate($request,
             [
-                'name'=>'required|min:2|max:100|unique:roles'
+                'name'=>'required|min:2|max:100|unique:roles',
             ],
             [
                 'name.required'=>'Bạn chưa nhập tên chức vụ',
@@ -25,9 +25,12 @@ class ChucVuController extends Controller
                 'name.max'=>'Tên chức vụ phải có độ dài từ 2 đến 100 ký tự',
                 'name.unique'=>'Tên chức vụ này đã tồn tại'
             ]);
-
         $role = Role::create(['name'=>$request->name]);
         $role->save();
+
+        $permission = $request->states;
+        $role->syncPermissions($permission);
+
 
         return redirect('admin/chucvu/them')->with('ThongBao','Bạn đã thêm thành công');
     }

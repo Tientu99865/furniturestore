@@ -35,15 +35,25 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
     Route::get('trangchu','TrangChuController@getQuanLy');
     //Categories
     Route::group(['prefix'=>'danhmuc'],function (){
-        Route::get('them','DanhMucController@getThem');
-        Route::post('them','DanhMucController@postThem');
+        Route::group(['middleware' => ['can:add categories']], function () {
+            Route::get('them','DanhMucController@getThem');
+        });
+        Route::group(['middleware' => ['can:add categories']], function () {
+            Route::post('them','DanhMucController@postThem');
+        });
 
-        Route::get('danhsach','DanhMucController@getDanhSach');
-
-        Route::get('xoa/{id}','DanhMucController@getXoa');
-
-        Route::get('sua/{id}','DanhMucController@getSua');
-        Route::post('sua/{id}','DanhMucController@postSua');
+        Route::group(['middleware' => ['can:view categories']], function () {
+            Route::get('danhsach','DanhMucController@getDanhSach');
+        });
+        Route::group(['middleware' => ['can:delete categories']], function () {
+            Route::get('xoa/{id}','DanhMucController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit categories']], function () {
+            Route::get('sua/{id}','DanhMucController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit categories']], function () {
+            Route::post('sua/{id}','DanhMucController@postSua');
+        });
     });
     //Slide
     Route::group(['prefix'=>'slide'],function (){
@@ -91,6 +101,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
         Route::get('danhsachadmin','QuanLyTaiKhoan@getDanhSachAdmin');
 
         Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
+
+        Route::get('themquyen/{id}','QuanLyTaiKhoan@viewAddRole');
+        Route::post('themquyen/{id}','QuanLyTaiKhoan@addRole');
 
         Route::get('xoa/{id}','QuanLyTaiKhoan@getXoa');
     });
@@ -157,6 +170,7 @@ Route::get('chi-tiet-san-pham/{id}','Frontend\ProductController@getProductDetail
 Route::prefix('shopping')->group(function (){
     Route::get('add/{id}','Frontend\ShoppingCartController@addProduct')->name('add.shopping.cart');
     Route::get('danh-sach','Frontend\ShoppingCartController@getListShoppingCart')->name('get.list.shopping.cart');
+    Route::get('xoa/{id}','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 });
 
 Route::group(['prefix'=>'tai-khoan'],function (){
