@@ -23,22 +23,18 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'view products']);
         Permission::create(['name' => 'edit products']);
         Permission::create(['name' => 'delete products']);
+        Permission::create(['name' => 'detail products']);
 //        User
-        Permission::create(['name' => 'add role to users']);
+        Permission::create(['name' => 'view roles for users']);
         Permission::create(['name' => 'delete users']);
-        Permission::create(['name' => 'add users']);
-        Permission::create(['name' => 'edit users']);
+        Permission::create(['name' => 'add roles for users']);
+        Permission::create(['name' => 'view customers']);
         Permission::create(['name' => 'view users']);
         //       categories
         Permission::create(['name' => 'delete categories']);
         Permission::create(['name' => 'add categories']);
         Permission::create(['name' => 'edit categories']);
         Permission::create(['name' => 'view categories']);
-        //       menus
-        Permission::create(['name' => 'delete menus']);
-        Permission::create(['name' => 'add menus']);
-        Permission::create(['name' => 'edit menus']);
-        Permission::create(['name' => 'view menus']);
         //  slides
         Permission::create(['name' => 'delete slides']);
         Permission::create(['name' => 'add slides']);
@@ -55,18 +51,28 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit comments']);
         Permission::create(['name' => 'view comments']);
         //  discount code
-        Permission::create(['name' => 'delete discount code']);
-        Permission::create(['name' => 'add discount code']);
-        Permission::create(['name' => 'edit discount code']);
-        Permission::create(['name' => 'view discount code']);
+        Permission::create(['name' => 'delete discount codes']);
+        Permission::create(['name' => 'add discount codes']);
+        Permission::create(['name' => 'edit discount codes']);
+        Permission::create(['name' => 'view discount codes']);
         //  manufacture
-        Permission::create(['name' => 'delete manufacture']);
-        Permission::create(['name' => 'add manufacture']);
-        Permission::create(['name' => 'edit manufacture']);
-        Permission::create(['name' => 'view manufacture']);
-
+        Permission::create(['name' => 'delete made in']);
+        Permission::create(['name' => 'add made in']);
+        Permission::create(['name' => 'edit made in']);
+        Permission::create(['name' => 'view made in']);
+        //contact
+        Permission::create(['name' => 'view contacts']);
+        //import invoices
+        Permission::create(['name' => 'view invoices']);
+        Permission::create(['name' => 'delete import invoices']);
+        Permission::create(['name' => 'add import invoices']);
+        Permission::create(['name' => 'edit import invoices']);
+        Permission::create(['name' => 'view import invoices']);
+        Permission::create(['name' => 'add import invoices for new product']);
         // or may be done by chaining
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
+        $user = \App\User::find(1);
+        $user->syncRoles($role);
     }
 }

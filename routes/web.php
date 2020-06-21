@@ -30,9 +30,11 @@ Route::post('admin/dangky','UserController@postDangKyAdmin');
 Route::get('admin/dangxuat','UserController@getDangXuatAdmin');
 //Route group admin
 
-Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
     //Trang chu
-    Route::get('trangchu','TrangChuController@getQuanLy');
+    Route::group(['middleware' => ['can:login']], function () {
+        Route::get('trangchu','TrangChuController@getQuanLy');
+    });
     //Categories
     Route::group(['prefix'=>'danhmuc'],function (){
         Route::group(['middleware' => ['can:add categories']], function () {
@@ -57,104 +59,181 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function (){
     });
     //Slide
     Route::group(['prefix'=>'slide'],function (){
-        Route::get('them','SlideController@getThem');
-        Route::post('them','SlideController@postThem');
+        Route::group(['middleware' => ['can:add slides']], function () {
+            Route::get('them','SlideController@getThem');
+        });
+        Route::group(['middleware' => ['can:add slides']], function () {
+            Route::post('them','SlideController@postThem');
+        });
 
-        Route::get('danhsach','SlideController@getDanhSach');
-
-        Route::get('xoa/{id}','SlideController@getXoa');
-
-        Route::get('sua/{id}','SlideController@getSua');
-        Route::post('sua/{id}','SlideController@postSua');
+        Route::group(['middleware' => ['can:view slides']], function () {
+            Route::get('danhsach','SlideController@getDanhSach');
+        });
+        Route::group(['middleware' => ['can:delete slides']], function () {
+            Route::get('xoa/{id}','SlideController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit slides']], function () {
+            Route::get('sua/{id}','SlideController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit slides']], function () {
+            Route::post('sua/{id}','SlideController@postSua');
+        });
     });
 
     //Product
     Route::group(['prefix'=>'sanpham'],function (){
-        Route::get('them','SanPhamController@getThem');
-        Route::post('them','SanPhamController@postThem');
+        Route::group(['middleware' => ['can:add products']], function () {
+            Route::get('them','SanPhamController@getThem');
+        });
+        Route::group(['middleware' => ['can:add products']], function () {
+            Route::post('them','SanPhamController@postThem');
+        });
 
-        Route::get('danhsach','SanPhamController@getDanhSach');
-
-        Route::get('xoa/{id}','SanPhamController@getXoa');
-
-        Route::get('sua/{id}','SanPhamController@getSua');
-        Route::post('sua/{id}','SanPhamController@postSua');
-
-        Route::get('chitiet/{id}','SanPhamController@getChiTiet');
+        Route::group(['middleware' => ['can:view products']], function () {
+            Route::get('danhsach','SanPhamController@getDanhSach');
+        });
+        Route::group(['middleware' => ['can:delete products']], function () {
+            Route::get('xoa/{id}','SanPhamController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit products']], function () {
+            Route::get('sua/{id}','SanPhamController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit products']], function () {
+            Route::post('sua/{id}','SanPhamController@postSua');
+        });
+        Route::group(['middleware' => ['can:detail products']], function () {
+            Route::get('chitiet/{id}','SanPhamController@getChiTiet');
+        });
     });
 
     //Noi san xuat
     Route::group(['prefix'=>'noisanxuat'],function (){
-        Route::get('them','NoiSanXuatController@getThem');
-        Route::post('them','NoiSanXuatController@postThem');
+        Route::group(['middleware' => ['can:add made in']], function () {
+            Route::get('them','NoiSanXuatController@getThem');
+        });
+        Route::group(['middleware' => ['can:add made in']], function () {
+            Route::post('them','NoiSanXuatController@postThem');
+        });
 
-        Route::get('danhsach','NoiSanXuatController@getDanhSach');
-
-        Route::get('xoa/{id}','NoiSanXuatController@getXoa');
-
-        Route::get('sua/{id}','NoiSanXuatController@getSua');
-        Route::post('sua/{id}','NoiSanXuatController@postSua');
+        Route::group(['middleware' => ['can:view made in']], function () {
+            Route::get('danhsach','NoiSanXuatController@getDanhSach');
+        });
+        Route::group(['middleware' => ['can:delete made in']], function () {
+            Route::get('xoa/{id}','NoiSanXuatController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit made in']], function () {
+            Route::get('sua/{id}','NoiSanXuatController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit made in']], function () {
+            Route::post('sua/{id}','NoiSanXuatController@postSua');
+        });
     });
 
     //User and admin
     Route::group(['prefix'=>'users'],function (){
-        Route::get('danhsachadmin','QuanLyTaiKhoan@getDanhSachAdmin');
+        Route::group(['middleware' => ['can:view users']], function () {
+            Route::get('danhsachadmin','QuanLyTaiKhoan@getDanhSachAdmin');
+        });
+        Route::group(['middleware' => ['can:view customers']], function () {
+            Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
+        });
 
-        Route::get('danhsachnguoidung','QuanLyTaiKhoan@getDanhSachNguoiDung');
-
-        Route::get('themquyen/{id}','QuanLyTaiKhoan@viewAddRole');
-        Route::post('themquyen/{id}','QuanLyTaiKhoan@addRole');
-
-        Route::get('xoa/{id}','QuanLyTaiKhoan@getXoa');
+        Route::group(['middleware' => ['can:view roles for users']], function () {
+            Route::get('themchucvu/{id}','QuanLyTaiKhoan@viewAddRole');
+        });
+        Route::group(['middleware' => ['can:add roles for users']], function () {
+            Route::post('themchucvu/{id}','QuanLyTaiKhoan@addRole');
+        });
+        Route::group(['middleware' => ['can:delete users']], function () {
+            Route::get('xoa/{id}','QuanLyTaiKhoan@getXoa');
+        });
     });
 
     //Contact
     Route::group(['prefix'=>'lienhe'],function (){
-        Route::get('index','LienHeController@getLienHe');
+        Route::group(['middleware' => ['can:view contacts']], function () {
+            Route::get('index','LienHeController@getLienHe');
+        });
 
     });
 
     //Discount
     Route::group(['prefix'=>'magiamgia'],function (){
-        Route::get('them','MaGiamGiaController@getThem');
-        Route::post('them','MaGiamGiaController@postThem');
 
-        Route::get('danhsach','MaGiamGiaController@getDanhSach');
+        Route::group(['middleware' => ['can:add discount codes']], function () {
+            Route::get('them','MaGiamGiaController@getThem');
+        });
+        Route::group(['middleware' => ['can:add discount codes']], function () {
+            Route::post('them','MaGiamGiaController@postThem');
+        });
 
-        Route::get('xoa/{id}','MaGiamGiaController@getXoa');
-
-        Route::get('sua/{id}','MaGiamGiaController@getSua');
-        Route::post('sua/{id}','MaGiamGiaController@postSua');
+        Route::group(['middleware' => ['can:view discount codes']], function () {
+            Route::get('danhsach','MaGiamGiaController@getDanhSach');
+        });
+        Route::group(['middleware' => ['can:delete discount codes']], function () {
+            Route::get('xoa/{id}','MaGiamGiaController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit discount codes']], function () {
+            Route::get('sua/{id}','MaGiamGiaController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit discount codes']], function () {
+            Route::post('sua/{id}','MaGiamGiaController@postSua');
+        });
     });
 
     //Roles
     Route::group(['prefix'=>'chucvu'],function (){
-        Route::get('them','ChucVuController@getThem');
-        Route::post('them','ChucVuController@postThem');
 
-        Route::get('danhsach','ChucVuController@getDanhsach');
+        Route::group(['middleware' => ['can:add roles']], function () {
+            Route::get('them','ChucVuController@getThem');
+        });
+        Route::group(['middleware' => ['can:add roles']], function () {
+            Route::post('them','ChucVuController@postThem');
+        });
 
-        Route::get('xoa/{id}','ChucVuController@getXoa');
-
-        Route::get('sua/{id}','ChucVuController@getSua');
-        Route::post('sua/{id}','ChucVuController@postSua');
+        Route::group(['middleware' => ['can:view roles']], function () {
+            Route::get('danhsach','ChucVuController@getDanhsach');
+        });
+        Route::group(['middleware' => ['can:delete roles']], function () {
+            Route::get('xoa/{id}','ChucVuController@getXoa');
+        });
+        Route::group(['middleware' => ['can:edit roles']], function () {
+            Route::get('sua/{id}','ChucVuController@getSua');
+        });
+        Route::group(['middleware' => ['can:edit roles']], function () {
+            Route::post('sua/{id}','ChucVuController@postSua');
+        });
     });
 
     //Invoice
     Route::group(['prefix'=>'giaodich'],function (){
         Route::group(['prefix'=>'hoadonnhap'],function(){
-           Route::get('danhsach','HoaDonNhapController@getDanhsach');
 
-            Route::get('them','HoaDonNhapController@getThem');
-            Route::post('them','HoaDonNhapController@postThem');
+            Route::group(['middleware' => ['can:add import invoices']], function () {
+                Route::get('them','HoaDonNhapController@getThem');
+            });
+            Route::group(['middleware' => ['can:add import invoices']], function () {
+                Route::post('them','HoaDonNhapController@postThem');
+            });
+            Route::group(['middleware' => ['can:add import invoices for new product']], function () {
+                Route::get('themId/{id}','HoaDonNhapController@getThemId');
+            });
+            Route::group(['middleware' => ['can:add import invoices for new product']], function () {
+                Route::post('themId/{id}','HoaDonNhapController@postThemId');
+            });
 
-            Route::get('themId/{id}','HoaDonNhapController@getThemId');
-            Route::post('themId/{id}','HoaDonNhapController@postThemId');
-
-            Route::get('xoa/{id}','HoaDonNhapController@getXoa');
-
-            Route::get('sua/{id}','HoaDonNhapController@getSua');
-            Route::post('sua/{id}','HoaDonNhapController@postSua');
+            Route::group(['middleware' => ['can:view import invoices']], function () {
+                Route::get('danhsach','HoaDonNhapController@getDanhsach');
+            });
+            Route::group(['middleware' => ['can:delete import invoices']], function () {
+                Route::get('xoa/{id}','HoaDonNhapController@getXoa');
+            });
+            Route::group(['middleware' => ['can:edit import invoices']], function () {
+                Route::get('sua/{id}','HoaDonNhapController@getSua');
+            });
+            Route::group(['middleware' => ['can:edit import invoices']], function () {
+                Route::post('sua/{id}','HoaDonNhapController@postSua');
+            });
         });
     });
 

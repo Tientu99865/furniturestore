@@ -72,9 +72,9 @@
                                             </td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;">
-                                                <a href="admin/users/themquyen/{{$u->id}}"><input
+                                                <a href="admin/users/themchucvu/{{$u->id}}"><input
                                                         class="jsgrid-button jsgrid-update-button" type="button"
-                                                        title="Thêm quyền"></a>
+                                                        title="Thêm chức vụ"></a>
                                                 <a href="admin/users/xoa/{{$u->id}}"><input
                                                         class="jsgrid-button jsgrid-delete-button" type="button"
                                                         title="Xóa"></a>

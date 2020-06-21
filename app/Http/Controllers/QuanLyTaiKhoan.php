@@ -37,7 +37,7 @@ class QuanLyTaiKhoan extends Controller
             ]);
         $user = User::find($id);
         $roles = $request->roles;
-        $user->assignRole($roles);
+        $user->syncRoles($roles);
 
         return redirect('admin/users/danhsachadmin')->with('ThongBao','Bạn đã thêm chức vụ cho tài khoản thành công!');
     }
