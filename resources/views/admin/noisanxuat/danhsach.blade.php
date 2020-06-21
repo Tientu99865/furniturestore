@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Danh sách nơi sản xuất
+@endsection
 @section('content')
     <div class="content-wrapper">
         @if(session('ThongBao'))

@@ -18,6 +18,8 @@ class PermissionSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 //        Login
         Permission::create(['name' => 'login']);
+        //Index
+        Permission::create(['name' => 'index']);
 //        Product
         Permission::create(['name' => 'add products']);
         Permission::create(['name' => 'view products']);
@@ -70,7 +72,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'view import invoices']);
         Permission::create(['name' => 'add import invoices for new product']);
         // or may be done by chaining
-        $role = Role::create(['name' => 'super-admin']);
+        $role = Role::create(['name' => 'Super Admin']);
         $role->givePermissionTo(Permission::all());
         $user = \App\User::find(1);
         $user->syncRoles($role);

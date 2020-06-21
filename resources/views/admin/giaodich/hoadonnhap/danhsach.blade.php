@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Danh sách hoá đơn nhập
+@endsection
 @section('content')
     <div class="content-wrapper">
         @if(session('ThongBao'))

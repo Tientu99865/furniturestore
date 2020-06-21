@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Liên hệ
+@endsection
 @section('content')
     <div class="content-wrapper">
         <div class="email-wrapper wrapper">

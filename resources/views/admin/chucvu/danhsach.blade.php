@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Danh sách chức vụ
+@endsection
 @section('content')
     <div class="content-wrapper">
         @if(session('ThongBao'))
@@ -24,15 +27,15 @@
                                     <tbody>
                                     <tr class="jsgrid-header-row">
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
-                                            style="width: 50px;">
+                                            style="width: 10px;">
                                             #
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
-                                            style="width: 100px;">
+                                            style="width: 50px;">
                                             Tên chức vụ
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
-                                            style="width: 100px;">
+                                            style="width: 150px;">
                                             Quyền
                                         </th>
                                         <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
@@ -55,16 +58,22 @@
                                         ?>
                                         <tr class="jsgrid-row">
                                             <td class="jsgrid-cell jsgrid-align-center"
-                                                style="width: 50px;"><?php echo $stt;?></td>
+                                                style="width: 10px;"><?php echo $stt;?></td>
                                             <td class="jsgrid-cell jsgrid-align-center"
-                                                style="width: 100px;"><span class="btn btn-primary">{{$role->name}}</span></td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                                style="width: 50px;"><span
+                                                    class="btn btn-primary">{{$role->name}}</span></td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">
                                                 @if($role->getPermissionNames()->isEmpty())
                                                     <span class="btn btn-danger">Chưa có quyền</span>
                                                 @else
-                                                    @foreach($role->getPermissionNames() as $permission)
-                                                        <span>{{$permission}} -- </span>
-                                                    @endforeach
+                                                    @if(count($role->getPermissionNames()) == DB::table('permissions')->count())
+                                                        <span class="btn btn-success">Tất cả các quyền</span>
+                                                    @else
+                                                        @foreach($role->getPermissionNames() as $permission)
+                                                            <span
+                                                                class="btn btn-outline-primary btn-fw">{{$permission}}</span>
+                                                        @endforeach
+                                                    @endif
                                                 @endif
                                             </td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"

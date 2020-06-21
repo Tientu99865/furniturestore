@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Thêm chức vụ cho tài khoản
+@endsection
 @section('content')
     <div class="content-wrapper">
         @if(count($errors) > 0)

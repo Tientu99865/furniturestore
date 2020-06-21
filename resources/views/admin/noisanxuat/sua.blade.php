@@ -1,4 +1,7 @@
 @extends('admin/layout/index')
+@section('title')
+    Sửa nơi sản xuất
+@endsection
 @section('content')
     <div class="content-wrapper">
         @if(count($errors) > 0)
