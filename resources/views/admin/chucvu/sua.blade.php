@@ -23,24 +23,65 @@
             </div>
         @endif
 
-        <div class="row grid-margin">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Thêm chức vụ : {{$role->name}}</h4>
-                        <form class="forms-sample" method="post" action="admin/chucvu/sua/{{$role->id}}">
+        <form class="forms-sample" method="post" action="admin/chucvu/sua/{{$role->id}}">
+            <div class="row grid-margin">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;font-size: 27px">Sửa chức vụ : {{$role->name}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
                                 <label for="exampleInputName1">Tên chức vụ <span style="color: red">*</span></label>
                                 <input type="text" value="{{$role->name}}"
-                                       name="name" class="form-control" id="exampleInputName1" placeholder="Tên chức vụ" />
+                                       name="name" class="form-control" id="exampleInputName1"
+                                       placeholder="Tên chức vụ"/>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm chức vụ</button>
-                        </form>
+                            <button type="submit" name="submit" class="btn btn-primary mr-2">Sửa chức vụ</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputName1">Chọn quyền cho chức vụ<span
+                                        style="color: red">*</span></label><br>
+                                <select class="js-example-basic-multiple" style="width: 100%;" name="states[]"
+                                        multiple="multiple">
+                                    @foreach($permissions as $permission)
+                                        <option
+                                            @foreach($role->getPermissionNames() as $permissionRole)
+                                            @if($permissionRole == $permission->name)
+                                            {{'selected'}}
+                                            @endif
+                                            @endforeach
+                                            value="{{$permission->id}}">{{$permission->name}}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+        </form>
 
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $(".js-example-basic-multiple").select2({
+                placeholder: "--",
+                allowClear: true,
+            });
+        });
+    </script>
 @endsection

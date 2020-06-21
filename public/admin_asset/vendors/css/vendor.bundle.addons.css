@@ -5005,7 +5005,7 @@ div.tagsinput div {
     margin-right: -5px
 }
 
-/*! X-editable - v1.5.1 
+/*! X-editable - v1.5.1
 * In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
 * http://github.com/vitalets/x-editable
 * Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
@@ -5024,8 +5024,8 @@ div.tagsinput div {
     /* overwriting bootstrap line-height. See #133 */
 }
 
-/* 
-  BS3 width:1005 for inputs breaks editable form in popup 
+/*
+  BS3 width:1005 for inputs breaks editable form in popup
   See: https://github.com/vitalets/x-editable/issues/393
 */
 
@@ -5971,7 +5971,9 @@ a.editable-click.editable-disabled:hover {
     background-color: white;
     border: 1px solid #aaa;
     border-radius: 4px;
-    cursor: text
+    cursor: text;
+    height: auto;
+    overflow: hidden;
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {

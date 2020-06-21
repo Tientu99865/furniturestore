@@ -21,19 +21,27 @@
                         <div id="js-grid" class="jsgrid" style="position: relative; height: 500px; width: 100%;">
                             <div class="jsgrid-grid-header jsgrid-header-scrollbar">
                                 <table class="jsgrid-table">
-                                    <tbody><tr class="jsgrid-header-row">
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 50px;">
+                                    <tbody>
+                                    <tr class="jsgrid-header-row">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                            style="width: 50px;">
                                             #
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                            style="width: 100px;">
                                             Tên chức vụ
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable" style="width: 100px;">
+                                        <th class="jsgrid-header-cell jsgrid-align-center jsgrid-header-sortable"
+                                            style="width: 100px;">
                                             Quyền
                                         </th>
-                                        <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;"><a href="admin/chucvu/them"><input class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button" type="button" title="Thêm chức vụ"></a></th>
+                                        <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center"
+                                            style="width: 50px;"><a href="admin/chucvu/them"><input
+                                                    class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button"
+                                                    type="button" title="Thêm chức vụ"></a></th>
                                     </tr>
-                                    </tbody></table>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="jsgrid-grid-body" style="height: 307.625px;">
                                 <table class="jsgrid-table">
@@ -43,23 +51,37 @@
                                     ?>
                                     @foreach($roles as $role)
                                         <?php
-                                        $stt+=1;
+                                        $stt += 1;
                                         ?>
                                         <tr class="jsgrid-row">
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><?php echo $stt;?></td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$role->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$role->name}}</td>
-                                            <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                <a href="admin/chucvu/them-quyen/{{$role->id}}"><input class="jsgrid-button jsgrid-insert-button" type="button" title="Thêm hoặc sửa quyền"></a>
-                                                <a href="admin/chucvu/sua/{{$role->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Sửa"></a>
-                                                <a href="admin/chucvu/xoa/{{$role->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
+                                            <td class="jsgrid-cell jsgrid-align-center"
+                                                style="width: 50px;"><?php echo $stt;?></td>
+                                            <td class="jsgrid-cell jsgrid-align-center"
+                                                style="width: 100px;"><span class="btn btn-primary">{{$role->name}}</span></td>
+                                            <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
+                                                @if($role->getPermissionNames()->isEmpty())
+                                                    <span class="btn btn-danger">Chưa có quyền</span>
+                                                @else
+                                                    @foreach($role->getPermissionNames() as $permission)
+                                                        <span>{{$permission}} -- </span>
+                                                    @endforeach
+                                                @endif
+                                            </td>
+                                            <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
+                                                style="width: 50px;">
+                                                <a href="admin/chucvu/sua/{{$role->id}}"><input
+                                                        class="jsgrid-button jsgrid-edit-button" type="button"
+                                                        title="Sửa"></a>
+                                                <a href="admin/chucvu/xoa/{{$role->id}}"><input
+                                                        class="jsgrid-button jsgrid-delete-button" type="button"
+                                                        title="Xóa"></a>
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="jsgrid-pager-container" >
+                            <div class="jsgrid-pager-container">
                                 <ul class="pagination" style="margin-top: 50px;">
                                     {!! $roles->links() !!}
                                 </ul>

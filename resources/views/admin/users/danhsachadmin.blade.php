@@ -66,9 +66,16 @@
                                             <td class="jsgrid-cell jsgrid-align-center"
                                                 style="width: 150px;">{{$u->email}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
-                                                @foreach($u->getRoleNames() as $userRole)
-                                                    <span class="btn btn-primary" style="margin-bottom: 5px;">{{$userRole}}</span>
-                                                @endforeach
+                                                @if($u->getRoleNames()->isEmpty())
+                                                    <span class="btn btn-danger">Chưa có chức vụ</span>
+                                                @else
+
+                                                    @foreach($u->getRoleNames() as $userRole)
+                                                        <span class="btn btn-primary"
+                                                              style="margin-bottom: 5px;">{{$userRole}}</span>
+                                                    @endforeach
+                                                @endif
+
                                             </td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                 style="width: 50px;">
