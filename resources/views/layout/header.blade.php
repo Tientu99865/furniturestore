@@ -47,33 +47,44 @@
                             <li class="header-shop-cart">
                                 <div class="shop-cart-button">
                                     <img src="images\icon\header-cart.png" alt="Cart">
-                                        <span class="amount">{{Cart::count()}}</span>
+                                    <span class="amount">{{Cart::count()}}</span>
                                 </div>
                                 <div class="shop-cart">
                                     <ul class="shop-cart__list">
-                                        <?php
-                                        $productsCart = \Cart::content();
-                                        ?>
-                                        @foreach($productsCart as $productCart)
-                                            <li class="item">
-                                                <div class="item-image">
-                                                    <img src="images/mark/mark_product_cart.png" style="background-image: url(upload/sanpham/tieude/{{$productCart->options->image}});background-size: cover;" alt="{{$productCart->name}}">
-                                                </div>
-                                                <div class="item-detail">
-                                                    <p class="name">{{$productCart->name}}</p>
-                                                    <p class="price">{{number_format($productCart->price,0,',','.')}} VNĐ</p>
-                                                    <p class="amount">x{{$productCart->qty}}</p>
-                                                </div>
-                                                <a href="shopping/xoa/{{$productCart->rowId}}"><span class="remove"></span></a>
-                                            </li>
-                                        @endforeach
+                                        @if(Cart::count() == 0)
+                                            Hiện tại chưa có sản phẩm nào trong giỏ hàng của bạn!
+                                        @else
+                                            <?php
+                                            $productsCart = \Cart::content();
+                                            ?>
+                                            @foreach($productsCart as $productCart)
+                                                <li class="item">
+                                                    <div class="item-image">
+                                                        <img src="images/mark/mark_product_cart.png"
+                                                             style="background-image: url(upload/sanpham/tieude/{{$productCart->options->image}});background-size: cover;"
+                                                             alt="{{$productCart->name}}">
+                                                    </div>
+                                                    <div class="item-detail">
+                                                        <p class="name">{{$productCart->name}}</p>
+                                                        <p class="price">{{number_format($productCart->price,0,',','.')}}
+                                                            VNĐ</p>
+                                                        <p class="amount">x{{$productCart->qty}}</p>
+                                                    </div>
+                                                    <a href="shopping/xoa/{{$productCart->rowId}}"><span
+                                                            class="remove"></span></a>
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
-                                    <div class="checkout m-t-26">
-                                        <p>Tổng tiền
-                                            <span class="total">{{number_format(str_replace(',', '', \Cart::subtotal()))}} VNĐ</span>
-                                        </p>
-                                        <a href="shopping/danh-sach">Giỏ hàng</a>
-                                    </div>
+                                    @if(Cart::count() == 0)
+                                    @else
+                                        <div class="checkout m-t-26">
+                                            <p>Tổng tiền
+                                                <span class="total">{{number_format(str_replace(',', '', \Cart::subtotal()))}} VNĐ</span>
+                                            </p>
+                                            <a href="shopping/danh-sach">Giỏ hàng</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </li>
                             <li class="header-bar">
