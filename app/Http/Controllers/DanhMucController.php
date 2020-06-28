@@ -31,7 +31,6 @@ class DanhMucController extends Controller
         {
             $categorie->parent_id = "";
         }
-        dd($this->middleware('add categories'));
         $categorie->save();
 
         return redirect('admin/danhmuc/them')->with('ThongBao','Bạn đã thêm thành công');

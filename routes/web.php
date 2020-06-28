@@ -244,12 +244,15 @@ Route::get('/','PagesController@trangchu');
 
 Route::get('danhmuc/{id}','Frontend\CategoryController@view');
 
+Route::get('lienhe','Frontend\ContactController@getView');
+
 Route::get('chi-tiet-san-pham/{id}','Frontend\ProductController@getProductDetail');
 
 Route::prefix('shopping')->group(function (){
-    Route::get('add/{id}','Frontend\ShoppingCartController@addProduct')->name('add.shopping.cart');
+    Route::post('them/{id}','Frontend\ShoppingCartController@addProduct')->name('add.shopping.cart');
     Route::get('danh-sach','Frontend\ShoppingCartController@getListShoppingCart')->name('get.list.shopping.cart');
     Route::get('xoa/{id}','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
+//    Route::get('cap-nhat','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 });
 
 Route::group(['prefix'=>'tai-khoan'],function (){

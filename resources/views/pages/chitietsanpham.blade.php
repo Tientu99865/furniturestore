@@ -1,8 +1,4 @@
 @extends('layout/index')
-@section('head')
-    <link rel="stylesheet" href="vendor\nouislider\nouislider.min.css">
-    <link rel="stylesheet" href="vendor\slide100\slide100.css">
-@endsection
 @section('content')
     <section>
         <div class="pageintro">
@@ -11,13 +7,6 @@
             </div>
             <div class="pageintro-body">
                 <h1 class="pageintro-title">{{$product->name}}</h1>
-                {{--                <nav class="pageintro-breadcumb">--}}
-                {{--                    <ul>--}}
-                {{--                        <li>--}}
-                {{--                            <a href="#">Home</a>--}}
-                {{--                        </li>--}}
-                {{--                    </ul>--}}
-                {{--                </nav>--}}
             </div>
         </div>
     </section>
@@ -37,47 +26,47 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-6 product-body">
-                                    <h3 class="name">{{$product->name}}</h3>
-                                    <p class="price">
-                                        @if(count($import_invoice)>0)
-                                            {{number_format($import_invoice[0]->selling_price, 0, ',', '.')}}
-                                        @endif
-                                        <b> VNĐ</b></p>
-                                    <p class="product-color">
-                                        <span class="color beige"></span>
-                                        <span class="color black"></span>
-                                    </p>
-                                    <div class="product-button">
-                                        <div class="quantity">
+                                    <form action="shopping/them/{{$product->id}}" method="post">
+                                        @csrf
+                                        <h3 class="name">{{$product->name}}</h3>
+                                        <p class="price">
+                                            @if(count($import_invoice)>0)
+                                                {{number_format($import_invoice[0]->selling_price, 0, ',', '.')}}
+                                            @endif
+                                            <b> VNĐ</b></p>
+                                        <div class="product-button">
+                                            <div class="quantity">
                                         <span class="sub">
                                             <i class="fa fa-angle-down"></i>
                                         </span>
-                                            <input type="number" value="1">
-                                            <span class="add">
+                                                <input type="number" name="qty" value="1">
+                                                <span class="add">
                                             <i class="fa fa-angle-up"></i>
                                         </span>
+                                            </div>
+                                            <input type="submit" class="add-to-cart" value="Thêm vào giỏ
+                                                hàng">
                                         </div>
-                                        <a href="#" class="add-to-cart">Thêm vào giỏ hàng</a>
+                                        <div class="product-available">
+                                            <span>Kho hàng :</span>
+                                            <?php
+                                            if ($product['quantity'] == 0) {
+                                                echo "<span style='color: red'>Hết Hàng</span>";
+                                            } else {
+                                                echo "<span style='color: #e4c7a2'>Còn Hàng</span>";
+                                            }
+                                            ?>
+                                        </div>
+                                        <div class="product-categories">
+                                            <span class="text-black">Danh mục:</span>
+                                            <a href="#" style="color: #e4c7a2;">{{$product->categories->name}}</a>
+                                        </div>
+                                        <div class="product-categories">
+                                            <span class="text-black">Nơi sản xuất:</span>
+                                            <span style="color: #e4c7a2;">{{$product->manufacture->name}}</span>
+                                        </div>
+                                    </form>
                                     </div>
-                                    <div class="product-available">
-                                        <span>Kho hàng :</span>
-                                        <?php
-                                        if ($product['quantity'] == 0) {
-                                            echo "<span style='color: red'>Hết Hàng</span>";
-                                        } else {
-                                            echo "<span style='color: #e4c7a2'>Còn Hàng</span>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="product-categories">
-                                        <span class="text-black">Danh mục:</span>
-                                        <a href="#" style="color: #e4c7a2;">{{$product->categories->name}}</a>
-                                    </div>
-                                    <div class="product-categories">
-                                        <span class="text-black">Nơi sản xuất:</span>
-                                        <span style="color: #e4c7a2;">{{$product->manufacture->name}}</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="au-tabs">
@@ -254,12 +243,6 @@
     <script src="vendor\slide100\slide100.js"></script>
     <script src="vendor\lightcase\lightcase.js"></script>
     <script src="vendor\owlcarousel\dist\owl.carousel.min.js"></script>
-    <!-- Customize -->
-    <script src="js\config-slick.min.js"></script>
-    <script src="js\config-owl-carousel.min.js"></script>
-    <script src="js\theme.min.js"></script>
-    <script src="js\config-lightcase.min.js"></script>
-    <script src="js\config-slide100.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.main_pic').slick({

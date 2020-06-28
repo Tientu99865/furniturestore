@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="shop-list-body shop-grid">
-                            @foreach($category->products as $product)
+                            @foreach($products as $product)
                                 <div class="shop-product">
                                     <div class="product-image">
                                         <a href="chi-tiet-san-pham/{{$product->id}}">
@@ -54,38 +54,39 @@
                                 </div>
                             @endforeach
                         </div>
-                        <nav class="border-bottom-1 border-top-1">
-                            <ul class="au-panigation">
-                                <li class="panigation-item">
-                                    <a href="#" class="panigation-link">
-                                        <i class="fa fa-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="panigation-item">
-                                    <span>Pages:</span>
-                                </li>
-                                <li class="panigation-item active">
-                                    <a href="#" class="panigation-link">01</a>
-                                </li>
-                                <li class="panigation-item">
-                                    <a href="#" class="panigation-link">02</a>
-                                </li>
-                                <li class="panigation-item">
-                                    <span>...</span>
-                                </li>
-                                <li class="panigation-item">
-                                    <a href="#" class="panigation-link">06</a>
-                                </li>
-                                <li class="panigation-item">
-                                    <a href="#" class="panigation-link">07</a>
-                                </li>
-                                <li class="panigation-item">
-                                    <a href="#" class="panigation-link">
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        {{ $products->links() }}
+{{--                        <nav class="border-bottom-1 border-top-1">--}}
+{{--                            <ul class="au-panigation">--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <a href="#" class="panigation-link">--}}
+{{--                                        <i class="fa fa-angle-left"></i>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <span>Pages:</span>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item active">--}}
+{{--                                    <a href="#" class="panigation-link">01</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <a href="#" class="panigation-link">02</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <span>...</span>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <a href="#" class="panigation-link">06</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <a href="#" class="panigation-link">07</a>--}}
+{{--                                </li>--}}
+{{--                                <li class="panigation-item">--}}
+{{--                                    <a href="#" class="panigation-link">--}}
+{{--                                        <i class="fa fa-angle-right"></i>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
                     </div>
                 </div>
 

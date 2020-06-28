@@ -17,7 +17,7 @@ class ShoppingCartController extends Controller
         \Cart::add([
             'id' => $id,
             'name' => $product->name,
-            'qty' => 1,
+            'qty' => $request->qty,
             'price' => $product->selling_price,
             'options' => [
                 'promoted_price' => $product->promoted_price,
@@ -26,8 +26,10 @@ class ShoppingCartController extends Controller
 
         ]);
 
+
         return redirect()->back()->with('ThongBao','Bạn đã thêm sản phẩm vào giỏ hàng thành công!');
     }
+
 
     public function getListShoppingCart(){
         $products = \Cart::content();

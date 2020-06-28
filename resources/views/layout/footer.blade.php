@@ -106,41 +106,5 @@
                 </div>
             </div>
         </div>
-        <div class="sub-footer">
-            <div class="container">
-                <div class="sub-footer-container">
-                    <div class="copy-right">
-                        <p>Copyright © 2018.</p>
-                    </div>
-                    <div class="footer-cash">
-                        <div class="cash-item">
-                            <a href="#">
-                                <img src="images/icon/cash_01.png" alt="Master Card" title="Master Card">
-                            </a>
-                        </div>
-                        <div class="cash-item">
-                            <a href="#">
-                                <img src="images/icon/cash_02.png" alt="Paypal" title="Paypal">
-                            </a>
-                        </div>
-                        <div class="cash-item">
-                            <a href="#">
-                                <img src="images/icon/cash_03.png" alt="Visa" title="Visa">
-                            </a>
-                        </div>
-                        <div class="cash-item">
-                            <a href="#">
-                                <img src="images/icon/cash_04.png" alt="America" title="America">
-                            </a>
-                        </div>
-                        <div class="cash-item">
-                            <a href="#">
-                                <img src="images/icon/cash_05.png" alt="Discover" title="Discover">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </footer>

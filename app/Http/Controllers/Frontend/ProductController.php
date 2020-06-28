@@ -17,7 +17,7 @@ class ProductController extends Controller
         $categories = Categories::all();
         $images = Gallery::all()->where('id_product',$id);
         $product = Products::find($id);
-        $products = Products::all()->where('cat_id',$product->cat_id)->random(3);
+        $products = Products::all()->where('cat_id',$product->cat_id)->random(1);
         $import_invoice = Import_invoice::where('pro_id',$id)->latest()->get();
         return view('pages/chitietsanpham',['product'=>$product,'images'=>$images,'import_invoice'=>$import_invoice,'categories'=>$categories,'products'=>$products]);
     }

@@ -20,8 +20,9 @@ class Show_products{
                             <a href='chi-tiet-san-pham/$id'>
                                 <img src='images/mark/mark_product.png' style='background-image: url(upload/sanpham/tieude/$image);background-size: cover' alt='Chair'>
                             </a>
+                            <input type='number' name='qty' value='1' hidden>
                             <div class='addcart'>
-                                <a href='shopping/add/$id'>Thêm vào giỏ hàng</a>
+                                <a href='shopping/them/$id'>Thêm vào giỏ hàng</a>
                             </div>
                         </div>
                         <a href='chi-tiet-san-pham/$id' class='name'>$name</a>

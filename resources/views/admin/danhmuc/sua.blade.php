@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword4">Chọn danh mục cha <span style="color: red">*</span></label>
                                 <select name="parent_id" aria-controls="order-listing" class="form-control">
-                                    <option value="">--</option>
+                                    <option value="">Chọn danh mục cha</option>
                                     @foreach($categories->all() as $cat)
                                         <option
                                             @if($categories->parent_id == $cat->id)
