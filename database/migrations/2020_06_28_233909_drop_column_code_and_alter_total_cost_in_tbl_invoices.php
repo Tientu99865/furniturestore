@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditTblInvoices extends Migration
+class DropColumnCodeAndAlterTotalCostInTblInvoices extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class EditTblInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            //
-            $table->integer('customer_id')->unsigned();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->dropColumn('code');
+            $table->decimal('total_cost', 15, 2)->unsigned();
+            $table->dateTime('created_at');
         });
     }
 
@@ -28,7 +28,7 @@ class EditTblInvoices extends Migration
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            //
+            $table->dropColumn('total_cost');
         });
     }
 }

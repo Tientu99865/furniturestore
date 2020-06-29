@@ -23,7 +23,7 @@
                 <div class="header-main">
                     <div class="header__logo">
                         <a href="/">
-                            <img src="images\Logo\logo.png" alt="Lyrae">
+                            <img src="images\Logo\logo.png" alt="Furniture Store">
                         </a>
                     </div>
                     <nav class="header__navbar">

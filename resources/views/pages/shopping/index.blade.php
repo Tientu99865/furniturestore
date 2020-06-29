@@ -73,7 +73,7 @@
                                 <td colspan="5">
                                     <div class="table-button">
                                         <a href="/">Tiếp tục mua hàng</a>
-                                        <a href="#">Thanh toán</a>
+                                        <a href="thanhtoan">Thanh toán</a>
                                     </div>
                                 </td>
                             </tr>
@@ -117,11 +117,11 @@
                             </div>
                             <div class="shop-total-body">
                                 <p class="sub-total">Phí ship
-                                    <span>15.000 VNĐ</span>
+                                    <span>30.000 VNĐ</span>
                                 </p>
                                 <p class="total">Tổng cộng
                                     <?php
-                                    $total = str_replace(',', '', \Cart::subtotal()) + 15000;
+                                    $total = str_replace(',', '', \Cart::subtotal()) + 30000;
                                     ?>
                                     <span> VNĐ</span><span id="totalAll">{{number_format($total,0,',','.')}} </span>
                                 </p>
@@ -140,7 +140,7 @@
         }
         $(document).ready(function () {
             var totalProduct = document.getElementsByClassName('totalProduct');
-            var totalAll = 15000;
+            var totalAll = 30000;
             for(var i=0;i < totalProduct.length ; i++){
                 totalAll += parseInt(totalProduct[i].textContent);
             }

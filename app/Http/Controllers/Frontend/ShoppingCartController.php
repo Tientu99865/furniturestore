@@ -29,6 +29,26 @@ class ShoppingCartController extends Controller
 
         return redirect()->back()->with('ThongBao','Bạn đã thêm sản phẩm vào giỏ hàng thành công!');
     }
+    public function getAddProduct(Request $request,$id){
+        $product = Products::select('name','selling_price','promoted_price','image')->find($id);
+
+        if (!$product) return redirect('/');
+
+        \Cart::add([
+            'id' => $id,
+            'name' => $product->name,
+            'qty' => 1,
+            'price' => $product->selling_price,
+            'options' => [
+                'promoted_price' => $product->promoted_price,
+                'image' => $product->image
+            ]
+
+        ]);
+
+
+        return redirect()->back()->with('ThongBao','Bạn đã thêm sản phẩm vào giỏ hàng thành công!');
+    }
 
 
     public function getListShoppingCart(){

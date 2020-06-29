@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblInvoices extends Migration
+class AlterColumnTimestampsInTblContacts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class TblInvoices extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('invoices',function (Blueprint $table){
-            $table->increments('id');
-            $table->integer('code')->unsigned();
-            $table->string('discount_code',255)->nullable();
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 
@@ -28,7 +25,8 @@ class TblInvoices extends Migration
      */
     public function down()
     {
-        //
-        Schema::drop('invoices');
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropColumn(['created_at','updated_at']);
+        });
     }
 }

@@ -16,4 +16,8 @@ class PagesController extends Controller
         $slides = Slides::all()->sortByDesc('id')->take(3);
         return view('pages/trangchu',['slides'=>$slides,'categories'=>$categories,'products'=>$products]);
     }
+
+    public function test(){
+        return view('email.verify_invoice');
+    }
 }

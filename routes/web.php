@@ -242,18 +242,26 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
 //Front end page
 Route::get('/','PagesController@trangchu');
 
+Route::get('test','PagesController@test');
+
 Route::get('danhmuc/{id}','Frontend\CategoryController@view');
 
 Route::get('lienhe','Frontend\ContactController@getView');
+Route::post('lienhe','Frontend\ContactController@postContact');
 
 Route::get('chi-tiet-san-pham/{id}','Frontend\ProductController@getProductDetail');
 
 Route::prefix('shopping')->group(function (){
+    Route::get('them/{id}','Frontend\ShoppingCartController@getAddProduct');
     Route::post('them/{id}','Frontend\ShoppingCartController@addProduct')->name('add.shopping.cart');
     Route::get('danh-sach','Frontend\ShoppingCartController@getListShoppingCart')->name('get.list.shopping.cart');
     Route::get('xoa/{id}','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 //    Route::get('cap-nhat','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 });
+
+Route::get('thanhtoan','Frontend\OrderController@viewOrder');
+Route::post('thanhtoan','Frontend\OrderController@postOrder');
+Route::get('xac-nhan-hoa-don','Frontend\OrderController@verifyInvoice')->name('customer.verify.invoice');
 
 Route::group(['prefix'=>'tai-khoan'],function (){
 

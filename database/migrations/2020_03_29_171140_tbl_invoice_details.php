@@ -16,12 +16,12 @@ class TblInvoiceDetails extends Migration
         //
         Schema::create('invoice_details',function (Blueprint $table){
            $table->increments('id');
-           $table->integer('id_customers')->unsigned();
-           $table->foreign('id_customers')->references('id')->on('customers');
+            $table->integer('invoice_id')->unsigned();
+            $table->foreign('invoice_id')->references('id')->on('invoices');
            $table->integer('id_products')->unsigned();
            $table->foreign('id_products')->references('id')->on('products');
-           $table->integer('amount')->unsigned();
-           $table->integer('id_discount')->unsigned();
+           $table->integer('quantity')->unsigned();
+            $table->decimal('total', 15, 2)->unsigned();
         });
     }
 

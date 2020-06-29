@@ -66,7 +66,7 @@
                                             <span style="color: #e4c7a2;">{{$product->manufacture->name}}</span>
                                         </div>
                                     </form>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="au-tabs">
@@ -139,8 +139,9 @@
                                                     <img src="images/mark/mark_product.png"
                                                          style="background-image: url(upload/sanpham/tieude/{{$product->image}});background-size: cover"
                                                          alt="{{$product->name}}">
+                                                    <input type='number' name='qty' value='1' hidden>
                                                     <div class="addcart">
-                                                        <a href="#">Add to cart</a>
+                                                        <a href='shopping/them/{{$product->id}}'>Thêm vào giỏ hàng</a>
                                                     </div>
                                                 </div>
                                                 <div class="name">{{$product->name}}</div>

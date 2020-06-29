@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditTblInvoices extends Migration
+class AlterColumnCodeVerifyAndTimeVerifyInTblInvoices extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class EditTblInvoices extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            //
-            $table->integer('customer_id')->unsigned();
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->text('code_verify')->nullable();
+            $table->dateTime('time_verify')->nullable();
         });
     }
 
@@ -28,7 +27,7 @@ class EditTblInvoices extends Migration
     public function down()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            //
+            $table->dropColumn(['code_verify','time_verify']);
         });
     }
 }

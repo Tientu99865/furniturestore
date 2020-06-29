@@ -7,9 +7,10 @@
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown">
-                <a class="nav-link count-indicator dropdown-toggle"  href="admin/lienhe/index"  aria-expanded="false">
+                <a class="nav-link count-indicator dropdown-toggle" style="position: relative"  href="admin/lienhe/index"  aria-expanded="false">
                     <i class="mdi mdi-email-outline mx-0"></i>
-{{--                    <span class="count"></span>--}}
+                    <?php $count = DB::table('contacts')->where('status','0')->count();?>
+                    <span class="badge badge-pill badge-danger" style="position: absolute;top: 0px;right: -13px;">{{$count}}</span>
                 </a>
             </li>
             <li class="nav-item nav-profile dropdown">

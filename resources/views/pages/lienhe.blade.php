@@ -17,41 +17,51 @@
             <div class="port-body">
                 <div class="contact-form">
                     <div class="messages" id="status"></div>
-                    <form id="contact-form">
+                    <form id="contact-form" action="lienhe" method="post">
+                        @csrf
                         <div class="row">
                             @if(Auth::guard('customers')->check())
                                 <div class="col-md-6">
                                     <div class="form-group au-form">
                                         <div class="help-block with-errors"></div>
-                                        <input type="text" id="name" name="name" placeholder="Tên của bạn *" required=""
-                                               data-error="Name is required.">
+                                        <input type="text" id="name" name="name"
+                                               value="{{Auth::guard('customers')->user()->name}}"
+                                               placeholder="Tên của bạn *" required=""
+                                               data-error="Name is required." readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group au-form">
                                         <div class="help-block with-errors"></div>
-                                        <input type="email" id="email" name="email" placeholder="Email của bạn *"
-                                               required="" data-error="Please, enter a valid email.">
+                                        <input type="email" id="email"
+                                               value="{{Auth::guard('customers')->user()->email}}" name="email"
+                                               placeholder="Email của bạn *"
+                                               required="" data-error="Please, enter a valid email." readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group au-form">
                                         <div class="help-block with-errors"></div>
-                                        <input type="text" id="address" name="address" placeholder="Địa chỉ của bạn"
-                                               required="" data-error="Address is required">
+                                        <input type="text" id="address"
+                                               value="{{Auth::guard('customers')->user()->address}}" name="address"
+                                               placeholder="Địa chỉ của bạn"
+                                               required="" data-error="Address is required" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group au-form">
                                         <div class="help-block with-errors"></div>
-                                        <input type="text" id="phone" name="phone" placeholder="Số điện thoại của bạn *"
-                                               required="" data-error="Phone is required">
+                                        <input type="text" id="phone"
+                                               value="{{Auth::guard('customers')->user()->phone_number}}" name="phone_number"
+                                               placeholder="Số điện thoại của bạn *"
+                                               required="" data-error="Phone is required" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group au-form">
                                         <div class="help-block with-errors"></div>
-                                        <textarea rows="9" placeholder="Nôi dung của bạn" id="msg" name="msg" required=""
+                                        <textarea rows="9" placeholder="Nội dung của bạn" id="msg" name="msg"
+                                                  required=""
                                                   data-error="Please, leave us a message"></textarea>
                                     </div>
                                 </div>
