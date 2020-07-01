@@ -235,10 +235,15 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
                 Route::post('sua/{id}','HoaDonNhapController@postSua');
             });
         });
+        Route::group(['prefix'=>'hoadonban'],function(){
+            Route::get('pdf/{id}','HoaDonBanController@getPDF');
+//            Route::group(['middleware' => ['can:invoice details']], function () {
+                Route::get('chitiethoadonban/{id}','HoaDonBanController@getInvoiceDetails');
+//            });
+        });
     });
 
 });
-
 //Front end page
 Route::get('/','PagesController@trangchu');
 

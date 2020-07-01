@@ -33,7 +33,7 @@ class NoiSanXuatController extends Controller
     }
 
     public function getDanhsach(){
-        $manufacture = Manufacture::paginate(10);
+        $manufacture = Manufacture::orderBy('id','DESC')->paginate(10);
         return view('admin/noisanxuat/danhsach',['manufacture'=>$manufacture]);
     }
 

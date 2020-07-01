@@ -11,7 +11,7 @@ class HoaDonNhapController extends Controller
 {
     //
     public function getDanhsach(){
-        $invoices = Import_invoice::paginate(10);
+        $invoices = Import_invoice::orderBy('id','DESC')->paginate(10);
 
         return view('admin/giaodich/hoadonnhap/danhsach',['invoices'=>$invoices]);
     }

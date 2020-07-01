@@ -176,7 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\FurnitureStoreServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -238,6 +239,7 @@ return [
         'FurnitureStoreProductImages' => App\Helpers\FurnitureStore\Product_images::class,
         'FurnitureStoreShowCategoriesMulti' => App\Helpers\FurnitureStore\ShowCategoriesMulti::class,
         'FurnitureStoreCount' => App\Helpers\FurnitureStore\Count::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

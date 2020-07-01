@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function view($id){
         $category = Categories::find($id);
         $categories = Categories::all();
-        $products = DB::table('products')->where('cat_id',$id)->paginate(10);
+        $products = Products::orderBy('id','DESC')->where('cat_id',$id)->paginate(5);
         return view('pages.danhmuc',['category'=>$category,'categories'=>$categories,'products'=>$products]);
     }
 }

@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "backpack/permissionmanager": "^6.0",
+        "barryvdh/laravel-dompdf": "^0.8.6",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.5",
         "hardevine/shoppingcart": "^2.8",

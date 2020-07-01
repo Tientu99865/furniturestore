@@ -37,7 +37,7 @@ class DanhMucController extends Controller
     }
 
     public function getDanhsach(){
-        $categories = Categories::paginate(10);
+        $categories = Categories::orderBy('id','DESC')->paginate(10);
         return view('admin/danhmuc/danhsach',['categories'=>$categories]);
     }
 

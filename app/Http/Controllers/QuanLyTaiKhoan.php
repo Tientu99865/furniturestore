@@ -13,7 +13,7 @@ class QuanLyTaiKhoan extends Controller
 
     public function getDanhSachAdmin()
     {
-        $user = User::paginate(10);
+        $user = User::orderBy('id','DESC')->paginate(10);
         return view('admin/users/danhsachadmin', ['user' => $user]);
     }
 

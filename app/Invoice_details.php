@@ -14,6 +14,6 @@ class Invoice_details extends Model
     }
 
     public function product(){
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo('App\Products','id_products','id');
     }
 }

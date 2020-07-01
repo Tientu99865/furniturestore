@@ -9,166 +9,81 @@
             <div class="col-md-6 col-lg-3 grid-margin stretch-card">
                 <div class="card bg-gradient-primary text-white text-center card-shadow-primary">
                     <div class="card-body">
-                        <h6 class="font-weight-normal">Total invoices</h6>
-                        <h2 class="mb-0">28893</h2>
+                        <h6 class="font-weight-normal">Tổng sản phẩm</h6>
+                        <h2 class="mb-0">{{$countProducts}}</h2>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 grid-margin stretch-card">
                 <div class="card bg-gradient-danger text-white text-center card-shadow-danger">
                     <div class="card-body">
-                        <h6 class="font-weight-normal">Total invoices</h6>
-                        <h2 class="mb-0">28893</h2>
+                        <h6 class="font-weight-normal">Tổng nhân viên</h6>
+                        <h2 class="mb-0">{{$countUsers}}</h2>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 grid-margin stretch-card">
                 <div class="card bg-gradient-warning text-white text-center card-shadow-warning">
                     <div class="card-body">
-                        <h6 class="font-weight-normal">Total invoices</h6>
-                        <h2 class="mb-0">28893</h2>
+                        <h6 class="font-weight-normal">Tổng người dùng</h6>
+                        <h2 class="mb-0">{{$countCustomers}}</h2>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 grid-margin stretch-card">
                 <div class="card bg-gradient-info text-white text-center card-shadow-info">
                     <div class="card-body">
-                        <h6 class="font-weight-normal">Total invoices</h6>
-                        <h2 class="mb-0">28893</h2>
+                        <h6 class="font-weight-normal">Tổng đơn hàng</h6>
+                        <h2 class="mb-0">{{$countInvoices}}</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body pb-0">
-                        <h4 class="card-title">Daily Sales</h4>
-                        <div class="d-flex justify-content-between justify-content-lg-start flex-wrap">
-                            <div class="mr-5 mb-2">
-                                <h3>
-                                    56789
-                                </h3>
-                                <h6 class="font-weight-normal mb-0">
-                                    Online sales
-                                </h6>
-                            </div>
-                            <div class="mb-2">
-                                <h3>
-                                    12345
-                                </h3>
-                                <h6 class="font-weight-normal mb-0">
-                                    Sales in store
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body d-flex align-items-end p-0">
-                        <div class="mt-auto w-100">
-                            <div class="chartjs-size-monitor"
-                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                <div class="chartjs-size-monitor-expand"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                </div>
-                            </div>
-                            <div id="sales-legend" class="chartjs-legend mt-2 mb-4">
-                                <ul class="0-legend">
-                                    <li><span style="background-color:rgba(235, 105, 143, .7)"></span>online</li>
-                                    <li><span style="background-color:rgba(119, 111, 249, .9)"></span>store</li>
-                                </ul>
-                            </div>
-                            <canvas id="chart-sales" width="326" height="163" class="chartjs-render-monitor"
-                                    style="display: block; width: 326px; height: 163px;"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
+        <div class="row grid-margin">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h6 class="card-title">Activity</h6>
+                        <h4 class="card-title">Hoá đơn bán</h4>
+                        <div class="table-responsive mt-2">
+                            <table class="table mt-3 border-top">
+                                <thead>
+                                <tr>
+                                    <th>Mã hoá đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Thời gian đặt hàng</th>
+                                    <th>Trang thái</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($invoices as $invoice)
+                                    <tr>
+                                        <td>{{$invoice->id}}</td>
+                                        <td>{{$invoice->customer->name}}</td>
+                                        <td>{{$invoice->customer->phone_number}}</td>
+                                        <td>{{number_format($invoice->total_cost,0,',','.')}} VNĐ</td>
+                                        <td>{{$invoice->created_at}}</td>
+                                        <td>
+                                            @if($invoice->verify == 1)
+                                                <div class="badge badge-success badge-fw">Đã xác nhận</div>
+                                            @else
+                                                <div class="badge badge-warning badge-fw">Chưa xác nhận</div>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="admin/giaodich/hoadonban/chitiethoadonban/{{$invoice->id}}"><button type="button" class="btn btn-outline-primary btn-fw">Xem chi tiết</button></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="list d-flex align-items-center border-bottom pb-3">
-                            <img class="img-sm rounded-circle" src="../../images/faces/face8.jpg" alt="">
-                            <div class="wrapper w-100 ml-3">
-                                <p><b>Dobrick </b>published an article</p>
-                                <small class="text-muted">2 hours ago</small>
-                            </div>
-                        </div>
-                        <div class="list d-flex align-items-center border-bottom py-3">
-                            <img class="img-sm rounded-circle" src="../../images/faces/face5.jpg" alt="">
-                            <div class="wrapper w-100 ml-3">
-                                <p><b>Stella </b>created an event</p>
-                                <small class="text-muted">3 hours ago</small>
-                            </div>
-                        </div>
-                        <div class="list d-flex align-items-center border-bottom py-3">
-                            <img class="img-sm rounded-circle" src="../../images/faces/face7.jpg" alt="">
-                            <div class="wrapper w-100 ml-3">
-                                <p><b>Peter </b>submitted the reports</p>
-                                <small class="text-muted">1 hours ago</small>
-                            </div>
-                        </div>
-                        <div class="list d-flex align-items-center border-bottom py-3">
-                            <img class="img-sm rounded-circle" src="../../images/faces/face6.jpg" alt="">
-                            <div class="wrapper w-100 ml-3">
-                                <p><b>Nateila </b>updated the docs</p>
-                                <small class="text-muted">1 hours ago</small>
-                            </div>
-                        </div>
-                        <div class="list d-flex align-items-center pt-3">
-                            <img class="img-sm rounded-circle" src="../../images/faces/face9.jpg" alt="">
-                            <div class="wrapper w-100 ml-3">
-                                <p><b>Tom </b>uploaded the demo</p>
-                                <small class="text-muted">3 hours ago</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Traffic</h4>
-                        <div class="w-50 mx-auto">
-                            <div class="chartjs-size-monitor"
-                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                <div class="chartjs-size-monitor-expand"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink"
-                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                </div>
-                            </div>
-                            <canvas id="traffic-chart" width="134" height="134" class="chartjs-render-monitor"
-                                    style="display: block; width: 134px; height: 134px;"></canvas>
-                        </div>
-                        <div class="text-center mt-5">
-                            <h4 class="mb-2">Traffic for the day</h4>
-                            <p class="card-description mb-5">Traffic through the sources google and facebook for the
-                                day</p>
-                        </div>
-                        <div id="traffic-chart-legend" class="chartjs-legend traffic-chart-legend">
-                            <ul>
-                                <li><h2 class="mb-3">40%</h2>
-                                    <div class="legend-content"><span class="legend-dots"
-                                                                      style="background:linear-gradient(145deg, #6486fc, #0e4cfb)"></span>Facebook
-                                    </div>
-                                </li>
-                                <li><h2 class="mb-3">60%</h2>
-                                    <div class="legend-content"><span class="legend-dots"
-                                                                      style="background:linear-gradient(to right, rgba(238, 143, 154, 1), rgba(233, 79, 133, 1))"></span>Google
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
+                            <nav>
+                                {!! $invoices->links() !!}
+                            </nav>
                         </div>
                     </div>
                 </div>

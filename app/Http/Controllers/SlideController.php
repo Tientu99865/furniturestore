@@ -58,7 +58,7 @@ class SlideController extends Controller
     }
 
     public function getDanhsach(){
-        $slide = Slides::paginate(10);
+        $slide = Slides::orderBy('id','DESC')->paginate(10);
         return view('admin/slide/danhsach',['slide'=>$slide]);
     }
 

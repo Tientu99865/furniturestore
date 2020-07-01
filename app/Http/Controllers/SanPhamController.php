@@ -98,7 +98,7 @@ class SanPhamController extends Controller
     }
 
     public function getDanhsach(){
-        $product = Products::paginate(10);
+        $product = Products::orderBy('id','DESC')->paginate(10);
         return view('admin/sanpham/danhsach',['product'=>$product]);
     }
 

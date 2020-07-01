@@ -28,4 +28,8 @@ class Products extends Model
     public function import_invoice(){
         return$this->hasMany('App\Import_invoice','pro_id','id');
     }
+
+    public function invoice_details(){
+        return $this->hasMany('App\Invoice_details','id_products','id');
+    }
 }

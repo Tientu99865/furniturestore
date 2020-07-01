@@ -44,7 +44,7 @@ class MaGiamGiaController extends Controller
     }
 
     public function getDanhsach(){
-        $discounts = Discounts::paginate(10);
+        $discounts = Discounts::orderBy('id','DESC')->paginate(10);
         return view('admin/magiamgia/danhsach',['discounts'=>$discounts]);
     }
 
