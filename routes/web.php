@@ -256,6 +256,7 @@ Route::prefix('shopping')->group(function (){
     Route::post('them/{id}','Frontend\ShoppingCartController@addProduct')->name('add.shopping.cart');
     Route::get('danh-sach','Frontend\ShoppingCartController@getListShoppingCart')->name('get.list.shopping.cart');
     Route::get('xoa/{id}','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
+    Route::post('magiamgia','Frontend\ShoppingCartController@postDiscountCode')->name('post.discount.shopping.cart');
 //    Route::get('cap-nhat','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 });
 

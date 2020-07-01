@@ -39,9 +39,10 @@
                                             <div class="name">{{$product->name}}</div>
                                         </div>
                                     </td>
-                                    <td >
-                                        <input type="number" id="price-{{$product->id}}" value="{{$product->price}}" hidden>
-                                        <span >{{number_format($product->price,0,',','.')}}</span> VNĐ
+                                    <td>
+                                        <input type="number" id="price-{{$product->id}}" value="{{$product->price}}"
+                                               hidden>
+                                        <span>{{number_format($product->price,0,',','.')}}</span> VNĐ
                                     </td>
                                     <td>
                                         <div class="quantity">
@@ -49,16 +50,20 @@
                                             <i class="fa fa-angle-down btn cart-minus-1" id="{{$product->id}}"></i>
                                         </span>
 
-                                            <input type="number" min="1" id="quantity-{{$product->id}}" readonly value="{{$product->qty}}">
+                                            <input type="number" min="1" id="quantity-{{$product->id}}" readonly
+                                                   value="{{$product->qty}}">
 
-                                        <span class="add">
+                                            <span class="add">
                                             <i class="fa fa-angle-up btn cart-plus-1" id="{{$product->id}}"></i>
                                         </span>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="totalProduct" id="total-hidden-{{$product->id}}" hidden>{{$product->price*$product->qty}}</p>
-                                        <span  id="total-{{$product->id}}">{{number_format($product->price*$product->qty,0,',','.')}}</span> VNĐ
+                                        <p class="totalProduct" id="total-hidden-{{$product->id}}"
+                                           hidden>{{$product->price*$product->qty}}</p>
+                                        <span
+                                            id="total-{{$product->id}}">{{number_format($product->price*$product->qty,0,',','.')}}</span>
+                                        VNĐ
                                     </td>
                                     <td>
                                         <a href="shopping/xoa/{{$product->rowId}}">
@@ -98,9 +103,17 @@
                             </div>
                             <div class="shop-total-body">
                                 <p>Nếu bạn có mã giảm giá hãy nhập vào đây.</p>
-                                <form>
+                                <form action="shopping/magiamgia" method="post">
+                                    @csrf
                                     <div class="form-group au-form m-b-40">
-                                        <input type="text" placeholder="Mã giảm giá">
+                                        <input type="text" name="discount_code"
+                                               @if($discount)
+                                                   value="{{$discount[0]->code}}"
+                                               @else
+                                                   value=""
+                                               @endif
+
+                                               placeholder="Mã giảm giá">
                                     </div>
                                     <div class="form-group au-form m-b-0">
                                         <button type="submit">Áp dụng</button>
@@ -116,15 +129,27 @@
                                 <div class="title-border-3 m-b-30"></div>
                             </div>
                             <div class="shop-total-body">
-                                <p class="sub-total">Phí ship
-                                    <span>30.000 VNĐ</span>
-                                </p>
-                                <p class="total">Tổng cộng
-                                    <?php
-                                    $total = str_replace(',', '', \Cart::subtotal()) + 30000;
-                                    ?>
-                                    <span> VNĐ</span><span id="totalAll">{{number_format($total,0,',','.')}} </span>
-                                </p>
+
+
+                                @if($total_after_discount)
+                                    <p class="sub-total">Mã giảm giá
+                                        <span>{{$discount[0]->code}}</span>
+                                    </p>
+                                    <p class="sub-total">Số tiền giảm
+                                        <span>{{number_format($discount[0]->dis_price,0,',','.')}} VNĐ</span>
+                                    </p>
+                                    <p class="total">Tổng cộng
+                                        <span> VNĐ</span><span
+                                            id="totalAll">{{number_format($total_after_discount,0,',','.')}} </span>
+                                    </p>
+                                @else
+                                    <p class="total">Tổng cộng
+                                        <?php
+                                        $total = str_replace(',', '', \Cart::subtotal());
+                                        ?>
+                                        <span> VNĐ</span><span id="totalAll">{{number_format($total,0,',','.')}} </span>
+                                    </p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -138,36 +163,37 @@
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
         }
+
         $(document).ready(function () {
             var totalProduct = document.getElementsByClassName('totalProduct');
-            var totalAll = 30000;
-            for(var i=0;i < totalProduct.length ; i++){
+            var totalAll = 0;
+            for (var i = 0; i < totalProduct.length; i++) {
                 totalAll += parseInt(totalProduct[i].textContent);
             }
             $(".cart-minus-1").click(function () {
                 var id = $(this).attr('id');
-                var value = $("#quantity-"+id).val()-1;
-                if (value  < 1){
+                var value = $("#quantity-" + id).val() - 1;
+                if (value < 1) {
                     value.val(1);
                 }
                 // $('input[id=quantity]').val(value);
-                var price = $("#price-"+id).val();
-                var total = value*price;
-                $('#total-'+id).text(formatNumber(total));
-                totalAll -= parseInt($("#price-"+id).val());
+                var price = $("#price-" + id).val();
+                var total = value * price;
+                $('#total-' + id).text(formatNumber(total));
+                totalAll -= parseInt($("#price-" + id).val());
                 $('#totalAll').text(formatNumber(totalAll))
             })
             $(".cart-plus-1").click(function () {
                 var id = $(this).attr('id');
-                var value = parseInt($("#quantity-"+id).val())+1;
-                if (value  < 1){
+                var value = parseInt($("#quantity-" + id).val()) + 1;
+                if (value < 1) {
                     value.val(1);
                 }
                 // $('input[id=quantity]').val(value);
-                var price = $("#price-"+id).val();
-                var total = value*price;
-                $('#total-'+id).text(formatNumber(total));
-                totalAll += parseInt($("#price-"+id).val());
+                var price = $("#price-" + id).val();
+                var total = value * price;
+                $('#total-' + id).text(formatNumber(total));
+                totalAll += parseInt($("#price-" + id).val());
                 $('#totalAll').text(formatNumber(totalAll))
             })
 

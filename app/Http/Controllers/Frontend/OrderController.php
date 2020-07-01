@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Discounts;
 use App\Http\Controllers\Controller;
 use App\Invoice;
 use App\Invoice_details;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    //
     public function viewOrder(){
         if (Auth::guard('customers')->check()){
             return view('pages/order');

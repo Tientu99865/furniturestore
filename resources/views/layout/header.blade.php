@@ -3,6 +3,17 @@
         <!-- Desktop Menu -->
         <div class="header-wrapper-desktop d-none d-lg-block">
             <div class="header header-style-1">
+                @if(count($errors) > 0)
+                    <div class='card card-inverse-warning' style='color:red;' id='context-menu-access'>
+                        <div class='card-body'>
+                            @foreach($errors->all() as $err)
+                                <p class='card-text' style='text-align: center;'>
+                                    {{$err}}
+                                </p>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
                 @if(session('ThongBao'))
                     <div class='card card-inverse-success' style='color:#28a745;' id='context-menu-access'>
                         <div class='card-body'>

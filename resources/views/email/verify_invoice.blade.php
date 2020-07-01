@@ -19,6 +19,17 @@
             <div class="col-xl-12" style="margin:20px 0;">
                 <h2>Chi tiết hoá đơn</h2>
             </div>
+            <div class="col-xl-6 invoice-form">
+                <div class="invoice-form__title" style="font-weight: bold;font-size: 20px;margin-bottom: 20px">Người
+                    gửi
+                </div>
+                <div class="invoice-form__content" style="line-height: 10px">
+                    <p>Cửa hàng : Furniture Store</p>
+                    <p>Địa chỉ : Đại học Giao thông vận tải</p>
+                    <p>Số điện thoại: 0358828585</p>
+                </div>
+            </div>
+
             <div class="col-xl-12" style="margin: 20px 0;">
                 <div class="row">
                     <div class="col-xl-12" style="font-weight: bold;font-size: 20px;margin-bottom: 20px">
