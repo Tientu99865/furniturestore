@@ -78,10 +78,13 @@
                                     <a data-toggle="tab" href="#additional-tab">Thông tin thêm </a>
                                 </li>
                                 <li>
-                                    <a data-toggle="tab" href="#review-tab">Bình luận (0)</a>
+                                    <?php
+                                    $count_cmt = count($comments);
+                                    ?>
+                                    <a data-toggle="tab" href="#review-tab">Bình luận ({{$count_cmt}})</a>
                                 </li>
                             </ul>
-                            <div class="tab-content">
+                            <div class="tab-content" style="overflow: hidden">
                                 <div id="description-tab" class="tab-pane active">
                                     {!! $product->content !!}
                                 </div>
@@ -100,27 +103,65 @@
                                     </table>
                                 </div>
                                 <div id="review-tab" class="tab-pane">
-                                    <h5 class="title">Bình luận</h5>
-                                    <p>There are no reviews yet.</p>
-                                    <p class="text-bigger">Be the first to review “Cloud Wall Clock”</p>
-                                    <div class="comment-place">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <textarea cols="30" rows="7">Nội dung bình luận</textarea>
+                                    <div class="comment">
+                                        @foreach($comments as $comment)
+                                            @if($comment->parent_id == null)
+                                                <div class="cus_comment">
+                                                    <div class="cus_cmt">
+                                                        <b>{{$comment->customers->name}}</b>
+                                                        <div class="comment-content" style="margin-top: 10px">
+                                                            {{$comment->content}}
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <input type="text" placeholder="Your Name">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input type="email" placeholder="Your Email">
-                                                </div>
-                                                <div class="col-md-12 m-t-40">
-                                                    <button>Bình luận</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                                @foreach($comments as $subComment)
+                                                    @if($comment->id == $subComment->parent_id)
+                                                        @if($subComment->user_id)
+                                                            <div class="cus_comment" style="width: 90%;float: right">
+                                                                <div class="cus_cmt">
+                                                                    <b style="color: #3a34f6">Admin : {{$subComment->users->name}}</b>
+                                                                    <div class="comment-content"
+                                                                         style="margin-top: 10px">
+                                                                        {{$subComment->content}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @elseif($subComment->customer_id)
+                                                            <div class="cus_comment" style="width: 90%;float: right">
+                                                                <div class="cus_cmt">
+                                                                    <b>{{$subComment->customers->name}}</b>
+                                                                    <div class="comment-content"
+                                                                         style="margin-top: 10px">
+                                                                        {{$subComment->content}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endforeach
                                     </div>
+                                    @if(Auth::guard('customers')->check())
+                                        <h5 class="title">Bình luận</h5>
+                                        <div class="comment-place">
+                                            <form action="binhluan/{{$product->id}}" method="post">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <textarea cols="30" name="comment" rows="7" placeholder="Nội dung bình luận"></textarea>
+                                                    </div>
+                                                    <div class="col-md-12 m-t-40">
+                                                        <button type="submit">Bình luận</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    @else
+                                        <h5 style="color: red;float: right">Bạn phải <a href="tai-khoan/index">đăng
+                                                nhập</a> thì mới
+                                            có thể bình luận sản phẩm này.</h5>
+                                    @endif
                                 </div>
                             </div>
                         </div>

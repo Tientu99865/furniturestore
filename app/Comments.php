@@ -13,6 +13,9 @@ class Comments extends Model
         return $this->belongsTo('App\Products','pro_id','id');
     }
     public function users(){
-        return $this->belongsTo('App\Users','user_id','id');
+        return $this->belongsTo('App\User','user_id','id');
+    }
+    public function customers(){
+        return $this->belongsTo('App\Customers','customer_id','id');
     }
 }

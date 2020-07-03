@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Categories;
+use App\Comments;
 use App\Gallery;
 use App\Http\Controllers\Controller;
 use App\Import_invoice;
@@ -17,8 +18,17 @@ class ProductController extends Controller
         $categories = Categories::all();
         $images = Gallery::all()->where('id_product',$id);
         $product = Products::find($id);
+        $comments = Comments::all()->where('pro_id',$id);
         $products = Products::all()->where('cat_id',$product->cat_id)->random(1);
         $import_invoice = Import_invoice::where('pro_id',$id)->latest()->get();
-        return view('pages/chitietsanpham',['product'=>$product,'images'=>$images,'import_invoice'=>$import_invoice,'categories'=>$categories,'products'=>$products]);
+        return view('pages/chitietsanpham',
+            [
+                'product'=>$product,
+                'images'=>$images,
+                'import_invoice'=>$import_invoice,
+                'categories'=>$categories,
+                'products'=>$products,
+                'comments'=>$comments
+            ]);
     }
 }

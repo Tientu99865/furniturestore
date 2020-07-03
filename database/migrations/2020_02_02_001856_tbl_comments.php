@@ -16,7 +16,7 @@ class TblComments extends Migration
         //
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('pro_id')->unsigned();
             $table->foreign('pro_id')->references('id')->on('products');

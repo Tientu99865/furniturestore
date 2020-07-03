@@ -110,9 +110,9 @@
         @endcan
         @can('view comments')
             <li class="nav-item">
-                <a class="nav-link" href="pages/ui-features/notifications.html">
+                <a class="nav-link" href="admin/quanlybinhluan/danhsach">
                     <i class="mdi mdi-bell-ring-outline menu-icon"></i>
-                    <span class="menu-title">Quản lý comments</span>
+                    <span class="menu-title">Quản lý bình luận</span>
                 </a>
             </li>
         @endcan

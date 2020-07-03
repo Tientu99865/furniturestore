@@ -157,6 +157,17 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
 
     });
 
+    //Comment
+    Route::group(['prefix'=>'quanlybinhluan'],function (){
+//        Route::group(['middleware' => ['can:view contacts']], function () {
+            Route::get('danhsach','BinhLuanController@getView');
+            Route::get('xoa/{id}','BinhLuanController@getDelete');
+            Route::get('traloi/{id}','BinhLuanController@getReply');
+            Route::post('traloi/{id}','BinhLuanController@postReply');
+//        });
+
+    });
+
     //Discount
     Route::group(['prefix'=>'magiamgia'],function (){
 
@@ -247,7 +258,7 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
 //Front end page
 Route::get('/','PagesController@trangchu');
 
-Route::get('test','PagesController@test');
+Route::post('binhluan/{id}','Frontend\CommentController@postComment');
 
 Route::get('danhmuc/{id}','Frontend\CategoryController@view');
 
