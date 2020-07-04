@@ -15,9 +15,9 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function __construct()
     {
-        $categories = Categories::all();
+        $categoriesMenu = Categories::all()->sortByDesc('id');
         view()->share([
-            'categories' => $categories
+            'categoriesMenu' => $categoriesMenu
         ]);
     }
 }

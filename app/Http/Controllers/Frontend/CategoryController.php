@@ -13,7 +13,7 @@ class CategoryController extends Controller
     //
     public function view($id){
         $category = Categories::find($id);
-        $categories = Categories::all();
+        $categories = Categories::all()->where('parent_id','!=',null);
         $products = Products::orderBy('id','DESC')->where('cat_id',$id)->paginate(5);
         return view('pages.danhmuc',['category'=>$category,'categories'=>$categories,'products'=>$products]);
     }

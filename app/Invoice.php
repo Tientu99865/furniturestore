@@ -12,4 +12,8 @@ class Invoice extends Model
     public function customer(){
         return $this->belongsTo(Customers::class);
     }
+
+    public function invoice_details(){
+        return $this->hasMany(Invoice_details::class);
+    }
 }

@@ -31,62 +31,38 @@
                                                  alt="{{$product->name}}">
                                         </a>
                                     </div>
+                                    @if($product->promoted_price != 0)
+                                        <?php
+                                        $percent = round(($product->promoted_price / $product->selling_price) * 100);
+                                        ?>
+                                        <div class="discount-product">
+                                            <span>-{{$percent}}%</span>
+                                        </div>
+                                    @endif
                                     <div class="product-body">
                                         <a href="chi-tiet-san-pham/{{$product->id}}" class="name">{{$product->name}}</a>
-                                        <p class="price">{{number_format($product->selling_price, 0, ',', '.')}} VNĐ</p>
-                                        {{--                                        <p class="product-color">--}}
-                                        {{--                                            <span class="color beige"></span>--}}
-                                        {{--                                            <span class="color gray"></span>--}}
-                                        {{--                                        </p>--}}
-                                        {{--                                        <p class="description">Nor again is there anyone who loves or pursues or desires--}}
-                                        {{--                                            to obtain pain of itself, because--}}
-                                        {{--                                            it is pain, but because occasionally circumstances occur in which toil and--}}
-                                        {{--                                            pain can--}}
-                                        {{--                                            procure him some great pleasure.</p>--}}
+                                        @if($product->promoted_price)
+                                            <p class="price" style="text-decoration: line-through;">{{number_format($product->selling_price, 0, ',', '.')}}
+                                                VNĐ</p>
+                                            <p class="price">{{number_format($product->selling_price-$product->promoted_price, 0, ',', '.')}}
+                                                VNĐ</p>
+                                        @else
+                                            <p class="price">{{number_format($product->selling_price, 0, ',', '.')}}
+                                                VNĐ</p>
+                                        @endif
                                         <div class="product-button">
-                                            <a href="#" class="add-to-cart">Add to cart</a>
-                                            <a href="#" class="add-to-wishlist"></a>
+                                            @if($product->quantity == 0)
+                                                <p class="add-to-cart">Hết hàng</p>
+                                            @else
+                                                <a href="shopping/them/{{$product->id}}" class="add-to-cart">Add to
+                                                    cart</a>
+                                            @endif
                                         </div>
-                                        <div class="product-rating" data-star="4"><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i class="fa fa-star-o"></i></div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                         {{ $products->links() }}
-{{--                        <nav class="border-bottom-1 border-top-1">--}}
-{{--                            <ul class="au-panigation">--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <a href="#" class="panigation-link">--}}
-{{--                                        <i class="fa fa-angle-left"></i>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <span>Pages:</span>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item active">--}}
-{{--                                    <a href="#" class="panigation-link">01</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <a href="#" class="panigation-link">02</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <span>...</span>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <a href="#" class="panigation-link">06</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <a href="#" class="panigation-link">07</a>--}}
-{{--                                </li>--}}
-{{--                                <li class="panigation-item">--}}
-{{--                                    <a href="#" class="panigation-link">--}}
-{{--                                        <i class="fa fa-angle-right"></i>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </nav>--}}
                     </div>
                 </div>
 

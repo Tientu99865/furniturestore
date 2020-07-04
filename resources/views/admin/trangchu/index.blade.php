@@ -43,7 +43,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Hoá đơn bán</h4>
+                        <h4 class="card-title">Thông tin đơn hàng</h4>
                         <div class="table-responsive mt-2">
                             <table class="table mt-3 border-top">
                                 <thead>

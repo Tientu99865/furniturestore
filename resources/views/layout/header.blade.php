@@ -40,20 +40,24 @@
                     <nav class="header__navbar">
                         <ul class="navbar-menu">
                             <li><a href="/">Trang chủ</a></li>
-                            {{FurnitureStoreShowCategoriesMulti::showcategories($categories)}}
+                            {{FurnitureStoreShowCategoriesMulti::showcategories($categoriesMenu)}}
                             <li><a href="lienhe">Liên hệ</a></li>
                         </ul>
                     </nav>
                     <div class="header__button">
                         <ul>
                             <li class="header-search">
+
+                                <form action="search" method="get">
                                 <div class="search-button">
                                     <img src="images\icon\header-search.png" alt="Search">
                                 </div>
-                                <div class="search-input" style="display: none;">
-                                    <input type="text" placeholder="Start typing here...">
-                                    <a href="#"></a>
-                                </div>
+                                    <div class="search-input" style="display: none;">
+                                        <input type="text" name="key" placeholder="Start typing here...">
+                                        <a href="#"></a>
+                                    </div>
+
+                                </form>
                             </li>
                             <li class="header-shop-cart">
                                 <div class="shop-cart-button">

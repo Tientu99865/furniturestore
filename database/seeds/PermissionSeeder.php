@@ -71,6 +71,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit import invoices']);
         Permission::create(['name' => 'view import invoices']);
         Permission::create(['name' => 'add import invoices for new product']);
+        //        Comment
+        Permission::create(['name' => 'comment role']);
         // or may be done by chaining
         $role = Role::create(['name' => 'Super Admin']);
         $role->givePermissionTo(Permission::all());

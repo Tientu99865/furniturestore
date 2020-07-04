@@ -159,12 +159,12 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
 
     //Comment
     Route::group(['prefix'=>'quanlybinhluan'],function (){
-//        Route::group(['middleware' => ['can:view contacts']], function () {
+        Route::group(['middleware' => ['can:comment role']], function () {
             Route::get('danhsach','BinhLuanController@getView');
             Route::get('xoa/{id}','BinhLuanController@getDelete');
             Route::get('traloi/{id}','BinhLuanController@getReply');
             Route::post('traloi/{id}','BinhLuanController@postReply');
-//        });
+        });
 
     });
 
@@ -215,6 +215,12 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
             Route::post('sua/{id}','ChucVuController@postSua');
         });
     });
+    //Thong Ke Doanh Thu
+    Route::group(['prefix'=>'thongke'],function () {
+        Route::get('doanhthu','ThongKeController@getDoanhThu');
+        Route::get('filter','ThongKeController@getFilter');
+    });
+
 
     //Invoice
     Route::group(['prefix'=>'giaodich'],function (){
@@ -300,3 +306,5 @@ Route::group(['prefix'=>'tai-khoan'],function (){
 
     Route::post('cai-lai-mat-khau','AccountController@saveResetPassword');
 });
+
+Route::get('search','PagesController@getSearch');

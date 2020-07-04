@@ -108,7 +108,7 @@
                 </div>
             </li>
         @endcan
-        @can('view comments')
+        @can('comment role')
             <li class="nav-item">
                 <a class="nav-link" href="admin/quanlybinhluan/danhsach">
                     <i class="mdi mdi-bell-ring-outline menu-icon"></i>
@@ -182,5 +182,27 @@
                 </div>
             </li>
         @endcan
+{{--        @can('view invoices')--}}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#statistical-pages" aria-expanded="false"
+                   aria-controls="general-pages">
+                    <i class="mdi mdi-playlist-check menu-icon"></i>
+                    <span class="menu-title">Thống kê doanh thu</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="statistical-pages">
+                    <ul class="nav flex-column sub-menu">
+{{--                        @can('view import invoices')--}}
+                            <li class="nav-item"><a class="nav-link" href="admin/thongke/doanhthu">Quản lý doanh thu </a></li>
+{{--                        @endcan--}}
+{{--                        @can('view orders')--}}
+                            <li class="nav-item"><a class="nav-link" href="admin/giaodich/hoadonban/danhsach"> Hoá đơn
+                                    bán </a>
+                            </li>
+{{--                        @endcan--}}
+                    </ul>
+                </div>
+            </li>
+{{--        @endcan--}}
     </ul>
 </nav>

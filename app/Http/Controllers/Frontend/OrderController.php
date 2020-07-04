@@ -6,6 +6,7 @@ use App\Discounts;
 use App\Http\Controllers\Controller;
 use App\Invoice;
 use App\Invoice_details;
+use App\Products;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,6 +58,10 @@ class OrderController extends Controller
             $invoice_details = new Invoice_details();
             $invoice_details->invoice_id = $invoice->id;
             $invoice_details->id_products = $product->id;
+
+            $productId = Products::find($product->id);
+            $productId->quantity = $productId->quantity - $product->qty;
+            $productId->save();
             $invoice_details->quantity = $product->qty;
             $invoice_details->total = $product->qty*$product->price;
 

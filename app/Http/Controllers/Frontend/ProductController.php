@@ -15,7 +15,7 @@ class ProductController extends Controller
     //
 
     public function getProductDetail($id){
-        $categories = Categories::all();
+        $categories = Categories::all()->where('parent_id','!=',null);
         $images = Gallery::all()->where('id_product',$id);
         $product = Products::find($id);
         $comments = Comments::all()->where('pro_id',$id);
