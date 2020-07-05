@@ -61,6 +61,7 @@ class OrderController extends Controller
 
             $productId = Products::find($product->id);
             $productId->quantity = $productId->quantity - $product->qty;
+            $productId->sell_number += $product->qty;
             $productId->save();
             $invoice_details->quantity = $product->qty;
             $invoice_details->total = $product->qty*$product->price;

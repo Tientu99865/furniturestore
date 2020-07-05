@@ -253,38 +253,25 @@
                         </div>
                         <div class="page-sidebar-item">
                             <div class="sidebar-item__heading">
-                                <h3 class="title">Best seller</h3>
+                                <h3 class="title">Sản phẩm bán chạy</h3>
                                 <div class="title-border m-b-30"></div>
                             </div>
                             <div class="sidebar-item__body">
                                 <ul class="sidebar-bestsell">
-                                    <li class="item">
-                                        <div class="image">
-                                            <img src="images\wishlist_product_01.png" alt="">
-                                        </div>
-                                        <div class="detail">
-                                            <a href="#" class="name">Crackle Plates</a>
-                                            <span class="price">$22.00</span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="image">
-                                            <img src="images\wishlist_product_02.png" alt="">
-                                        </div>
-                                        <div class="detail">
-                                            <a href="#" class="name">Floor Lamp</a>
-                                            <span class="price">$48.00</span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="image">
-                                            <img src="images\wishlist_product_03.png" alt="">
-                                        </div>
-                                        <div class="detail">
-                                            <a href="#" class="name">Wooden Fan</a>
-                                            <span class="price">$25.00</span>
-                                        </div>
-                                    </li>
+                                    @foreach($bestProducts as $bestProduct)
+                                        <li class="item">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="images/mark/mark-best-product.png" style="background-image: url('upload/sanpham/tieude/{{$bestProduct->image}}');background-size: cover;width: 100%" alt="{{$bestProduct->name}}">
+                                                </a>
+                                            </div>
+                                            <div class="detail">
+                                                <a href="chi-tiet-san-pham/{{$bestProduct->id}}" class="name">{{$bestProduct->name}}</a>
+                                                <p class="price">{{number_format($bestProduct->selling_price-$bestProduct->promoted_price, 0, ',', '.')}}
+                                                    VNĐ</p>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

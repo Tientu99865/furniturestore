@@ -11,4 +11,8 @@ class Contact extends Model
     public function customer(){
         return $this->belongsTo('App\Customers','id_customer','id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

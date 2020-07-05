@@ -17,9 +17,7 @@ use App\User;
 Route::get('/', function () {
 });
 
-Route::get('admin',function (){
-    return view('admin/layout/index');
-});
+
 //Dang nhap
 Route::get('admin/dangnhap','UserController@getDangNhapAdmin');
 Route::post('admin/dangnhap','UserController@postDangNhapAdmin');
@@ -31,6 +29,9 @@ Route::get('admin/dangxuat','UserController@getDangXuatAdmin');
 //Route group admin
 
 Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
+    Route::get('admin',function (){
+        return view('admin/layout/index');
+    });
     //Trang chu
     Route::group(['middleware' => ['can:login']], function () {
         Route::get('trangchu','TrangChuController@getQuanLy');
@@ -153,6 +154,9 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
     Route::group(['prefix'=>'lienhe'],function (){
         Route::group(['middleware' => ['can:view contacts']], function () {
             Route::get('index','LienHeController@getLienHe');
+            Route::get('chitiet/{id}','LienHeController@getChiTiet');
+            Route::get('xoa/{id}','LienHeController@getDelete');
+            Route::post('traloi/{id}','LienHeController@postReply');
         });
 
     });
@@ -166,30 +170,6 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
             Route::post('traloi/{id}','BinhLuanController@postReply');
         });
 
-    });
-
-    //Discount
-    Route::group(['prefix'=>'magiamgia'],function (){
-
-        Route::group(['middleware' => ['can:add discount codes']], function () {
-            Route::get('them','MaGiamGiaController@getThem');
-        });
-        Route::group(['middleware' => ['can:add discount codes']], function () {
-            Route::post('them','MaGiamGiaController@postThem');
-        });
-
-        Route::group(['middleware' => ['can:view discount codes']], function () {
-            Route::get('danhsach','MaGiamGiaController@getDanhSach');
-        });
-        Route::group(['middleware' => ['can:delete discount codes']], function () {
-            Route::get('xoa/{id}','MaGiamGiaController@getXoa');
-        });
-        Route::group(['middleware' => ['can:edit discount codes']], function () {
-            Route::get('sua/{id}','MaGiamGiaController@getSua');
-        });
-        Route::group(['middleware' => ['can:edit discount codes']], function () {
-            Route::post('sua/{id}','MaGiamGiaController@postSua');
-        });
     });
 
     //Roles
@@ -219,6 +199,8 @@ Route::group(['prefix'=>'admin','middleware'=>['can:login']],function (){
     Route::group(['prefix'=>'thongke'],function () {
         Route::get('doanhthu','ThongKeController@getDoanhThu');
         Route::get('filter','ThongKeController@getFilter');
+        Route::get('sanphambanchay','ThongKeController@getBanChay');
+        Route::get('filter-best-product','ThongKeController@getFilterBestProduct');
     });
 
 
@@ -307,4 +289,12 @@ Route::group(['prefix'=>'tai-khoan'],function (){
     Route::post('cai-lai-mat-khau','AccountController@saveResetPassword');
 });
 
-Route::get('search','PagesController@getSearch');
+Route::get('tim-kiem','PagesController@getSearch');
+
+Route::get('thong-tin-tai-khoan','Frontend\CustomerController@getView');
+
+Route::post('thong-tin-tai-khoan','Frontend\CustomerController@postChangeInfo');
+
+Route::get('thay-doi-mat-khau','Frontend\CustomerController@getChangePassword');
+
+Route::post('thay-doi-mat-khau','Frontend\CustomerController@postChangePassword');

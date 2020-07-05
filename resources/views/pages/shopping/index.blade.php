@@ -96,31 +96,6 @@
             <div class="container p-b-100">
                 <div class="row">
                     <div class="col-md-6 p-r-lg--30 p-r-xl-30 m-t-30">
-                        <div class="shop-total">
-                            <div class="shop-total-heading">
-                                <h3 class="title">Mã giảm giá</h3>
-                                <div class="title-border-3 m-b-30"></div>
-                            </div>
-                            <div class="shop-total-body">
-                                <p>Nếu bạn có mã giảm giá hãy nhập vào đây.</p>
-                                <form action="shopping/magiamgia" method="post">
-                                    @csrf
-                                    <div class="form-group au-form m-b-40">
-                                        <input type="text" name="discount_code"
-                                               @if($discount)
-                                                   value="{{$discount[0]->code}}"
-                                               @else
-                                                   value=""
-                                               @endif
-
-                                               placeholder="Mã giảm giá">
-                                    </div>
-                                    <div class="form-group au-form m-b-0">
-                                        <button type="submit">Áp dụng</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-6 p-l-lg-30 p-l-xl-30 m-t-30">
                         <div class="shop-total">
@@ -129,27 +104,12 @@
                                 <div class="title-border-3 m-b-30"></div>
                             </div>
                             <div class="shop-total-body">
-
-
-                                @if($total_after_discount)
-                                    <p class="sub-total">Mã giảm giá
-                                        <span>{{$discount[0]->code}}</span>
-                                    </p>
-                                    <p class="sub-total">Số tiền giảm
-                                        <span>{{number_format($discount[0]->dis_price,0,',','.')}} VNĐ</span>
-                                    </p>
-                                    <p class="total">Tổng cộng
-                                        <span> VNĐ</span><span
-                                            id="totalAll">{{number_format($total_after_discount,0,',','.')}} </span>
-                                    </p>
-                                @else
-                                    <p class="total">Tổng cộng
-                                        <?php
-                                        $total = str_replace(',', '', \Cart::subtotal());
-                                        ?>
-                                        <span> VNĐ</span><span id="totalAll">{{number_format($total,0,',','.')}} </span>
-                                    </p>
-                                @endif
+                                <p class="total">Tổng cộng
+                                    <?php
+                                    $total = str_replace(',', '', \Cart::subtotal());
+                                    ?>
+                                    <span> VNĐ</span><span id="totalAll">{{number_format($total,0,',','.')}} </span>
+                                </p>
                             </div>
                         </div>
                     </div>

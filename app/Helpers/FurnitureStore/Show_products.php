@@ -12,6 +12,8 @@ class Show_products
         foreach ($data as $val) {
             $id = $val['id'];
             $cat_id = $val['cat_id'];
+            $category = DB::table('categories')->where('id',$cat_id)->get();
+            $parent_id = $category[0]->parent_id;
             $name = $val['name'];
             $image = $val['image'];
             $quantity = $val['quantity'];
@@ -20,7 +22,7 @@ class Show_products
             $price = number_format($val['selling_price'], 0, ',', '.');
             echo
             "
-                <div class='col-lg-3 col-md-4 col-sm-6 grid-item $cat_id'>
+                <div class='col-lg-3 col-md-4 col-sm-6 grid-item $parent_id'>
                     <div class='grid-product'>
                         <div class='image bg-lightblue'>
                             <a href='chi-tiet-san-pham/$id'>

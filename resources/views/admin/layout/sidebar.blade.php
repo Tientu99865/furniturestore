@@ -139,28 +139,6 @@
                 </div>
             </li>
         @endcan
-        @can('add discount codes','view discount codes')
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#maps" aria-expanded="false" aria-controls="maps">
-                    <i class="mdi mdi-map-marker-outline menu-icon"></i>
-                    <span class="menu-title">Quản lý mã giảm giá</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="maps">
-                    <ul class="nav flex-column sub-menu">
-                        @can('add discount codes')
-                            <li class="nav-item"><a class="nav-link" href="admin/magiamgia/them">Thêm mã giảm giá</a>
-                            </li>
-                        @endcan
-                        @can('view discount codes')
-                            <li class="nav-item"><a class="nav-link" href="admin/magiamgia/danhsach">Danh sách mã giảm
-                                    giá</a>
-                            </li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-        @endcan
         @can('add made in','view made in')
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -196,8 +174,7 @@
                             <li class="nav-item"><a class="nav-link" href="admin/thongke/doanhthu">Quản lý doanh thu </a></li>
 {{--                        @endcan--}}
 {{--                        @can('view orders')--}}
-                            <li class="nav-item"><a class="nav-link" href="admin/giaodich/hoadonban/danhsach"> Hoá đơn
-                                    bán </a>
+                            <li class="nav-item"><a class="nav-link" href="admin/thongke/sanphambanchay"> Sản phẩm bán chạy </a>
                             </li>
 {{--                        @endcan--}}
                     </ul>

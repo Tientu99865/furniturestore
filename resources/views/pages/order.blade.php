@@ -101,15 +101,11 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td>Phí giao hàng</td>
-                                <td>30.000 VNĐ</td>
-                            </tr>
                             <tr class="total">
                                 <td>Tổng Tiền</td>
-                                <td style="font-size: 25px;color: red">
+                                <td style="font-size: 25px;color: red;width: 300px">
                                     <?php
-                                    $total = str_replace(',', '', \Cart::subtotal()) + 30000;
+                                    $total = str_replace(',', '', \Cart::subtotal());
                                     ?>
                                     <span id="totalAll">{{number_format($total,0,',','.')}} </span><span> VNĐ</span>
                                         <input type="number" name="total_cost" value="{{$total}}" hidden>

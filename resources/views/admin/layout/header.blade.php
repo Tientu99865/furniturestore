@@ -9,7 +9,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle" style="position: relative"  href="admin/lienhe/index"  aria-expanded="false">
                     <i class="mdi mdi-email-outline mx-0"></i>
-                    <?php $count = DB::table('contacts')->where('status','0')->count();?>
+                    <?php $count = DB::table('contacts')->where('status','0')->where('user_id',null)->count();?>
                     <span class="badge badge-pill badge-danger" style="position: absolute;top: 0px;right: -13px;">{{$count}}</span>
                 </a>
             </li>

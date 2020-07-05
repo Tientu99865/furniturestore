@@ -19,8 +19,9 @@ class ProductController extends Controller
         $images = Gallery::all()->where('id_product',$id);
         $product = Products::find($id);
         $comments = Comments::all()->where('pro_id',$id);
-        $products = Products::all()->where('cat_id',$product->cat_id)->random(1);
+        $products = Products::all()->where('cat_id',$product->cat_id)->random(3);
         $import_invoice = Import_invoice::where('pro_id',$id)->latest()->get();
+        $bestProducts = Products::orderBy('sell_number','DESC')->limit(3)->get();
         return view('pages/chitietsanpham',
             [
                 'product'=>$product,
@@ -28,7 +29,8 @@ class ProductController extends Controller
                 'import_invoice'=>$import_invoice,
                 'categories'=>$categories,
                 'products'=>$products,
-                'comments'=>$comments
+                'comments'=>$comments,
+                'bestProducts'=>$bestProducts
             ]);
     }
 }

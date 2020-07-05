@@ -36,6 +36,7 @@ class ContactController extends Controller
 
             $contact = new Contact();
             $contact->id_customer = Auth::guard('customers')->user()->id;
+            $contact->user_id = null;
             $contact->content = $request->msg;
             $contact->status = false;
 

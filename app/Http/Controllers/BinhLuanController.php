@@ -46,7 +46,7 @@ class BinhLuanController extends Controller
 
         $comment = new Comments();
         $comment->pro_id = $request->pro_id;
-        $comment->customer_id = null;
+        $comment->customer_id = 1;
         $comment->user_id = Auth::guard('web')->user()->id;
         $comment->parent_id = $id;
         $comment->content = $request->comment;

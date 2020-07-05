@@ -48,7 +48,7 @@
                         <ul>
                             <li class="header-search">
 
-                                <form action="search" method="get">
+                                <form action="tim-kiem" method="get">
                                 <div class="search-button">
                                     <img src="images\icon\header-search.png" alt="Search">
                                 </div>
@@ -110,8 +110,8 @@
                                     <div class="navbar-dropdown-cus">
                                         <ul>
                                             <li style="font-weight: bold">{{Auth::guard('customers')->user()->name}}</li>
-                                            <li><a href="#">Quản lý tài khoản</a></li>
-                                            <li><a href="#">Quản lý giỏ hàng</a></li>
+                                            <li><a href="thong-tin-tai-khoan">Quản lý tài khoản</a></li>
+                                            <li><a href="#">Tin nhắn liên hệ</a></li>
                                             <li><a href="tai-khoan/dang-xuat">Đăng xuất</a></li>
                                         </ul>
                                     </div>

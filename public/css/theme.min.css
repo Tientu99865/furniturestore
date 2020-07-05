@@ -33904,6 +33904,25 @@ nav.social-media.style-2 li a.google-plus {
     padding-left: 20px;
     line-height: 25px;
 }
+.pass{
+    padding: 0 30px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    color: #fff;
+    -webkit-transition: all 0.35s linear;
+    -o-transition: all 0.35s linear;
+    -moz-transition: all 0.35s linear;
+    transition: all 0.35s linear;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+.pass:hover{
+    background-color: #e4c7a2;
+    color: #333;
+}
 
 .contact-form form .au-form {
     padding: 15px 0;
@@ -36911,6 +36930,8 @@ header .header-wrapper-mobile.mobile-style-2 .header-mobile__navbar > ul li a sp
     overflow: hidden
 }
 .comment .cus_comment{
+    float: right;
+    width: 100%;
     padding-bottom: 0.5rem !important;
 }
 .comment .cus_comment .cus_cmt{

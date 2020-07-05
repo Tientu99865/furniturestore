@@ -38,7 +38,7 @@ class AccountController extends Controller
                 'password.required'=>'Bạn chưa nhập mật khẩu',
                 'password.min'=>'Mật khẩu không thể nhỏ hơn 6 ký tự',
                 'password.max'=>'Mật khẩu không thể lớn hơn 32 ký tự',
-                're_password.required'=>'Bạn chưa nhập mật khẩu',
+                're_password.required'=>'Bạn chưa nhập lại mật khẩu',
                 're_password.same'=>'Mật khẩu không trùng nhau'
             ]);
         $customer = new Customers();
