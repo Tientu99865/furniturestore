@@ -297,4 +297,7 @@ Route::post('thong-tin-tai-khoan','Frontend\CustomerController@postChangeInfo');
 
 Route::get('thay-doi-mat-khau','Frontend\CustomerController@getChangePassword');
 
+Route::get('tin-nhan/{id}','Frontend\CustomerController@getViewMessage');
+Route::post('tra-loi','Frontend\CustomerController@postReply');
+
 Route::post('thay-doi-mat-khau','Frontend\CustomerController@postChangePassword');

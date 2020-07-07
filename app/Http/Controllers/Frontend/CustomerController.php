@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Contact;
 use App\Customers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -57,5 +58,31 @@ class CustomerController extends Controller
        $customer->password = bcrypt($request->password);
 
        return redirect()->back()->with('ThongBao','Bạn đã thay đổi mật khẩu thành công');
+   }
+
+   public function getViewMessage($id){
+       $contacts = Contact::all()->where('id_customer',$id);
+       $replys = Contact::all()->where('parent_id',$contacts[0]->id);
+       return view('pages.tai-khoan.tin-nhan',['contacts'=>$contacts,'replys'=>$replys]);
+   }
+
+   public function postReply(Request $request){
+       $this->validate($request,
+           [
+               'msg'=>'required'
+           ],
+           [
+               'msg.required'=>'Bạn chưa nhập nội dung trả lời',
+           ]);
+
+       $contact = new Contact();
+       $contact->id_customer = Auth::guard('customers')->user()->id;
+       $contact->user_id = null;
+       $contact->content = $request->msg;
+       $contact->status = false;
+
+       $contact->save();
+
+       return redirect()->back()->with('ThongBao','Bạn đã trả lời liên hệ cửa hàng thành công');
    }
 }

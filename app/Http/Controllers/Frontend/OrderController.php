@@ -42,11 +42,6 @@ class OrderController extends Controller
         $invoice = new Invoice();
         $invoice->customer_id = Auth::guard('customers')->user()->id;
         $invoice->note = $request->note;
-        if ($request->has('discount_code')){
-            $invoice->discount_code = $request->discount_code;
-        }else{
-            $invoice->discount_code = '';
-        }
 
         $invoice->total_cost = $request->total_cost;
         $invoice->created_at = now();

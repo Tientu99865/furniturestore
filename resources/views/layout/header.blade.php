@@ -53,8 +53,8 @@
                                     <img src="images\icon\header-search.png" alt="Search">
                                 </div>
                                     <div class="search-input" style="display: none;">
-                                        <input type="text" name="key" placeholder="Start typing here...">
-                                        <a href="#"></a>
+                                        <input type="text" name="key" placeholder="Tìm kiếm ...">
+                                        <a href=""></a>
                                     </div>
 
                                 </form>
@@ -111,7 +111,7 @@
                                         <ul>
                                             <li style="font-weight: bold">{{Auth::guard('customers')->user()->name}}</li>
                                             <li><a href="thong-tin-tai-khoan">Quản lý tài khoản</a></li>
-                                            <li><a href="#">Tin nhắn liên hệ</a></li>
+                                            <li><a href="tin-nhan/{{Auth::guard('customers')->user()->id}}">Tin nhắn liên hệ</a></li>
                                             <li><a href="tai-khoan/dang-xuat">Đăng xuất</a></li>
                                         </ul>
                                     </div>
