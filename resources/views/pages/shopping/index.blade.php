@@ -14,77 +14,82 @@
         <div class="container p-t-100 p-b-30 py-tn-30">
             <div class="row m-t-20">
                 <div class="col-md-12">
-                    @if(Cart::count() == 0)
-                        Hiện tại chưa có sản phẩm nào trong giỏ hàng của bạn! Quay lại <a href="/">trang chủ</a>
-                    @else
-                        <table class="table-shop">
-                            <thead>
-                            <tr>
-                                <th>Sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Số lượng</th>
-                                <th>Thành tiền</th>
-                                <th>Xoá</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($products as $product)
+                    <form action="capnhat" method="post">
+                        @csrf
+                        @if(Cart::count() == 0)
+                            Hiện tại chưa có sản phẩm nào trong giỏ hàng của bạn! Quay lại <a href="/">trang chủ</a>
+                        @else
+                            <table class="table-shop">
+                                <thead>
                                 <tr>
-                                    <td>
-                                        <div class="table-shop-product">
-                                            <div class="image">
-                                                <img src="upload/sanpham/tieude/{{$product->options->image}}"
-                                                     style="width: 100px;" alt="Product 1">
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                    <th>Xoá</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($products as $product)
+                                    <tr>
+                                        <td>
+                                            <div class="table-shop-product">
+                                                <div class="image">
+                                                    <img src="upload/sanpham/tieude/{{$product->options->image}}"
+                                                         style="width: 100px;" alt="Product 1">
+                                                </div>
+                                                <div class="name">{{$product->name}}</div>
+                                                <input type="text" name="rowId[{{$product->id}}][value]" value="{{$product->rowId}}" hidden>
                                             </div>
-                                            <div class="name">{{$product->name}}</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input type="number" id="price-{{$product->id}}" value="{{$product->price}}"
-                                               hidden>
-                                        <span>{{number_format($product->price,0,',','.')}}</span> VNĐ
-                                    </td>
-                                    <td>
-                                        <div class="quantity">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="price-{{$product->id}}" value="{{$product->price}}"
+                                                   hidden>
+                                            <span>{{number_format($product->price,0,',','.')}}</span> VNĐ
+                                        </td>
+                                        <td>
+                                            <div class="quantity">
                                         <span class="sub">
                                             <i class="fa fa-angle-down btn cart-minus-1" id="{{$product->id}}"></i>
                                         </span>
 
-                                            <input type="number" min="1" id="quantity-{{$product->id}}" readonly
-                                                   value="{{$product->qty}}">
+                                                <input type="number" min="1" id="quantity-{{$product->id}}" name="rowId[{{$product->id}}][quantity]" readonly
+                                                       value="{{$product->qty}}">
 
-                                            <span class="add">
+                                                <span class="add">
                                             <i class="fa fa-angle-up btn cart-plus-1" id="{{$product->id}}"></i>
                                         </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="totalProduct" id="total-hidden-{{$product->id}}"
+                                               hidden>{{$product->price*$product->qty}}</p>
+                                            <span
+                                                id="total-{{$product->id}}">{{number_format($product->price*$product->qty,0,',','.')}}</span>
+                                            VNĐ
+                                        </td>
+                                        <td>
+                                            <a href="shopping/xoa/{{$product->rowId}}">
+                                                <img src="images\icon\close.png" alt="Close">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="table-button">
+                                            <a href="/">Tiếp tục mua hàng</a>
+                                            <input type="submit" value="Thanh toán">
                                         </div>
                                     </td>
-                                    <td>
-                                        <p class="totalProduct" id="total-hidden-{{$product->id}}"
-                                           hidden>{{$product->price*$product->qty}}</p>
-                                        <span
-                                            id="total-{{$product->id}}">{{number_format($product->price*$product->qty,0,',','.')}}</span>
-                                        VNĐ
-                                    </td>
-                                    <td>
-                                        <a href="shopping/xoa/{{$product->rowId}}">
-                                            <img src="images\icon\close.png" alt="Close">
-                                        </a>
-                                    </td>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="5">
-                                    <div class="table-button">
-                                        <a href="/">Tiếp tục mua hàng</a>
-                                        <a href="thanhtoan">Thanh toán</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    @endif
+                                </tfoot>
+                            </table>
+
+                        @endif
+                    </form>
 
                 </div>
             </div>

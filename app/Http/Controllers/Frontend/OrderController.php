@@ -15,6 +15,14 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
+    public function update(Request $request){
+       $rows = $request->post('rowId');
+        foreach ($rows as $row){
+            \Cart::update($row['value'],$row['quantity']);
+        }
+        return redirect('thanhtoan');
+    }
+
     public function viewOrder(){
         if (Auth::guard('customers')->check()){
             return view('pages/order');

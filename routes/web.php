@@ -263,7 +263,7 @@ Route::prefix('shopping')->group(function (){
     Route::post('magiamgia','Frontend\ShoppingCartController@postDiscountCode')->name('post.discount.shopping.cart');
 //    Route::get('cap-nhat','Frontend\ShoppingCartController@getDeleteShoppingCart')->name('get.delete.shopping.cart');
 });
-
+Route::post('capnhat','Frontend\OrderController@update');
 Route::get('thanhtoan','Frontend\OrderController@viewOrder');
 Route::post('thanhtoan','Frontend\OrderController@postOrder');
 Route::get('xac-nhan-hoa-don','Frontend\OrderController@verifyInvoice')->name('customer.verify.invoice');
