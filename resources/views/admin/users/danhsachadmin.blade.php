@@ -86,7 +86,7 @@
                                                         class="jsgrid-button jsgrid-update-button" type="button"
                                                         title="Thêm chức vụ"></a>
                                                 <a href="admin/users/xoa/{{$u->id}}"><input
-                                                        class="jsgrid-button jsgrid-delete-button" type="button"
+                                                        class="jsgrid-button jsgrid-delete-button" onclick="return confirm('Bạn có muốn xoá tài khoản này không?')" type="button"
                                                         title="Xóa"></a>
                                             </td>
                                         </tr>

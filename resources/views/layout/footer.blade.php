@@ -51,32 +51,7 @@
                         </div>
                     </div>
                     <div class="footer-item">
-                        <div class="footer-item-heading">
-                            <h3>latest post</h3>
-                            <div class="footer-border"></div>
-                        </div>
-                        <div class="footer-item-content">
-                            <ul class="footer-latest-post">
-                                <li>
-                                    <div class="post-item">
-                                        <a href="#">Neque porro quisquam</a>
-                                        <span class="post-time">25 / June</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="post-item">
-                                        <a href="#">Duis aute irure dolor</a>
-                                        <span class="post-time">18 / June</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="post-item">
-                                        <a href="#">Neque porro quisquam est</a>
-                                        <span class="post-time">22 / June</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+
                     </div>
                     <div class="footer-item">
                         <div class="footer-item-heading">

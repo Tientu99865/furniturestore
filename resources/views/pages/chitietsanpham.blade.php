@@ -37,7 +37,7 @@
                                     <form action="shopping/them/{{$product->id}}" method="post">
                                         @csrf
                                         <h3 class="name">{{$product->name}}</h3>
-                                        @if($product->promoted_price)
+                                        @if($product->promoted_price != 0)
                                             <p class="price" style="text-decoration: line-through;">{{number_format($product->selling_price, 0, ',', '.')}}
                                                 VNĐ</p>
                                             <p class="price">{{number_format($product->selling_price-$product->promoted_price, 0, ',', '.')}}
@@ -212,7 +212,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="name">{{$product->name}}</div>
-                                                @if($product->promoted_price)
+                                                @if($product->promoted_price != 0)
                                                     <div class="price" style="text-decoration: line-through;"> {{number_format($product->selling_price, 0, ',', '.')}}
                                                         VNĐ
                                                     </div>

@@ -10,14 +10,14 @@ class LienHeController extends Controller
 {
     //
     public function getLienHe(){
-        $contacts = Contact::all()->where('user_id',null);
+        $contacts = Contact::orderBy('id','DESC')->where('user_id',null)->get();
         $contact_details = null;
         return view('admin/lienhe/index',['contacts'=>$contacts,'contact_details'=>$contact_details]);
     }
 
     public function getChiTiet($id){
         $contact_details = Contact::find($id);
-        $contacts = Contact::all()->where('user_id',null);
+        $contacts = Contact::orderBy('id','DESC')->where('user_id',null)->get();
         $replys = Contact::all()->where('parent_id',$id);
         return  view('admin.lienhe.index',['contacts'=>$contacts,'contact_details'=>$contact_details,'replys'=>$replys]);
     }
@@ -51,12 +51,13 @@ class LienHeController extends Controller
         foreach ($contact_parents as $contact_parent){
             $contact_parent->delete();
         }
-        if ($contact->parent_id != null){
-            $contact->delete();
-            return redirect()->back()->with('ThongBao','Bạn đã xóa thành công');
-        }else{
+        if ($contact->parent_id == null){
             $contact->delete();
             return redirect('admin/lienhe/index')->with('ThongBao','Bạn đã xóa thành công');
+        }elseif($contact->parent_id != null)
+        {
+            $contact->delete();
+            return redirect()->back()->with('ThongBao','Bạn đã xóa thành công');
         }
     }
 }

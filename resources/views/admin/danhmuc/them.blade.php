@@ -41,11 +41,16 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputName1">Vị trí <span style="color: red">*</span></label>
+                                <input type="number" value=""
+                                       name="position" class="form-control" id="exampleInputName1" placeholder="Vị trí của danh mục" />
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputName1">Tên danh mục <span style="color: red">*</span></label>
                                 <input type="text" value=""
                                        name="name" class="form-control" id="exampleInputName1" placeholder="Tên danh mục" />
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm menu</button>
+                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm danh mục</button>
                         </form>
                     </div>
                 </div>

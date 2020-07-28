@@ -8,4 +8,5 @@ class Slides extends Model
 {
     //
     protected $table = "Slides";
+    public $timestamps = false;
 }

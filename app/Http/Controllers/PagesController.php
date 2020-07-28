@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Categories;
+use App\Posts;
 use App\Products;
 use App\Slides;
 use Illuminate\Http\Request;
@@ -12,10 +13,9 @@ class PagesController extends Controller
 
     public function trangchu(){
         $products = Products::all()->sortByDesc('id');
-        $categoriesMenu = Categories::all()->sortByDesc('id');
         $categories = Categories::all()->where('parent_id',null)->sortByDesc('id');
-        $slides = Slides::all()->sortByDesc('id')->take(3);
-        return view('pages/trangchu',['slides'=>$slides,'categoriesMenu'=>$categoriesMenu,'categories'=>$categories,'products'=>$products]);
+        $posts = Posts::orderBy('id','DESC')->get();
+        return view('pages/trangchu',['posts'=>$posts,'categories'=>$categories,'products'=>$products]);
     }
 
 //    public function test(){
@@ -23,7 +23,7 @@ class PagesController extends Controller
 //    }
 
     public function getSearch(Request $request){
-        $products = Products::where('name','like','%'.$request->key.'%')->orWhere('selling_price',$request->key)->get();
+        $products = Products::where('name','like','%'.$request->key.'%')->orWhere('selling_price','like','%'.$request->key.'%')->get();
         $categories = Categories::all()->where('parent_id','!=',null);
         $key = $request->key;
 

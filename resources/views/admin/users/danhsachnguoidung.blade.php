@@ -61,7 +61,7 @@
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">0{{$cus->phone_number}}</td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 150px;">{{$cus->address}}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                <a href="admin/users/xoa/{{$cus->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
+                                                <a href="admin/users/xoa/{{$cus->id}}"><input class="jsgrid-button jsgrid-delete-button" onclick="return confirm('Bạn có muốn xoá tài khoản này không?')" type="button" title="Xóa"></a>
                                             </td>
                                         </tr>
                                     @endforeach

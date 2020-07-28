@@ -16,14 +16,12 @@ class TrangChuController extends Controller
         $countUsers = User::all()->count();
         $countCustomers = Customers::all()->count();
         $countInvoices = Invoice::all()->count();
-        $invoices = Invoice::orderBy('id','DESC')->paginate(5);
         return view('admin/trangchu/index',
         [
             'countProducts'=>$countProducts,
             'countUsers'=>$countUsers,
             'countCustomers'=>$countCustomers,
             'countInvoices'=>$countInvoices,
-            'invoices'=>$invoices,
         ]
         );
     }

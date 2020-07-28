@@ -15,16 +15,21 @@ class DanhMucController extends Controller
     public function postThem(Request $request){
         $this->validate($request,
             [
-                'name'=>'required|min:2|max:100|unique:categories'
+                'name'=>'required|min:2|max:100|unique:categories',
+                'position'=>'required|numeric|min:1'
             ],
             [
                 'name.required'=>'Bạn chưa nhập tên danh mục',
                 'name.min'=>'Tên danh mục phải có độ dài từ 2 đến 100 ký tự',
                 'name.max'=>'Tên danh mục phải có độ dài từ 2 đến 100 ký tự',
-                'name.unique'=>'Tên danh mục này đã tồn tại'
+                'name.unique'=>'Tên danh mục này đã tồn tại',
+                'position.required'=>'Bạn chưa nhập vị trí cho danh mục',
+                'position.numeric'=>'Vị trí của danh mục phải là kiểu số',
+                'position.min'=>'Vị trí ko thể nhập nhỏ hơn 1',
             ]);
         $categorie = new Categories();
         $categorie->name = $request->name;
+        $categorie->position = $request->position;
         if ($request->has('parent_id')){
             $categorie->parent_id = $request->parent_id;
         }else
@@ -57,15 +62,20 @@ class DanhMucController extends Controller
     public function postSua(Request $request,$id){
         $this->validate($request,
             [
-                'name'=>'required|min:2|max:100'
+                'name'=>'required|min:2|max:100',
+                'position'=>'required|numeric|min:1'
             ],
             [
                 'name.required'=>'Bạn chưa nhập tên danh mục',
                 'name.min'=>'Tên danh mục phải có độ dài từ 2 đến 100 ký tự',
                 'name.max'=>'Tên danh mục phải có độ dài từ 2 đến 100 ký tự',
+                'position.required'=>'Bạn chưa nhập vị trí cho danh mục',
+                'position.numeric'=>'Vị trí của danh mục phải là kiểu số',
+                'position.min'=>'Vị trí ko thể nhập nhỏ hơn 1',
             ]);
         $categorie = Categories::all()->find($id);
         $categorie->name = $request->name;
+        $categorie->position = $request->position;
         if ($request->has('parent_id')){
             $categorie->parent_id = $request->parent_id;
         }else

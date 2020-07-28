@@ -81,14 +81,6 @@
                     <div class="col-xl-6">
                         <table style="text-align: center;width: 100%;line-height: 40px;">
                             <tr>
-                                <th>Phí Ship</th>
-                                <th>30.000 VNĐ</th>
-                            </tr>
-                            <tr>
-                                <th>Mã khuyến mại</th>
-                                <th>Không có</th>
-                            </tr>
-                            <tr>
                                 <th>Tổng tiền</th>
                                 <th style="font-size: 20px;color: red">{{number_format($invoice->total_cost,0,',','.')}} VNĐ</th>
                             </tr>

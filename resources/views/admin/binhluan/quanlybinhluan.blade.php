@@ -66,6 +66,7 @@
                                                                 title="Trả lời bình luận"></a>
                                                         <a href="admin/quanlybinhluan/xoa/{{$comment->id}}"><input
                                                                 class="jsgrid-button jsgrid-delete-button" type="button"
+                                                                onclick="return confirm('Bạn có muốn xoá bình luận này không?')"
                                                                 title="Xóa"></a>
                                                     </td>
                                                 </tr>

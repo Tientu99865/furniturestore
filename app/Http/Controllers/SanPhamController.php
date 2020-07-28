@@ -10,6 +10,8 @@ use Faker\Provider\File;
 use Illuminate\Http\Request;
 use App\Products;
 use App\Categories;
+use Illuminate\Validation\Rules\In;
+
 class SanPhamController extends Controller
 {
     //
@@ -105,6 +107,7 @@ class SanPhamController extends Controller
     public function getXoa($id){
         $product = Products::find($id);
         $gallery = Gallery::where('id_product',$id)->delete();
+        $import_invoices = Import_invoice::where('pro_id',$id)->delete();
         $product->delete();
 
         return redirect('admin/sanpham/danhsach')->with('ThongBao','Bạn đã xóa thành công');

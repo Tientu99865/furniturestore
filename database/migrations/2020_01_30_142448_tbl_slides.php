@@ -16,11 +16,7 @@ class TblSlides extends Migration
         //
         Schema::create('slides', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',60);
             $table->string('image',200);
-            $table->longText('content')->nullable();
-            $table->string('link',200)->nullable();
-            $table->timestamps();
         });
     }
 

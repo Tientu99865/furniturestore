@@ -24,9 +24,15 @@ class ThongKeController extends Controller
    }
 
    public function getBanChay(){
-       $products = Products::orderBy('sell_number','DESC')->paginate(10);
+       $products = Products::orderBy('sell_number','DESC')->limit(5)->get();
 
        return view('admin.thongke.sanphambanchay',['products'=>$products]);
    }
 
+   public function getOrder(){
+
+       $invoices = Invoice::orderBy('id','DESC')->paginate(5);
+
+       return view('admin.thongke.donhang',['invoices'=>$invoices]);
+   }
 }

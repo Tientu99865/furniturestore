@@ -1,6 +1,6 @@
 @extends('admin/layout/index')
 @section('title')
-    Thêm slide
+    Thêm tin tức
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -38,13 +38,13 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Thêm ảnh slide</h4>
+                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Thêm tin tức</h4>
                         <form class="forms-sample" method="post" action="admin/slide/them" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
-                                <label for="exampleInputName1">Tên slide <span style="color: red">*</span></label>
+                                <label for="exampleInputName1">Tiêu đề <span style="color: red">*</span></label>
                                 <input type="text" value=""
-                                       name="name" class="form-control" id="exampleInputName1" placeholder="Tên slide" />
+                                       name="title" class="form-control" id="exampleInputName1" placeholder="Tiêu đề" />
                             </div>
                             <div class="form-group">
                                 <label>Chọn ảnh slide<span style="color: red">*</span></label>
@@ -57,22 +57,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleTextarea1">Mô tả<span style="color: red">*</span></label>
+                                <label for="exampleTextarea1">Mô tả ngắn<span style="color: red">*</span></label>
 
-                                <textarea class="form-control" name="mota" id="editor1" rows="4">
-                                </textarea>
+                                <textarea class="form-control" name="short_description" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Nội dung<span style="color: red">*</span></label>
+
+                                <textarea class="form-control" name="text_content" id="editor1" rows="4"></textarea>
                                 <script>
 
                                     CKEDITOR.replace( 'editor1' );
 
                                 </script>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">link <span style="color: red">*</span></label>
-                                <input type="text" value=""
-                                       name="link" class="form-control" id="exampleInputName1" placeholder="link" />
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm menu</button>
+                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm tin tức</button>
                         </form>
                     </div>
                 </div>

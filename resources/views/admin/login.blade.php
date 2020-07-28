@@ -83,10 +83,7 @@
                             </div>
                             <div class="my-2 d-flex justify-content-between align-items-center">
                                 <div class="form-check">
-                                    <label class="form-check-label text-muted">
-                                        <input type="checkbox" class="form-check-input" />
-                                        Lưu đăng nhập
-                                    </label>
+
                                 </div>
                                 <a href="admin/dangky" class="auth-link text-black" style="color: #0d4dff">Đăng ký tài khoản</a>
                             </div>
@@ -97,7 +94,6 @@
                     </div>
                 </div>
                 <div class="col-lg-6 login-half-bg d-flex flex-row">
-                    <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018  All rights reserved.</p>
                 </div>
             </div>
         </div>

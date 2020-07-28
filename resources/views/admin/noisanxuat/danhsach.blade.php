@@ -49,8 +49,8 @@
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;"><?php echo $stt;?></td>
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$manu->name}}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                <a href="admin/noisanxuat/sua/{{$manu->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Sửa"></a>
-                                                <a href="admin/noisanxuat/xoa/{{$manu->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
+                                                <a href="admin/noisanxuat/sua/{{$manu->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button"  title="Sửa"></a>
+                                                <a href="admin/noisanxuat/xoa/{{$manu->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" onclick="return confirm('Bạn có muốn xoá nơi sản xuất này không?')" title="Xóa"></a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -51,11 +51,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">
-                            <nav>
-                                {!! $products->links() !!}
-                            </nav>
-                        </div>
+{{--                        <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row mt-4">--}}
+{{--                            <nav>--}}
+{{--                                {!! $products->links() !!}--}}
+{{--                            </nav>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>

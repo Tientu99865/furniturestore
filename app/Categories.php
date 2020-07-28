@@ -13,6 +13,10 @@ class Categories extends Model
         return $this->hasMany('App\Menus','cat_id','id');
     }
 
+    public function category(){
+        return $this->belongsTo('App\Categories','parent_id','id');
+    }
+
     public function products(){
         return $this->hasMany('App\Products','cat_id','id');
     }

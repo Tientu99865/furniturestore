@@ -24,6 +24,9 @@
                         <p class="card-description">
                             Ghi chú : <b>{{$invoice->note}}</b>
                         </p>
+                        <p class="card-description">
+                            Thời gian đặt hàng : <b>{{$invoice->created_at}}</b>
+                        </p>
 
                         <div class="table-responsive">
                             <table class="table">

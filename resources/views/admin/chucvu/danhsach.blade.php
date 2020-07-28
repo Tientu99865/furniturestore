@@ -83,6 +83,7 @@
                                                         title="Sửa"></a>
                                                 <a href="admin/chucvu/xoa/{{$role->id}}"><input
                                                         class="jsgrid-button jsgrid-delete-button" type="button"
+                                                        onclick="return confirm('Bạn có muốn xoá chức vụ này không?')"
                                                         title="Xóa"></a>
                                             </td>
                                         </tr>

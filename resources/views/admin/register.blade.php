@@ -53,9 +53,9 @@
                             </div>
                         @endif
 
-                        <div class="brand-logo">
-                            <img src="admin_asset/images/logo.svg" alt="logo" />
-                        </div>
+                            <div class="brand-logo">
+                                <a href="admin/dangnhap"><img src="admin_asset/images/logo/logo.png" alt="logo" /></a>
+                            </div>
                         <h4>Đăng ký tài khoản admin</h4>
                         <form class="pt-3" action="admin/dangky" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 register-half-bg d-flex flex-row">
-                    <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2018  All rights reserved.</p>
+
                 </div>
             </div>
         </div>

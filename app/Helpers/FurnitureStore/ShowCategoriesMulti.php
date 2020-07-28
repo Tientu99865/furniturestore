@@ -22,7 +22,13 @@ class ShowCategoriesMulti{
             $id = $val["id"];
             $name = $val["name"];
             if ($val["parent_id"] == $parent){
-                echo "<li><a href='danhmuc/$id'>$name</a>";
+                echo "<li><a ";
+                if ($val["parent_id"] !=0){
+                    echo "href='danhmuc/$id'";
+                }else{
+                    echo '';
+                }
+               echo ">$name</a>";
                 self::showcategories($data,$id,$url,"<ul class='sub-menu'>","</ul>");
                 echo "</li>";
             }

@@ -57,6 +57,8 @@ class CustomerController extends Controller
        $customer = Customers::find(Auth::guard('customers')->user()->id);
        $customer->password = bcrypt($request->password);
 
+       $customer->save();
+
        return redirect()->back()->with('ThongBao','Bạn đã thay đổi mật khẩu thành công');
    }
 

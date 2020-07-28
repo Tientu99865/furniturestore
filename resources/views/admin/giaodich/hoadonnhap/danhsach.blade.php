@@ -83,7 +83,7 @@
                                             <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">{{$invoice->created_at}}</td>
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
                                                 <a href="admin/giaodich/hoadonnhap/sua/{{$invoice->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Sửa"></a>
-                                                <a href="admin/giaodich/hoadonnhap/xoa/{{$invoice->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
+                                                <a href="admin/giaodich/hoadonnhap/xoa/{{$invoice->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" onclick="return confirm('Bạn có muốn xoá hoá đơn này không?')" title="Xóa"></a>
                                             </td>
                                         </tr>
                                     @endforeach

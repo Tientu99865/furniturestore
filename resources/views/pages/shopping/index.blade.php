@@ -81,7 +81,7 @@
                                     <td colspan="5">
                                         <div class="table-button">
                                             <a href="/">Tiếp tục mua hàng</a>
-                                            <input type="submit" value="Thanh toán">
+                                            <input type="submit" class="pay-submit" value="Thanh toán">
                                         </div>
                                     </td>
                                 </tr>

@@ -54,16 +54,16 @@
                 <a class="nav-link" data-toggle="collapse" href="#ui-advanced" aria-expanded="false"
                    aria-controls="ui-advanced">
                     <i class="mdi mdi-bullseye-arrow menu-icon"></i>
-                    <span class="menu-title">Quản lý slides</span>
+                    <span class="menu-title">Quản lý tin tức </span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="ui-advanced">
                     <ul class="nav flex-column sub-menu">
                         @can('add slides')
-                            <li class="nav-item"><a class="nav-link" href="admin/slide/them">Thêm slide</a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin/slide/them">Thêm tin tức</a></li>
                         @endcan
                         @can('view slides')
-                            <li class="nav-item"><a class="nav-link" href="admin/slide/danhsach">Danh sách slide</a>
+                            <li class="nav-item"><a class="nav-link" href="admin/slide/danhsach">Danh sách tin tức</a>
                             </li>
                         @endcan
                     </ul>
@@ -160,7 +160,7 @@
                 </div>
             </li>
         @endcan
-{{--        @can('view invoices')--}}
+        @can('all revenue')
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#statistical-pages" aria-expanded="false"
                    aria-controls="general-pages">
@@ -176,10 +176,13 @@
 {{--                        @can('view orders')--}}
                             <li class="nav-item"><a class="nav-link" href="admin/thongke/sanphambanchay"> Sản phẩm bán chạy </a>
                             </li>
+
+                            <li class="nav-item"><a class="nav-link" href="admin/thongke/donhang">Quản lý đơn hàng </a>
+                            </li>
 {{--                        @endcan--}}
                     </ul>
                 </div>
             </li>
-{{--        @endcan--}}
+        @endcan
     </ul>
 </nav>

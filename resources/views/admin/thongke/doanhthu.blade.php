@@ -24,6 +24,7 @@
                             <form action="admin/thongke/filter" method="get">
                                 @csrf
                                 <p style="float: left;padding-top: 10px;">Tháng :</p>
+
                                 <div style="float: left;margin:0 15px">
                                     <select name="month" aria-controls="order-listing" class="form-control">
                                         <option value="01">1</option>

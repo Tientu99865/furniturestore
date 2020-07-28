@@ -1,6 +1,6 @@
 @extends('admin/layout/index')
 @section('title')
-   Sửa slide
+   Sửa tin tức
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -38,17 +38,17 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Sửa ảnh slide : {{$slide->name}}</h4>
-                        <form class="forms-sample" method="post" action="admin/slide/sua/{{$slide->id}}" enctype="multipart/form-data">
+                        <h4 class="card-title" style="text-align: center;font-size: 30px;">Sửa tin tức : {{$post->slide->name}}</h4>
+                        <form class="forms-sample" method="post" action="admin/slide/sua/{{$post->id}}" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="form-group">
-                                <label for="exampleInputName1">Tên slide <span style="color: red">*</span></label>
-                                <input type="text" value="{{$slide->name}}"
-                                       name="name" class="form-control" id="exampleInputName1" placeholder="Tên slide" />
+                                <label for="exampleInputName1">Tiêu đề <span style="color: red">*</span></label>
+                                <input type="text" value="{{$post->title}}"
+                                       name="title" class="form-control" id="exampleInputName1" placeholder="Tiêu đề" />
                             </div>
                             <div class="form-group">
                                 <label>Chọn ảnh slide<span style="color: red">*</span></label><br>
-                                <img src="upload/slide/{{$slide->image}}" width="400px" alt=""><br><br>
+                                <img src="upload/slide/{{$post->slide->image}}" width="400px" alt=""><br><br>
                                 <input type="file" name="image" class="file-upload-default">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled="" placeholder="...">
@@ -58,23 +58,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleTextarea1">Mô tả<span style="color: red">*</span></label>
+                                <label for="exampleTextarea1">Mô tả ngắn<span style="color: red">*</span></label>
 
-                                <textarea class="form-control" name="mota" id="editor1" rows="4">
-                                    {{$slide->content}}
-                                </textarea>
+                                <textarea class="form-control" name="short_description" rows="4">{{$post->short_description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Nội dung<span style="color: red">*</span></label>
+
+                                <textarea class="form-control" name="text_content" id="editor1" rows="4">{{$post->content}}</textarea>
                                 <script>
 
                                     CKEDITOR.replace( 'editor1' );
 
                                 </script>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputName1">link <span style="color: red">*</span></label>
-                                <input type="text" value="{{$slide->link}}"
-                                       name="link" class="form-control" id="exampleInputName1" placeholder="link" />
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary mr-2">Thêm menu</button>
+                            <button type="submit" name="submit" class="btn btn-primary mr-2">Sửa tin tức</button>
                         </form>
                     </div>
                 </div>

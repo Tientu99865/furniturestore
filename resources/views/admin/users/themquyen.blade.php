@@ -32,13 +32,14 @@
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;font-size: 30px;">Thêm chức vụ cho
                             : {{$user->name}}</h4>
-                        <form class="forms-sample" method="post" action="admin/users/themquyen/{{$user->id}}">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <form class="forms-sample" method="post" action="admin/users/themchucvu/{{$user->id}}">
+                            @csrf
                             <div class="form-group">
                                 <label for="exampleInputName1">Chọn chức vụ<span
                                         style="color: red">*</span></label><br>
                                 <select class="js-example-basic-multiple" style="width: 100%;" name="roles[]"
                                         multiple="multiple">
+                                    <option value="0">Xoá chức vụ</option>
                                     @foreach($roles as $role)
                                         <option
                                             @foreach($user->getRoleNames() as $userRole)

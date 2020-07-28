@@ -30,6 +30,9 @@
     <p class="card-description">
         Ghi chú : <b>{{$invoice->note}}</b>
     </p>
+    <p class="card-description">
+        Thời gian đặt hàng : <b>{{$invoice->created_at}}</b>
+    </p>
     <div style="text-align: center">
         <h2>Danh sách đơn hàng</h2>
     </div>

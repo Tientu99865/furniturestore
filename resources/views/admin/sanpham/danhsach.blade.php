@@ -77,7 +77,7 @@
                                             <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 100px;">
                                                 <a href="admin/sanpham/chitiet/{{$pro->id}}"><input class="jsgrid-button jsgrid-clear-filter-button" type="button" title="Xem chi tiết"></a>
                                                 <a href="admin/sanpham/sua/{{$pro->id}}"><input class="jsgrid-button jsgrid-edit-button" type="button" title="Sửa"></a>
-                                                <a href="admin/sanpham/xoa/{{$pro->id}}"><input class="jsgrid-button jsgrid-delete-button" type="button" title="Xóa"></a>
+                                                <a href="admin/sanpham/xoa/{{$pro->id}}"><input class="jsgrid-button jsgrid-delete-button" onclick="return confirm('Bạn có muốn xoá sản phẩm này không?')" type="button" title="Xóa"></a>
                                             </td>
                                         </tr>
                                     @endforeach
